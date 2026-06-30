@@ -686,38 +686,42 @@
       "topic": "Laugen-Steckbriefe",
       "type": "multi_part",
       "question": "Ergänze die Steckbriefe der vier Laugen, indem Du die Karten in die passenden Lücken ziehst.",
-      "given": "Vier Steckbriefe (Ammoniakwasser, Kalilauge, Natronlauge, Kalkwasser) mit insgesamt sechs Lücken.",
+      "given": "Vier Steckbriefe mit insgesamt zehn Lücken (Laugenname plus weitere Begriffe pro Steckbrief).",
       "expected_answer_kind": "zuordnung",
       "subtasks": [],
       "interactive": {
         "type": "cloze-cards",
         "sections": [
           {
-            "title": "Ammoniakwasser (NH_3)",
-            "body": "Ammoniakwasser ist eine wasserklare Flüssigkeit (25%ige Lösung: 0,91 g/mL) mit stechendem Geruch. Die wässrige Lösung wird auch ____ genannt und riecht nach dem bekannten Gas. Sie entsteht, indem man Ammoniak in Wasser löst. Verwendet wird sie z. B. bei der Herstellung von Düngemitteln, Kunstfasern und anderen Stickstoffverbindungen sowie in starken Putzmitteln (Grundreiniger).",
+            "title": "Steckbrief 1",
+            "body": "Formel: NH_3  —  Name der Lauge: ____. Diese Lauge ist eine wasserklare Flüssigkeit (25%ige Lösung: 0,91 g/mL) mit stechendem Geruch. Die wässrige Lösung wird auch ____ genannt und riecht nach dem bekannten Gas. Sie entsteht, indem man Ammoniak in Wasser löst. Verwendet wird sie z. B. bei der Herstellung von Düngemitteln, Kunstfasern und anderen Stickstoffverbindungen sowie in starken Putzmitteln (Grundreiniger).",
             "answers": [
+              "Ammoniakwasser",
               "Salmiakwasser"
             ]
           },
           {
-            "title": "Kalilauge (KOH)",
-            "body": "Kalilauge ist eine Lösung von Kaliumhydroxid (56,105 g/mol, 47%ige Lösung: 1,5 g/mL). Sie ähnelt in vielen Eigenschaften der ____ und verätzt ebenfalls Haut und Augen. Die Kristalle sind weißlich und hygroskopisch. Aus der Luft nimmt die Lauge Kohlenstoffdioxid auf und bindet es als Salz. Verwendet wird sie zur Herstellung von Schmierseife und flüssigen Waschmitteln.",
+            "title": "Steckbrief 2",
+            "body": "Formel: KOH  —  Name der Lauge: ____. Diese Lauge ist eine Lösung von Kaliumhydroxid (56,105 g/mol, 47%ige Lösung: 1,5 g/mL). Sie ähnelt in vielen Eigenschaften der ____ und verätzt ebenfalls Haut und Augen. Die Kristalle sind weißlich und hygroskopisch. Aus der Luft nimmt sie Kohlenstoffdioxid auf und bindet es als Salz. Verwendet wird sie zur Herstellung von Schmierseife und flüssigen Waschmitteln.",
             "answers": [
+              "Kalilauge",
               "Natronlauge"
             ]
           },
           {
-            "title": "Natronlauge (NaOH)",
-            "body": "Natronlauge ist eine Lösung von Natriumhydroxid (40 g/mol, 32%ige Lösung: 1,35 g/mL). Die Kristalle sind weiß und stark ____. In Wasser lösen sie sich unter starker Wärmeentwicklung zur stark ätzenden Lauge. In der Industrie dient sie u. a. zum Aufschluss von Holz und Stroh bei der Papierherstellung. Im Haushalt findet man sie in fester Form als ____. Laugenbrezeln erhalten durch sie ihre typische Kruste.",
+            "title": "Steckbrief 3",
+            "body": "Formel: NaOH  —  Name der Lauge: ____. Diese Lauge ist eine Lösung von Natriumhydroxid (40 g/mol, 32%ige Lösung: 1,35 g/mL). Die Kristalle sind weiß und stark ____. In Wasser lösen sie sich unter starker Wärmeentwicklung zur stark ätzenden Lauge. In der Industrie dient sie u. a. zum Aufschluss von Holz und Stroh bei der Papierherstellung. Im Haushalt findet man sie in fester Form als ____. Laugenbrezeln erhalten durch sie ihre typische Kruste.",
             "answers": [
+              "Natronlauge",
               "hygroskopisch",
               "Abflussreiniger"
             ]
           },
           {
-            "title": "Kalkwasser (Ca(OH)_2)",
-            "body": "Kalkwasser ist die wässrige Lösung von Calciumhydroxid (74,093 g/mol, 2,20 g/mL). Im getrockneten Zustand ist es ein weißes, staubiges Pulver, das nur schlecht in Wasser löslich ist. Die Lösung reizt die Haut und reagiert basisch. Hergestellt wird Kalkwasser, indem man ____ in Wasser löscht. Es dient als Nachweismittel für ____ (weißer Niederschlag aus Calciumcarbonat). Weitere Anwendungen sind die Herstellung von Mörtel und von Wandfarbe.",
+            "title": "Steckbrief 4",
+            "body": "Formel: Ca(OH)_2  —  Name der Lauge: ____. Diese Lauge ist die wässrige Lösung von Calciumhydroxid (74,093 g/mol, 2,20 g/mL). Im getrockneten Zustand ist sie ein weißes, staubiges Pulver, das nur schlecht in Wasser löslich ist. Die Lösung reizt die Haut und reagiert basisch. Hergestellt wird sie, indem man ____ in Wasser löscht. Sie dient als Nachweismittel für ____ (weißer Niederschlag aus Calciumcarbonat). Weitere Anwendungen sind die Herstellung von Mörtel und von Wandfarbe.",
             "answers": [
+              "Kalkwasser",
               "Branntkalk",
               "Kohlenstoffdioxid"
             ]
