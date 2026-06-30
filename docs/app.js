@@ -225,6 +225,7 @@ function makeCard(value, displayHtml) {
   b.type = "button";
   b.className = "card";
   b.dataset.value = value;
+  b.draggable = false; // wir nutzen Pointer-Events statt HTML5-DnD
   b.innerHTML = displayHtml != null ? displayHtml : renderChem(value);
   return b;
 }
@@ -263,9 +264,9 @@ function buildMatchingWidget(task, cfg) {
   const intro = document.createElement("div");
   intro.className = "interactive-intro muted small";
   intro.innerHTML =
-    'Tippe zuerst eine <strong>Karte</strong> an und dann den passenden ' +
-    '<strong>Platz</strong>. Eine Karte im Platz tippst Du an, um sie ' +
-    'zur\u00fcck in den Vorrat zu legen.';
+    '<strong>Ziehe</strong> die Karten auf den passenden Platz – ' +
+    'oder tippe zuerst eine Karte und dann einen Platz. Eine Karte zur\u00fcck ' +
+    'in den Vorrat ziehst (oder tippst) Du genauso.';
   wrap.appendChild(intro);
 
   // Pool of cards = unique answers, shuffled
@@ -336,6 +337,7 @@ function buildMatchingWidget(task, cfg) {
   wrap.appendChild(result);
 
   wireCardSlotTaps(wrap, pool, ".slot", result);
+  wireCardDrag(wrap, pool, ".slot", result);
   return wrap;
 }
 
@@ -347,8 +349,9 @@ function buildClozeWidget(task, cfg) {
   const intro = document.createElement("div");
   intro.className = "interactive-intro muted small";
   intro.innerHTML =
-    'Ziehe die Wort-Karten in die richtigen L\u00fccken. Tippe zuerst eine Karte ' +
-    'an, dann eine L\u00fccke. Falsch platzierte Karten gehen mit einem Klick zur\u00fcck.';
+    '<strong>Ziehe</strong> die Wort-Karten in die richtigen L\u00fccken – ' +
+    'oder tippe zuerst eine Karte und dann eine L\u00fccke. Eine Karte zur\u00fcck ' +
+    'in den Vorrat ziehst (oder tippst) Du genauso.';
   wrap.appendChild(intro);
 
   // Cloze body text
@@ -412,6 +415,7 @@ function buildClozeWidget(task, cfg) {
   wrap.appendChild(actions);
   wrap.appendChild(result);
   wireCardSlotTaps(wrap, pool, ".slot", result);
+  wireCardDrag(wrap, pool, ".slot", result);
   return wrap;
 }
 
@@ -423,8 +427,9 @@ function buildCategorizeWidget(task, cfg) {
   const intro = document.createElement("div");
   intro.className = "interactive-intro muted small";
   intro.innerHTML =
-    'Tippe eine <strong>Karte</strong> an, dann eine <strong>Kategorie-Box</strong>. ' +
-    'Eine Karte im Kasten tippst Du an, um sie zur\u00fcck in den Vorrat zu legen.';
+    '<strong>Ziehe</strong> die Karten in die richtige Kategorie-Box – ' +
+    'oder tippe zuerst eine Karte und dann eine Box. Eine Karte zur\u00fcck ' +
+    'in den Vorrat ziehst (oder tippst) Du genauso.';
   wrap.appendChild(intro);
 
   // Map card value -> richtige Kategorie-Beschriftung
@@ -502,6 +507,7 @@ function buildCategorizeWidget(task, cfg) {
   wrap.appendChild(actions);
   wrap.appendChild(result);
   wireCardSlotTaps(wrap, pool, ".bin-drop", result, { multipleCardsPerSlot: true });
+  wireCardDrag(wrap, pool, ".bin-drop", result, { multipleCardsPerSlot: true });
   return wrap;
 }
 
@@ -706,6 +712,128 @@ function wireCardSlotTaps(wrap, pool, slotSelector, result, opts) {
       }
     }
   });
+}
+
+// Pointer-basiertes Drag & Drop f\u00fcr Karten. Funktioniert mit Maus,
+// Finger (Touch) und Stift, auf iPad genauso wie auf Desktop.
+// Bei einer reinen Tipp-Geste (keine nennenswerte Bewegung) bleibt
+// das normale Tap-Select aus wireCardSlotTaps aktiv.
+function wireCardDrag(wrap, pool, slotSelector, result, opts) {
+  opts = opts || {};
+  let ds = null;
+  let suppressNextClick = false;
+
+  wrap.addEventListener("pointerdown", (e) => {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    const card = e.target.closest(".card");
+    if (!card || !wrap.contains(card)) return;
+    const r = card.getBoundingClientRect();
+    ds = {
+      card,
+      pointerId: e.pointerId,
+      startX: e.clientX, startY: e.clientY,
+      offsetX: e.clientX - r.left, offsetY: e.clientY - r.top,
+      width: r.width, height: r.height,
+      moved: false,
+      ghost: null,
+    };
+  });
+
+  wrap.addEventListener("pointermove", (e) => {
+    if (!ds || e.pointerId !== ds.pointerId) return;
+    const dx = e.clientX - ds.startX;
+    const dy = e.clientY - ds.startY;
+    if (!ds.moved) {
+      if (dx * dx + dy * dy < 36) return; // <6px = noch kein Drag
+      ds.moved = true;
+      const g = ds.card.cloneNode(true);
+      g.classList.add("drag-ghost");
+      g.classList.remove("selected", "ok", "bad");
+      g.style.position = "fixed";
+      g.style.left = "0px";
+      g.style.top = "0px";
+      g.style.width = ds.width + "px";
+      g.style.margin = "0";
+      g.style.pointerEvents = "none";
+      g.style.zIndex = "9999";
+      document.body.appendChild(g);
+      ds.ghost = g;
+      ds.card.classList.add("dragging");
+      try { ds.card.setPointerCapture(ds.pointerId); } catch (_) { /* ignore */ }
+    }
+    ds.ghost.style.transform =
+      "translate(" + (e.clientX - ds.offsetX) + "px, " +
+                     (e.clientY - ds.offsetY) + "px) rotate(2deg)";
+
+    ds.ghost.style.display = "none";
+    const under = document.elementFromPoint(e.clientX, e.clientY);
+    ds.ghost.style.display = "";
+    wrap.querySelectorAll(".drop-hover").forEach((x) => x.classList.remove("drop-hover"));
+    const target = resolveDropTarget(under);
+    if (target) target.classList.add("drop-hover");
+    e.preventDefault();
+  });
+
+  wrap.addEventListener("pointerup",     (e) => endDrag(e, false));
+  wrap.addEventListener("pointercancel", (e) => endDrag(e, true));
+  wrap.addEventListener("lostpointercapture", (e) => endDrag(e, true));
+
+  function endDrag(e, cancelled) {
+    if (!ds || e.pointerId !== ds.pointerId) return;
+    const cur = ds;
+    if (!cur.moved) { ds = null; return; }
+
+    cur.ghost.style.display = "none";
+    const under = cancelled ? null : document.elementFromPoint(e.clientX, e.clientY);
+    cur.ghost.remove();
+    cur.card.classList.remove("dragging");
+    wrap.querySelectorAll(".drop-hover").forEach((x) => x.classList.remove("drop-hover"));
+    try { cur.card.releasePointerCapture(cur.pointerId); } catch (_) { /* ignore */ }
+    ds = null;
+    suppressNextClick = true;
+    // Nach naechstem Click-Event Flag wieder ausschalten (siehe capture-Handler unten)
+
+    if (!cancelled) {
+      const target = resolveDropTarget(under);
+      if (target) placeCard(cur.card, target);
+    }
+  }
+
+  function resolveDropTarget(el) {
+    if (!el) return null;
+    const slot = el.closest(slotSelector);
+    if (slot && wrap.contains(slot)) return slot;
+    const inPool = el.closest(".card-pool");
+    if (inPool && wrap.contains(inPool)) return inPool;
+    return null;
+  }
+
+  function placeCard(card, target) {
+    const isPool = target.classList && target.classList.contains("card-pool");
+    if (isPool) {
+      pool.appendChild(card);
+    } else {
+      if (!opts.multipleCardsPerSlot) {
+        const existing = target.querySelector(".card");
+        if (existing && existing !== card) pool.appendChild(existing);
+      }
+      target.appendChild(card);
+      target.classList.remove("ok", "bad");
+    }
+    card.classList.remove("selected", "ok", "bad");
+    clearInteractiveSelection();
+    if (result) result.hidden = true;
+  }
+
+  // Unterdrueckt den Tap-Click direkt nach einem Drag, damit die
+  // gerade abgelegte Karte nicht sofort wieder selektiert wird.
+  wrap.addEventListener("click", (e) => {
+    if (suppressNextClick) {
+      suppressNextClick = false;
+      e.stopPropagation();
+      e.preventDefault();
+    }
+  }, true);
 }
 
 /* ------------------- Sidebar (Drawer) ------------------- */

@@ -287,17 +287,40 @@ button.ghost { background: transparent; }
   border-radius: 999px;
   background: var(--accent); color: var(--accent-fg);
   font: inherit; font-weight: 600; font-size: 15px;
-  cursor: pointer;
+  cursor: grab;
   box-shadow: 0 1px 3px rgba(0,0,0,0.18);
-  transition: transform 0.08s, box-shadow 0.15s, outline-color 0.15s;
+  transition: transform 0.08s, box-shadow 0.15s, outline-color 0.15s, opacity 0.15s;
   white-space: nowrap;
+  touch-action: none;          /* erlaubt Pointer-Drag auf Touch-Geraeten */
+  -webkit-user-select: none;
+  user-select: none;
 }
 .card:hover { transform: translateY(-1px); }
-.card:active { transform: translateY(0); }
+.card:active { transform: translateY(0); cursor: grabbing; }
 .card.selected {
   outline: 3px solid var(--warn);
   outline-offset: 2px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.22);
+}
+.card.dragging {
+  opacity: 0.35;
+}
+.drag-ghost {
+  cursor: grabbing;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.32);
+  transform-origin: center;
+  will-change: transform;
+}
+.slot.drop-hover,
+.bin-drop.drop-hover,
+.inline-slot.drop-hover {
+  border-style: solid;
+  border-color: var(--accent);
+  background: rgba(80,120,255,0.12);
+}
+.card-pool.drop-hover {
+  border-color: var(--accent);
+  background: rgba(80,120,255,0.08);
 }
 .slot .card { margin: 0; }
 
