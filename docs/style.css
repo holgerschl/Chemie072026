@@ -157,6 +157,12 @@ html, body {
 
 .answer-area { margin-top: 20px; }
 .answer-area label { display: block; font-size: 14px; color: var(--muted); margin-bottom: 6px; }
+/* Bei interaktiven Aufgaben (Tabelle, Karten, ...) Texteingabe + Tipp-Note + "Prüfen" ausblenden */
+.answer-area.with-interactive label[for="answer"],
+.answer-area.with-interactive .hint-note,
+.answer-area.with-interactive #answer,
+.answer-area.with-interactive #btn-evaluate { display: none; }
+.answer-area.with-interactive .actions.primary-row { margin-top: 0; }
 textarea {
   width: 100%; padding: 12px;
   border: 1px solid var(--border); border-radius: 10px;

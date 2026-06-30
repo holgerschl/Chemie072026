@@ -243,6 +243,8 @@ function renderInteractive(task) {
   const host = ui.interactive;
   host.innerHTML = "";
   clearInteractiveSelection();
+  const form = ui.answer && ui.answer.form;
+  if (form) form.classList.remove("with-interactive");
   const cfg = task && task.interactive;
   if (!cfg) { host.hidden = true; return; }
   host.hidden = false;
@@ -253,8 +255,12 @@ function renderInteractive(task) {
   else if (cfg.type === "categorize") widget = buildCategorizeWidget(task, cfg);
   else if (cfg.type === "table") widget = buildTableWidget(task, cfg);
 
-  if (widget) host.appendChild(widget);
-  else host.hidden = true;
+  if (widget) {
+    host.appendChild(widget);
+    if (form) form.classList.add("with-interactive");
+  } else {
+    host.hidden = true;
+  }
 }
 
 /* ---- Matching: Item links, 1 oder mehrere Karten rechts ---- */
