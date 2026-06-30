@@ -255,33 +255,7 @@
       "question": "Welche Aussagen aus der ersten Spalte und der zweiten Spalte gehören zusammen? Suche auch die dazu passende Reaktionsgleichung und ergänze diese, sodass sie stimmt.",
       "given": "5 Aussagen (A-E), 5 Beschreibungen (a-e), 5 unvollständige Reaktionsgleichungen (1-5)",
       "expected_answer_kind": "tabelle",
-      "subtasks": [
-        {
-          "id": "5-A",
-          "question": "A: Erst wenn man Säuren in Wasser löst, reagieren sie sauer. Zuordnung zu passender Beschreibung und Reaktionsgleichung.",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "5-B",
-          "question": "B: Säuren reagieren mit unedlen Metallen. Zuordnung zu passender Beschreibung und Reaktionsgleichung.",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "5-C",
-          "question": "C: Säuren greifen Kalk an. Zuordnung zu passender Beschreibung und Reaktionsgleichung.",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "5-D",
-          "question": "D: Nichtmetalloxide reagieren mit Wasser. Zuordnung zu passender Beschreibung und Reaktionsgleichung.",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "5-E",
-          "question": "E: Es gibt auch die sogenannten Wasserstoffsäuren. Zuordnung zu passender Beschreibung und Reaktionsgleichung.",
-          "expected_answer_kind": "freitext"
-        }
-      ],
+      "subtasks": [],
       "interactive": {
         "type": "matching",
         "pools": [
@@ -348,42 +322,46 @@
       "topic": "Säure-Steckbriefe",
       "type": "multi_part",
       "question": "Ergänze die Steckbriefe der vier Säuren, indem Du die Karten in die passenden Lücken ziehst.",
-      "given": "Vier Steckbriefe (Salzsäure, Phosphorsäure, Schwefelsäure, Salpetersäure) mit insgesamt elf Lücken.",
+      "given": "Vier Steckbriefe mit insgesamt 15 Lücken (Säurename plus weitere Begriffe pro Steckbrief).",
       "expected_answer_kind": "tabelle",
       "subtasks": [],
       "interactive": {
         "type": "cloze-cards",
         "sections": [
           {
-            "title": "Salzsäure (HCl)",
-            "body": "Salzsäure ist eine farblose Flüssigkeit. Sie kann hergestellt werden aus konzentrierter Schwefelsäure und Kochsalz (daher der Name). Hinweis zur Herstellung heute: ____. Die konzentrierte Säure bildet an feuchter Luft Nebel und ist ein guter elektrischer Leiter. Sie greift unedle Metalle unter Bildung von Wasserstoff an; Gold ist beständig. Kalk wird von der Säure unter Bildung von ____ zersetzt. Im menschlichen Körper kommt die Säure als ____ vor.",
+            "title": "Steckbrief 1",
+            "body": "Formel: HCl  —  Name der Säure: ____. Diese Säure ist eine farblose Flüssigkeit. Sie kann hergestellt werden aus konzentrierter Schwefelsäure und Kochsalz (daher der Name). Hinweis zur Herstellung heute: ____. Die konzentrierte Säure bildet an feuchter Luft Nebel und ist ein guter elektrischer Leiter. Sie greift unedle Metalle unter Bildung von Wasserstoff an; Gold ist beständig. Kalk wird von ihr unter Bildung von ____ zersetzt. Im menschlichen Körper kommt sie als ____ vor.",
             "answers": [
+              "Salzsäure",
               "Heute kann die Säure direkt durch die Reaktion der Elemente hergestellt werden",
               "Kohlenstoffdioxid",
               "Magensäure"
             ]
           },
           {
-            "title": "Phosphorsäure (H_3PO_4)",
-            "body": "Reine Phosphorsäure bildet wasserklare, harte, hygroskopische Kristalle. Die 85%ige Lösung ist sirupartig, weil die Säuremoleküle untereinander Wasserstoffbrücken ausbilden. Technisch wird die Säure hergestellt, indem das Mineral ____ mit Schwefelsäure behandelt wird. Die verdünnte Säure ist ungefährlich für den Menschen und wird als Säuerungsmittel verwendet, z. B. in ____. Die Salze der Säure sind wichtiger Bestandteil von Düngemitteln.",
+            "title": "Steckbrief 2",
+            "body": "Formel: H_3PO_4  —  Name der Säure: ____. Diese Säure bildet wasserklare, harte, hygroskopische Kristalle. Die 85%ige Lösung ist sirupartig, weil die Säuremoleküle untereinander Wasserstoffbrücken ausbilden. Technisch wird sie hergestellt, indem das Mineral ____ mit Schwefelsäure behandelt wird. Die verdünnte Säure ist ungefährlich für den Menschen und wird als Säuerungsmittel verwendet, z. B. in ____. Ihre Salze sind wichtiger Bestandteil von Düngemitteln.",
             "answers": [
+              "Phosphorsäure",
               "Apatit",
               "Colagetränke"
             ]
           },
           {
-            "title": "Schwefelsäure (H_2SO_4)",
-            "body": "Schwefelsäure ist eine geruchlose, farblose, ölige Flüssigkeit. Sie zerfrisst organische Stoffe (z. B. Baumwolle, Holz, Papier, Zucker) und färbt diese dabei schwarz. Sie ist stark hygroskopisch; beim Vermischen mit Wasser wird viel Wärme freigesetzt. Merksatz: ____. Hergestellt wird die Säure durch das Kontaktverfahren. Die verdünnte Säure zersetzt unedle Metalle unter Bildung von ____. Kupfer und edle Metalle werden nicht angegriffen. In der Autobatterie wird die 38%ige Säure als Elektrolyt eingesetzt — daher der Name ____.",
+            "title": "Steckbrief 3",
+            "body": "Formel: H_2SO_4  —  Name der Säure: ____. Diese Säure ist eine geruchlose, farblose, ölige Flüssigkeit. Sie zerfrisst organische Stoffe (z. B. Baumwolle, Holz, Papier, Zucker) und färbt diese dabei schwarz. Sie ist stark hygroskopisch; beim Vermischen mit Wasser wird viel Wärme freigesetzt. Merksatz: ____. Hergestellt wird sie durch das Kontaktverfahren. Die verdünnte Säure zersetzt unedle Metalle unter Bildung von ____. Kupfer und edle Metalle werden nicht angegriffen. In der Autobatterie wird die 38%ige Säure als Elektrolyt eingesetzt — daher der Name ____.",
             "answers": [
+              "Schwefelsäure",
               "Erst das Wasser, dann die Säure, sonst geschieht das Ungeheure",
               "Wasserstoff",
               "(Batteriesäure)"
             ]
           },
           {
-            "title": "Salpetersäure (HNO_3)",
-            "body": "Die reine Säure ist unter Luftabschluss farblos, an Luft bilden sich rotbraune Dämpfe. Sie löst viele Metalle, darunter Zink, Eisen, Kupfer und Silber. Die 50%ige Säure greift Gold aber nicht an, deshalb können mit ihr Silber und Gold getrennt werden — sie heißt daher auch ____. Ein Gemisch mit Salzsäure löst auch Gold auf und wird ____ genannt. Technisch hergestellt wird die Säure durch katalytische Ammoniakverbrennung — das ____. Ihre Salze sind wichtig für Düngemittel, Farbstoffe, Sprengstoffe und Medikamente.",
+            "title": "Steckbrief 4",
+            "body": "Formel: HNO_3  —  Name der Säure: ____. Die reine Säure ist unter Luftabschluss farblos, an Luft bilden sich rotbraune Dämpfe. Sie löst viele Metalle, darunter Zink, Eisen, Kupfer und Silber. Die 50%ige Säure greift Gold aber nicht an, deshalb können mit ihr Silber und Gold getrennt werden — sie heißt daher auch ____. Ein Gemisch mit Salzsäure löst auch Gold auf und wird ____ genannt. Technisch hergestellt wird sie durch katalytische Ammoniakverbrennung — das ____. Ihre Salze sind wichtig für Düngemittel, Farbstoffe, Sprengstoffe und Medikamente.",
             "answers": [
+              "Salpetersäure",
               "Scheidewasser",
               "Königswasser",
               "Ostwald-Verfahren"
