@@ -170,12 +170,14 @@ function setBusy(button, on) {
 
 /* ------------------- Interaktive Aufgaben (Karten verschieben) ------------------- */
 // Vergleicht zwei Antworten "weich": trimmt, kleinschreibt, En-/Em-Dashes
-// werden zu Bindestrich, Whitespace egal.
+// werden zu Bindestrich, Whitespace egal, _ ^ { } werden ignoriert
+// (damit "Na_2SO_4" und "Na2SO4" gleich behandelt werden).
 function normalizeAnswer(s) {
   return String(s == null ? "" : s)
     .trim()
     .toLowerCase()
     .replace(/[\u2013\u2014]/g, "-")
+    .replace(/[\{\}_^]/g, "")
     .replace(/\s+/g, "");
 }
 
@@ -187,20 +189,73 @@ function shuffleInPlace(arr) {
   return arr;
 }
 
+function splitClozeQuestion(text) {
+  const paras = String(text || "").split(/\n\n+/);
+  const bodyIdx = paras.findIndex((p) => /_{4,}/.test(p));
+  if (bodyIdx < 0) return { header: text || "", body: "" };
+  return {
+    header: paras.slice(0, bodyIdx).join("\n\n"),
+    body: paras.slice(bodyIdx).join("\n\n"),
+  };
+}
+
+// Globales "Tap-Select": gilt f\u00fcr alle interaktiven Widgets,
+// damit dieselbe Karte auf einem Widget ausgew\u00e4hlt und in einem
+// Slot/Bin abgelegt werden kann.
+let interactiveSelectedCard = null;
+
+function selectInteractiveCard(card) {
+  if (interactiveSelectedCard === card) {
+    interactiveSelectedCard.classList.remove("selected");
+    interactiveSelectedCard = null;
+    return;
+  }
+  if (interactiveSelectedCard) interactiveSelectedCard.classList.remove("selected");
+  interactiveSelectedCard = card;
+  if (card) card.classList.add("selected");
+}
+
+function clearInteractiveSelection() {
+  if (interactiveSelectedCard) interactiveSelectedCard.classList.remove("selected");
+  interactiveSelectedCard = null;
+}
+
+function makeCard(value, displayHtml) {
+  const b = document.createElement("button");
+  b.type = "button";
+  b.className = "card";
+  b.dataset.value = value;
+  b.innerHTML = displayHtml != null ? displayHtml : renderChem(value);
+  return b;
+}
+
+function markTaskDone() {
+  if (!state.currentId) return;
+  state.done.add(state.currentId);
+  saveDone();
+  updateProgress();
+  renderList();
+}
+
 function renderInteractive(task) {
   const host = ui.interactive;
   host.innerHTML = "";
+  clearInteractiveSelection();
   const cfg = task && task.interactive;
   if (!cfg) { host.hidden = true; return; }
   host.hidden = false;
 
-  if (cfg.type === "matching") {
-    host.appendChild(buildMatchingWidget(task, cfg));
-  } else {
-    host.hidden = true;
-  }
+  let widget = null;
+  if (cfg.type === "matching") widget = buildMatchingWidget(task, cfg);
+  else if (cfg.type === "cloze") widget = buildClozeWidget(task, cfg);
+  else if (cfg.type === "categorize") widget = buildCategorizeWidget(task, cfg);
+  else if (cfg.type === "table") widget = buildTableWidget(task, cfg);
+
+  if (widget) host.appendChild(widget);
+  else host.hidden = true;
 }
 
+/* ---- Matching: Item links, Karte rechts ---- */
 function buildMatchingWidget(task, cfg) {
   const wrap = document.createElement("div");
   wrap.className = "interactive matching";
@@ -247,129 +302,410 @@ function buildMatchingWidget(task, cfg) {
   const pool = document.createElement("div");
   pool.className = "card-pool";
   pool.setAttribute("aria-label", "Kartenvorrat");
-  cards.forEach((value) => {
-    pool.appendChild(makeCard(value));
-  });
+  cards.forEach((value) => pool.appendChild(makeCard(value)));
   wrap.appendChild(pool);
 
-  // Actions
+  const result = document.createElement("div");
+  result.className = "interactive-result";
+  result.hidden = true;
+
+  const actions = buildActions({
+    onCheck: () => {
+      let correct = 0;
+      const total = cfg.items.length;
+      let allPlaced = true;
+      slotsList.querySelectorAll(".slot").forEach((slot) => {
+        const c = slot.querySelector(".card");
+        slot.classList.remove("ok", "bad");
+        if (!c) { allPlaced = false; return; }
+        const ok = normalizeAnswer(c.dataset.value) === normalizeAnswer(slot.dataset.expected);
+        slot.classList.add(ok ? "ok" : "bad");
+        if (ok) correct++;
+      });
+      showResult(result, correct, total, allPlaced);
+    },
+    onReset: () => {
+      slotsList.querySelectorAll(".slot .card").forEach((c) => pool.appendChild(c));
+      slotsList.querySelectorAll(".slot").forEach((s) => s.classList.remove("ok", "bad"));
+      result.hidden = true;
+      clearInteractiveSelection();
+    },
+  });
+
+  wrap.appendChild(actions);
+  wrap.appendChild(result);
+
+  wireCardSlotTaps(wrap, pool, ".slot", result);
+  return wrap;
+}
+
+/* ---- Cloze: Wort-Karten in L\u00fccken im Flie\u00dftext ---- */
+function buildClozeWidget(task, cfg) {
+  const wrap = document.createElement("div");
+  wrap.className = "interactive cloze";
+
+  const intro = document.createElement("div");
+  intro.className = "interactive-intro muted small";
+  intro.innerHTML =
+    'Ziehe die Wort-Karten in die richtigen L\u00fccken. Tippe zuerst eine Karte ' +
+    'an, dann eine L\u00fccke. Falsch platzierte Karten gehen mit einem Klick zur\u00fcck.';
+  wrap.appendChild(intro);
+
+  // Cloze body text
+  const textBox = document.createElement("div");
+  textBox.className = "cloze-text";
+  const { body } = splitClozeQuestion(task.question);
+  const parts = String(body || task.question || "").split(/_{4,}/);
+  parts.forEach((part, i) => {
+    const span = document.createElement("span");
+    span.className = "cloze-frag";
+    span.innerHTML = renderChem(part);
+    textBox.appendChild(span);
+    if (i < cfg.blanks.length) {
+      const slot = document.createElement("span");
+      slot.className = "slot inline-slot";
+      slot.dataset.idx = String(i);
+      slot.dataset.expected = cfg.blanks[i];
+      slot.setAttribute("tabindex", "0");
+      slot.setAttribute("role", "button");
+      slot.setAttribute("aria-label", "L\u00fccke " + (i + 1));
+      textBox.appendChild(slot);
+    }
+  });
+  wrap.appendChild(textBox);
+
+  // Pool: alle Blank-Antworten als Karten (inkl. Duplikaten), gemischt
+  const cards = shuffleInPlace(cfg.blanks.slice());
+  const pool = document.createElement("div");
+  pool.className = "card-pool";
+  pool.setAttribute("aria-label", "Wortkarten");
+  cards.forEach((v) => pool.appendChild(makeCard(v)));
+  wrap.appendChild(pool);
+
+  const result = document.createElement("div");
+  result.className = "interactive-result";
+  result.hidden = true;
+
+  const actions = buildActions({
+    onCheck: () => {
+      let correct = 0;
+      const total = cfg.blanks.length;
+      let allPlaced = true;
+      textBox.querySelectorAll(".slot").forEach((slot) => {
+        const c = slot.querySelector(".card");
+        slot.classList.remove("ok", "bad");
+        if (!c) { allPlaced = false; return; }
+        const ok = normalizeAnswer(c.dataset.value) === normalizeAnswer(slot.dataset.expected);
+        slot.classList.add(ok ? "ok" : "bad");
+        if (ok) correct++;
+      });
+      showResult(result, correct, total, allPlaced);
+    },
+    onReset: () => {
+      textBox.querySelectorAll(".slot .card").forEach((c) => pool.appendChild(c));
+      textBox.querySelectorAll(".slot").forEach((s) => s.classList.remove("ok", "bad"));
+      result.hidden = true;
+      clearInteractiveSelection();
+    },
+  });
+
+  wrap.appendChild(actions);
+  wrap.appendChild(result);
+  wireCardSlotTaps(wrap, pool, ".slot", result);
+  return wrap;
+}
+
+/* ---- Categorize: Karten in Kategorie-K\u00e4sten ablegen ---- */
+function buildCategorizeWidget(task, cfg) {
+  const wrap = document.createElement("div");
+  wrap.className = "interactive categorize";
+
+  const intro = document.createElement("div");
+  intro.className = "interactive-intro muted small";
+  intro.innerHTML =
+    'Tippe eine <strong>Karte</strong> an, dann eine <strong>Kategorie-Box</strong>. ' +
+    'Eine Karte im Kasten tippst Du an, um sie zur\u00fcck in den Vorrat zu legen.';
+  wrap.appendChild(intro);
+
+  // Map card value -> richtige Kategorie-Beschriftung
+  const valueToCategory = new Map();
+  const allCards = [];
+
+  const bins = document.createElement("div");
+  bins.className = "categorize-bins";
+  cfg.categories.forEach((cat, idx) => {
+    const bin = document.createElement("div");
+    bin.className = "bin";
+    bin.dataset.idx = String(idx);
+    bin.dataset.label = cat.label;
+    const h = document.createElement("div");
+    h.className = "bin-label";
+    h.innerHTML = renderChem(cat.label);
+    const drop = document.createElement("div");
+    drop.className = "slot bin-drop";
+    drop.dataset.idx = String(idx);
+    drop.dataset.label = cat.label;
+    drop.setAttribute("tabindex", "0");
+    drop.setAttribute("role", "button");
+    drop.setAttribute("aria-label", "Box: " + cat.label);
+    bin.appendChild(h);
+    bin.appendChild(drop);
+    bins.appendChild(bin);
+    cat.answers.forEach((a) => {
+      valueToCategory.set(a, cat.label);
+      allCards.push(a);
+    });
+  });
+  wrap.appendChild(bins);
+
+  const pool = document.createElement("div");
+  pool.className = "card-pool";
+  pool.setAttribute("aria-label", "Kartenvorrat");
+  shuffleInPlace(allCards).forEach((v) => pool.appendChild(makeCard(v)));
+  wrap.appendChild(pool);
+
+  const result = document.createElement("div");
+  result.className = "interactive-result";
+  result.hidden = true;
+
+  const actions = buildActions({
+    onCheck: () => {
+      let correct = 0;
+      let placed = 0;
+      const total = allCards.length;
+      // Reset markings on every card
+      wrap.querySelectorAll(".bin-drop .card").forEach((c) => {
+        c.classList.remove("ok", "bad");
+      });
+      bins.querySelectorAll(".bin-drop").forEach((drop) => {
+        const expectedLabel = drop.dataset.label;
+        drop.querySelectorAll(".card").forEach((card) => {
+          placed++;
+          const targetLabel = valueToCategory.get(card.dataset.value);
+          const ok = targetLabel === expectedLabel;
+          card.classList.add(ok ? "ok" : "bad");
+          if (ok) correct++;
+        });
+      });
+      showResult(result, correct, total, placed >= total);
+    },
+    onReset: () => {
+      bins.querySelectorAll(".bin-drop .card").forEach((c) => {
+        c.classList.remove("ok", "bad");
+        pool.appendChild(c);
+      });
+      result.hidden = true;
+      clearInteractiveSelection();
+    },
+  });
+
+  wrap.appendChild(actions);
+  wrap.appendChild(result);
+  wireCardSlotTaps(wrap, pool, ".bin-drop", result, { multipleCardsPerSlot: true });
+  return wrap;
+}
+
+/* ---- Table: Tabelle mit Eingabefeldern ---- */
+function buildTableWidget(task, cfg) {
+  const wrap = document.createElement("div");
+  wrap.className = "interactive tableinput";
+
+  const intro = document.createElement("div");
+  intro.className = "interactive-intro muted small";
+  intro.innerHTML =
+    'Tippe die Salzformel in jede Zelle. Unter-/Hochstellung kannst Du einfach ' +
+    'mit <code>_</code> und <code>^</code> schreiben, also <code>NaCl</code>, ' +
+    '<code>CaCl_2</code>, <code>(NH_4)_2SO_4</code>.';
+  wrap.appendChild(intro);
+
+  const tableWrap = document.createElement("div");
+  tableWrap.className = "table-scroll";
+  const table = document.createElement("table");
+  table.className = "interactive-table";
+
+  // header
+  const thead = document.createElement("thead");
+  const headerRow = document.createElement("tr");
+  headerRow.appendChild(document.createElement("th"));
+  cfg.columns.forEach((col) => {
+    const th = document.createElement("th");
+    th.innerHTML = renderChem(col);
+    headerRow.appendChild(th);
+  });
+  thead.appendChild(headerRow);
+  table.appendChild(thead);
+
+  // body
+  const tbody = document.createElement("tbody");
+  cfg.rows.forEach((row) => {
+    const tr = document.createElement("tr");
+    const rowLabel = document.createElement("th");
+    rowLabel.scope = "row";
+    rowLabel.innerHTML = renderChem(row.label);
+    tr.appendChild(rowLabel);
+    row.answers.forEach((expected) => {
+      const td = document.createElement("td");
+      const input = document.createElement("input");
+      input.type = "text";
+      input.className = "cell-input";
+      input.autocomplete = "off";
+      input.autocapitalize = "off";
+      input.spellcheck = false;
+      input.dataset.expected = expected;
+      td.appendChild(input);
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  tableWrap.appendChild(table);
+  wrap.appendChild(tableWrap);
+
+  const result = document.createElement("div");
+  result.className = "interactive-result";
+  result.hidden = true;
+
+  const actions = buildActions({
+    onCheck: () => {
+      let correct = 0;
+      let total = 0;
+      let allFilled = true;
+      table.querySelectorAll(".cell-input").forEach((inp) => {
+        total++;
+        inp.classList.remove("ok", "bad");
+        if (!inp.value.trim()) { allFilled = false; return; }
+        const ok = normalizeAnswer(inp.value) === normalizeAnswer(inp.dataset.expected);
+        inp.classList.add(ok ? "ok" : "bad");
+        if (ok) correct++;
+      });
+      showResult(result, correct, total, allFilled);
+    },
+    onReset: () => {
+      table.querySelectorAll(".cell-input").forEach((inp) => {
+        inp.value = "";
+        inp.classList.remove("ok", "bad");
+      });
+      result.hidden = true;
+    },
+    showSolutionsButton: true,
+    onShowSolutions: () => {
+      table.querySelectorAll(".cell-input").forEach((inp) => {
+        if (!inp.value.trim()) {
+          inp.value = inp.dataset.expected;
+          inp.classList.add("ok");
+        }
+      });
+    },
+  });
+
+  wrap.appendChild(actions);
+  wrap.appendChild(result);
+  return wrap;
+}
+
+/* ---- Gemeinsame Helpers f\u00fcr die Widgets ---- */
+function buildActions({ onCheck, onReset, showSolutionsButton, onShowSolutions }) {
   const actions = document.createElement("div");
   actions.className = "interactive-actions";
   const btnCheck = document.createElement("button");
   btnCheck.type = "button";
   btnCheck.className = "primary";
   btnCheck.textContent = "Pr\u00fcfen";
+  btnCheck.addEventListener("click", onCheck);
   const btnReset = document.createElement("button");
   btnReset.type = "button";
   btnReset.textContent = "Zur\u00fccksetzen";
+  btnReset.addEventListener("click", onReset);
   actions.appendChild(btnCheck);
   actions.appendChild(btnReset);
-  wrap.appendChild(actions);
+  if (showSolutionsButton && onShowSolutions) {
+    const btnSol = document.createElement("button");
+    btnSol.type = "button";
+    btnSol.className = "ghost";
+    btnSol.textContent = "L\u00f6sungen einf\u00fcllen";
+    btnSol.addEventListener("click", () => {
+      if (confirm("Wirklich die korrekten L\u00f6sungen in alle leeren Felder einf\u00fcllen?")) {
+        onShowSolutions();
+      }
+    });
+    actions.appendChild(btnSol);
+  }
+  return actions;
+}
 
-  const result = document.createElement("div");
+function showResult(result, correct, total, allPlaced) {
+  result.hidden = false;
   result.className = "interactive-result";
-  result.hidden = true;
-  wrap.appendChild(result);
+  if (!allPlaced && correct < total) {
+    result.classList.add("partial");
+    result.textContent = `${correct} von ${total} richtig \u2013 noch nicht alles ausgef\u00fcllt.`;
+  } else if (correct === total) {
+    result.classList.add("ok");
+    result.textContent = `Super! Alle ${total} richtig.`;
+    markTaskDone();
+  } else {
+    result.classList.add("partial");
+    result.textContent = `${correct} von ${total} richtig.`;
+  }
+}
 
-  // State
-  let selected = null;
-  function selectCard(card) {
-    if (selected === card) { selected.classList.remove("selected"); selected = null; return; }
-    if (selected) selected.classList.remove("selected");
-    selected = card;
-    if (card) card.classList.add("selected");
-  }
-  function returnToPool(card) {
-    pool.appendChild(card);
-    card.classList.remove("selected");
-  }
-  function placeIntoSlot(slot, card) {
-    const existing = slot.querySelector(".card");
-    if (existing) returnToPool(existing);
-    slot.appendChild(card);
-    card.classList.remove("selected");
-    selected = null;
-    // Beim Bewegen Pr\u00fcf-Markierung wegnehmen
-    slot.classList.remove("ok", "bad");
-    result.hidden = true;
-  }
-
-  function makeCard(value) {
-    const b = document.createElement("button");
-    b.type = "button";
-    b.className = "card";
-    b.dataset.value = value;
-    b.innerHTML = renderChem(value);
-    return b;
-  }
-
+// Wires up click handling on the whole widget so a card can be tap-selected
+// in the pool, then a slot can be tapped to place it. Cards already in a slot
+// are sent back to the pool when tapped.
+// poolSelector: CSS-Klasse des Pools (z.\u202fB. ".card-pool")
+// slotSelector: CSS-Selektor der Slots/Bins (z.\u202fB. ".slot" oder ".bin-drop")
+function wireCardSlotTaps(wrap, pool, slotSelector, result, opts) {
+  opts = opts || {};
   wrap.addEventListener("click", (e) => {
     const card = e.target.closest(".card");
-    const slot = e.target.closest(".slot");
+    const slot = e.target.closest(slotSelector);
     if (card) {
-      if (card.parentElement && card.parentElement.classList.contains("slot")) {
-        // Karte aus Slot zur\u00fcck in den Pool
+      const inSlot = card.parentElement && (card.parentElement.matches(slotSelector) ||
+                                            card.parentElement.classList.contains("slot"));
+      if (inSlot) {
         const s = card.parentElement;
-        returnToPool(card);
+        pool.appendChild(card);
+        card.classList.remove("selected", "ok", "bad");
         s.classList.remove("ok", "bad");
-        result.hidden = true;
+        if (result) result.hidden = true;
+        clearInteractiveSelection();
       } else {
-        selectCard(card);
+        selectInteractiveCard(card);
       }
       e.stopPropagation();
       return;
     }
-    if (slot && selected) {
-      placeIntoSlot(slot, selected);
-    }
-  });
-
-  // Tastatur: Enter/Space auf Slot mit ausgew\u00e4hlter Karte
-  slotsList.addEventListener("keydown", (e) => {
-    if ((e.key === "Enter" || e.key === " ") && selected) {
-      const slot = e.target.closest(".slot");
-      if (slot) { e.preventDefault(); placeIntoSlot(slot, selected); }
-    }
-  });
-
-  btnCheck.addEventListener("click", () => {
-    let correct = 0;
-    const total = cfg.items.length;
-    let allPlaced = true;
-    slotsList.querySelectorAll(".slot").forEach((slot) => {
-      const c = slot.querySelector(".card");
+    if (slot && interactiveSelectedCard) {
+      const card2 = interactiveSelectedCard;
+      if (!opts.multipleCardsPerSlot) {
+        const existing = slot.querySelector(".card");
+        if (existing) pool.appendChild(existing);
+      }
+      slot.appendChild(card2);
+      card2.classList.remove("selected", "ok", "bad");
       slot.classList.remove("ok", "bad");
-      if (!c) { allPlaced = false; return; }
-      const ok = normalizeAnswer(c.dataset.value) === normalizeAnswer(slot.dataset.expected);
-      slot.classList.add(ok ? "ok" : "bad");
-      if (ok) correct++;
-    });
-    result.hidden = false;
-    result.className = "interactive-result";
-    if (!allPlaced && correct < total) {
-      result.classList.add("partial");
-      result.textContent = `${correct} von ${total} richtig \u2013 noch nicht alle Pl\u00e4tze belegt.`;
-    } else if (correct === total) {
-      result.classList.add("ok");
-      result.textContent = `Super! Alle ${total} richtig.`;
-      state.done.add(state.currentId);
-      saveDone();
-      updateProgress();
-      renderList();
-    } else {
-      result.classList.add("partial");
-      result.textContent = `${correct} von ${total} richtig.`;
+      clearInteractiveSelection();
+      if (result) result.hidden = true;
     }
   });
-
-  btnReset.addEventListener("click", () => {
-    slotsList.querySelectorAll(".slot .card").forEach((c) => returnToPool(c));
-    slotsList.querySelectorAll(".slot").forEach((s) => s.classList.remove("ok", "bad"));
-    result.hidden = true;
-    selected = null;
+  // Tastatur: Enter/Space auf Slot mit ausgew\u00e4hlter Karte
+  wrap.addEventListener("keydown", (e) => {
+    if ((e.key === "Enter" || e.key === " ") && interactiveSelectedCard) {
+      const slot = e.target.closest(slotSelector);
+      if (slot) {
+        e.preventDefault();
+        if (!opts.multipleCardsPerSlot) {
+          const existing = slot.querySelector(".card");
+          if (existing) pool.appendChild(existing);
+        }
+        slot.appendChild(interactiveSelectedCard);
+        interactiveSelectedCard.classList.remove("selected");
+        slot.classList.remove("ok", "bad");
+        clearInteractiveSelection();
+        if (result) result.hidden = true;
+      }
+    }
   });
-
-  return wrap;
 }
 
 /* ------------------- Sidebar (Drawer) ------------------- */
@@ -436,7 +772,14 @@ function selectTask(id) {
   ui.number.textContent = t.number || t.id;
   ui.topic.textContent = t.topic || "";
   ui.type.textContent = t.type || "";
-  ui.question.innerHTML = renderChem(t.question || "");
+  // Bei Cloze-Aufgaben zeigen wir oben nur den Kopf (Anweisung + Wortliste),
+  // der eigentliche L\u00fcckentext wandert ins interaktive Widget.
+  let questionToShow = t.question || "";
+  if (t.interactive && t.interactive.type === "cloze") {
+    const { header } = splitClozeQuestion(t.question || "");
+    questionToShow = header || "Erg\u00e4nze den L\u00fcckentext unten.";
+  }
+  ui.question.innerHTML = renderChem(questionToShow);
   ui.given.innerHTML = t.given ? "Gegeben: " + renderChem(t.given) : "";
   ui.answer.value = localStorage.getItem(LS.ANSWER_PREFIX + id) || "";
   ui.feedback.hidden = true;

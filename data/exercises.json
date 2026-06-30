@@ -197,6 +197,34 @@
       }
     },
     {
+      "id": "2a",
+      "number": "2a",
+      "topic": "Indikatoren Lückentext",
+      "type": "text",
+      "question": "Setze ein: Farbe, Farbskala, Farbstoffe, Farbton, Gemisch, Lauge, Säure, Universalindikator, pH-Wert\n\nIndikatoren sind _____________, die bei Zugabe einer _____________ oder einer _____________ ihre _____________ verändern. Unter einem _____________ versteht man ein _____________ verschiedener Indikatoren. Jeder _____________ hat einen eigenen _____________. Durch Vergleich mit einer _____________ kann der pH-Wert einer Lösung bestimmt werden.",
+      "given": "Wörter zur Auswahl: Farbe, Farbskala, Farbstoffe, Farbton, Gemisch, Lauge, Säure, Universalindikator, pH-Wert",
+      "expected_answer_kind": "freitext",
+      "interactive": {
+        "type": "cloze",
+        "blanks": ["Farbstoffe", "Säure", "Lauge", "Farbe", "Universalindikator", "Gemisch", "pH-Wert", "Farbton", "Farbskala"]
+      },
+      "source_page": 36,
+      "solution": {
+        "id": "2a",
+        "number": "2a",
+        "answer": "Indikatoren sind Farbstoffe, die bei Zugabe einer Säure oder einer Lauge ihre Farbe verändern. Unter einem Universalindikator versteht man ein Gemisch verschiedener Indikatoren. Jeder pH-Wert hat einen eigenen Farbton. Durch Vergleich mit einer Farbskala kann der pH-Wert einer Lösung bestimmt werden.",
+        "key_points": [
+          "Indikatoren = Farbstoffe",
+          "Farbänderung bei Zugabe von Säure oder Lauge",
+          "Universalindikator = Gemisch verschiedener Indikatoren",
+          "Jeder pH-Wert hat einen eigenen Farbton",
+          "Farbskala zum Vergleich"
+        ],
+        "final_result": "",
+        "source_page": 36
+      }
+    },
+    {
       "id": "5",
       "number": "5",
       "topic": "Säuren und ihre Eigenschaften",
@@ -231,6 +259,16 @@
           "expected_answer_kind": "freitext"
         }
       ],
+      "interactive": {
+        "type": "matching",
+        "items": [
+          { "label": "Erst wenn man Säuren in Wasser löst, reagieren sie sauer.", "answer": "HCl + H_2O -> H_3O^+ + Cl^-" },
+          { "label": "Säuren reagieren mit unedlen Metallen.", "answer": "2 HCl + Zn -> H_2 + ZnCl_2" },
+          { "label": "Säuren greifen Kalk an.", "answer": "2 HCl + CaCO_3 -> CO_2 + H_2O + CaCl_2" },
+          { "label": "Nichtmetalloxide reagieren mit Wasser.", "answer": "SO_2 + H_2O -> H_2SO_3" },
+          { "label": "Es gibt auch die sogenannten Wasserstoffsäuren.", "answer": "H_2 + F_2 -> 2 HF" }
+        ]
+      },
       "source_page": 0,
       "solution": {
         "id": "5",
@@ -277,6 +315,27 @@
           "expected_answer_kind": "freitext"
         }
       ],
+      "interactive": {
+        "type": "categorize",
+        "categories": [
+          {
+            "label": "Salzsäure (HCl)",
+            "answers": ["Magensäure", "Kohlenstoffdioxid", "Heute kann die Säure direkt durch die Reaktion der Elemente hergestellt werden"]
+          },
+          {
+            "label": "Phosphorsäure (H_3PO_4)",
+            "answers": ["Apatit", "Colagetränke"]
+          },
+          {
+            "label": "Schwefelsäure (H_2SO_4)",
+            "answers": ["Erst das Wasser, dann die Säure, sonst geschieht das Ungeheure", "Wasserstoff", "(Batteriesäure)"]
+          },
+          {
+            "label": "Salpetersäure (HNO_3)",
+            "answers": ["Scheidewasser", "Königswasser", "Ostwald-Verfahren"]
+          }
+        ]
+      },
       "source_page": 39,
       "solution": {
         "answer": "",
@@ -485,6 +544,27 @@
           "expected_answer_kind": "freitext"
         }
       ],
+      "interactive": {
+        "type": "categorize",
+        "categories": [
+          {
+            "label": "Ammoniakwasser (NH_3)",
+            "answers": ["Salmiakwasser"]
+          },
+          {
+            "label": "Kalilauge (KOH)",
+            "answers": ["Natronlauge"]
+          },
+          {
+            "label": "Natronlauge (NaOH)",
+            "answers": ["hygroskopisch", "Abflussreiniger"]
+          },
+          {
+            "label": "Kalkwasser (Ca(OH)_2)",
+            "answers": ["Branntkalk", "Kohlenstoffdioxid"]
+          }
+        ]
+      },
       "source_page": 42,
       "solution": {
         "id": "13",
@@ -505,10 +585,23 @@
       "number": "14",
       "topic": "Neutralisation",
       "type": "text",
-      "question": "Die Neutralisation: Ergänze den Lückentext mit den richtigen Begriffen.\n\nBegriffe: eingedampft, gleich, Hydroxid-Ionen, Laugen, Salz, Metall-Ionen, Protonenakzeptor, Neutralisationswärme, Protonen, Protonendonator, Hydroxid-Ionen, Protonen, Säuren\n\nWenn man passende Mengen an __________ und __________ zusammengibt, erhält man eine neutrale Lösung. Die __________ aus der Säure reagieren mit den __________ der Lauge zu Wassermolekülen. Die Säure ist also der __________ und die Lauge der __________. Bei dieser Reaktion wird die sogenannte __________ frei. Da bei jeder Neutralisation, unabhängig davon welche Säuren und Laugen miteinander reagieren, nur die Reaktion zwischen __________ und __________ eine Rolle spielt, ist der Betrag der Neutralisationswärme immer __________, nämlich 57,3 kJ pro Mol Protonen. Die __________ der Säure und die __________ der Lauge sind in der Lösung gelöst. Wird diese Lösung __________, entsteht aus diesen Ionen ein __________.",
-      "given": "Begriffe zur Auswahl gegeben",
+      "question": "Die Neutralisation: Ergänze den Lückentext mit den richtigen Begriffen.\n\nBegriffe: eingedampft, gleich, Hydroxid-Ionen, Hydroxid-Ionen, Laugen, Metall-Ionen, Neutralisationswärme, Protonen, Protonen, Protonenakzeptor, Protonendonator, Salz, Säuren, Säurerest-Ionen\n\nWenn man passende Mengen an __________ und __________ zusammengibt, erhält man eine neutrale Lösung. Die __________ aus der Säure reagieren mit den __________ der Lauge zu Wassermolekülen. Die Säure ist also der __________ und die Lauge der __________. Bei dieser Reaktion wird die sogenannte __________ frei. Da bei jeder Neutralisation, unabhängig davon welche Säuren und Laugen miteinander reagieren, nur die Reaktion zwischen __________ und __________ eine Rolle spielt, ist der Betrag der Neutralisationswärme immer __________, nämlich 57,3 kJ pro Mol Protonen. Die __________ der Säure und die __________ der Lauge sind in der Lösung gelöst. Wird diese Lösung __________, entsteht aus diesen Ionen ein __________.",
+      "given": "Begriffe zur Auswahl",
       "expected_answer_kind": "freitext",
       "subtasks": [],
+      "interactive": {
+        "type": "cloze",
+        "blanks": [
+          "Säuren", "Laugen",
+          "Protonen", "Hydroxid-Ionen",
+          "Protonendonator", "Protonenakzeptor",
+          "Neutralisationswärme",
+          "Protonen", "Hydroxid-Ionen",
+          "gleich",
+          "Säurerest-Ionen", "Metall-Ionen",
+          "eingedampft", "Salz"
+        ]
+      },
       "source_page": 43,
       "solution": {
         "id": "14",
@@ -534,6 +627,15 @@
       "given": "Säuren: HCl, $HNO_3$, $H_2SO_4$, $H_3PO_4$; Basen: NaOH, $NH_3$, $Ca(OH)_2$",
       "expected_answer_kind": "tabelle",
       "subtasks": [],
+      "interactive": {
+        "type": "table",
+        "columns": ["HCl", "HNO_3", "H_2SO_4", "H_3PO_4"],
+        "rows": [
+          { "label": "NaOH",     "answers": ["NaCl",  "NaNO_3",  "Na_2SO_4",   "Na_3PO_4"]   },
+          { "label": "NH_3",     "answers": ["NH_4Cl", "NH_4NO_3", "(NH_4)_2SO_4", "(NH_4)_3PO_4"] },
+          { "label": "Ca(OH)_2", "answers": ["CaCl_2", "Ca(NO_3)_2", "CaSO_4", "Ca_3(PO_4)_2"] }
+        ]
+      },
       "source_page": 43,
       "solution": {
         "id": "15",
