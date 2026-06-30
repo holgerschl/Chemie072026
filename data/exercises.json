@@ -225,6 +225,42 @@
       }
     },
     {
+      "id": "2b",
+      "number": "2b",
+      "topic": "pH-Skala – Farben des Universalindikators",
+      "type": "text",
+      "question": "Ordne jedem pH-Bereich die passende Farbe des Universalindikators zu.",
+      "given": "pH-Bereiche: 0–2, 3–4, 5–6, 7, 8–9, 10–11, 12–14. Farben: rot, orange, gelb, grün, blau-grün, blau, violett.",
+      "expected_answer_kind": "tabelle",
+      "interactive": {
+        "type": "matching",
+        "items": [
+          { "label": "pH 0–2",   "answer": "rot" },
+          { "label": "pH 3–4",   "answer": "orange" },
+          { "label": "pH 5–6",   "answer": "gelb" },
+          { "label": "pH 7",     "answer": "grün" },
+          { "label": "pH 8–9",   "answer": "blau-grün" },
+          { "label": "pH 10–11", "answer": "blau" },
+          { "label": "pH 12–14", "answer": "violett" }
+        ]
+      },
+      "source_page": 36,
+      "solution": {
+        "id": "2b",
+        "number": "2b",
+        "answer": "pH 0–2: rot\npH 3–4: orange\npH 5–6: gelb\npH 7: grün\npH 8–9: blau-grün\npH 10–11: blau\npH 12–14: violett",
+        "key_points": [
+          "Stark sauer (pH 0–2): rot",
+          "Sauer (pH 3–6): orange bis gelb",
+          "Neutral (pH 7): grün",
+          "Alkalisch (pH 8–11): blau-grün bis blau",
+          "Stark alkalisch (pH 12–14): violett"
+        ],
+        "final_result": "",
+        "source_page": 36
+      }
+    },
+    {
       "id": "2c",
       "number": "2c",
       "topic": "Indikatoren Tabelle",
