@@ -609,21 +609,63 @@
       "number": "11",
       "topic": "Säuren und Basen im Alltag",
       "type": "mcq",
-      "question": "Welche Aussage ist richtig?\n\nUnter Laugen versteht man Stoffe, die\n12) Protonen aufnehmen können, also Protonen-Akzeptoren sind.\n7) Protonen abgeben können, also Protonen-Donatoren sind.\n\nLaugen fühlen sich glitschig und seifig an, weil\n13) sie die oberste Hautschicht angreifen und die darin enthaltenen Eiweiße zerstören.\n14) Hydroxidionen die Viskosität von Wasser erhöhen.\n\nMit Calciumhydroxid (Kalkwasser) kann man Kohlenstoffdioxid nachweisen. Wenn man Kohlenstoffdioxid durch diese Lösung leitet,\n6) erwärmt sich die Lösung um 5-10 °C.\n11) fällt ein weißer Niederschlag von Calciumcarbonat aus.\n\nWollwaschmittel hat einen nicht so basischen pH-Wert wie Vollwaschmittel, weil\n4) Wolle durch das Wollfett nicht so verschmutzt ist wie Baumwolle.\n6) die Struktur der Wolle sonst zu stark angegriffen würde.\n\nMit Rohrreiniger, der Natriumhydroxid enthält, muss man besonders vorsichtig umgehen, weil\n8) dieser basische Stoff bei Kontakt mit den Augen oder der Haut schwere Verätzungen verursachen kann.\n5) beim starken Schütteln der Verpackung eine Explosion ausgelöst werden kann.\n\nRechne die Zahlenwerte deiner Lösungen zusammen. Erhältst du die Summe 50?",
+      "question": "Welche Aussage ist jeweils richtig? Wähle pro Frage die zutreffende Antwort aus.",
       "given": "",
-      "expected_answer_kind": "zahl",
+      "expected_answer_kind": "auswahl",
       "subtasks": [],
+      "interactive": {
+        "type": "quiz",
+        "questions": [
+          {
+            "stem": "Unter Laugen versteht man Stoffe, die …",
+            "options": [
+              { "text": "Protonen aufnehmen können, also Protonen-Akzeptoren sind.", "correct": true },
+              { "text": "Protonen abgeben können, also Protonen-Donatoren sind." }
+            ]
+          },
+          {
+            "stem": "Laugen fühlen sich glitschig und seifig an, weil …",
+            "options": [
+              { "text": "sie die oberste Hautschicht angreifen und die darin enthaltenen Eiweiße zerstören.", "correct": true },
+              { "text": "Hydroxidionen die Viskosität von Wasser erhöhen." }
+            ]
+          },
+          {
+            "stem": "Mit Calciumhydroxid (Kalkwasser) kann man Kohlenstoffdioxid nachweisen. Wenn man Kohlenstoffdioxid durch diese Lösung leitet, …",
+            "options": [
+              { "text": "erwärmt sich die Lösung um 5–10 °C." },
+              { "text": "fällt ein weißer Niederschlag von Calciumcarbonat aus.", "correct": true }
+            ]
+          },
+          {
+            "stem": "Wollwaschmittel hat einen nicht so basischen pH-Wert wie Vollwaschmittel, weil …",
+            "options": [
+              { "text": "Wolle durch das Wollfett nicht so verschmutzt ist wie Baumwolle." },
+              { "text": "die Struktur der Wolle sonst zu stark angegriffen würde.", "correct": true }
+            ]
+          },
+          {
+            "stem": "Mit Rohrreiniger, der Natriumhydroxid enthält, muss man besonders vorsichtig umgehen, weil …",
+            "options": [
+              { "text": "dieser basische Stoff bei Kontakt mit den Augen oder der Haut schwere Verätzungen verursachen kann.", "correct": true },
+              { "text": "beim starken Schütteln der Verpackung eine Explosion ausgelöst werden kann." }
+            ]
+          }
+        ]
+      },
       "source_page": 41,
       "solution": {
         "id": "11",
         "number": "11",
-        "answer": "Unter Laugen versteht man Stoffe, die Protonen aufnehmen können, also Protonen-Akzeptoren sind.",
+        "answer": "1) Laugen sind Protonen-Akzeptoren.\n2) Laugen greifen die Hautschicht an und zerstören die darin enthaltenen Eiweiße (daher das glitschige Gefühl).\n3) Bei Kalkwasser + CO_2 fällt ein weißer Niederschlag von Calciumcarbonat aus.\n4) Wolle würde durch zu basisches Waschmittel in ihrer Struktur angegriffen.\n5) Rohrreiniger mit NaOH verursacht bei Hautkontakt schwere Verätzungen.",
         "key_points": [
-          "Laugen sind Protonen-Akzeptoren",
-          "Laugen können Protonen aufnehmen",
-          "Definition nach Brønsted"
+          "Laugen = Protonen-Akzeptoren (Brønsted)",
+          "Glitschigkeit durch Angriff auf Hautproteine",
+          "CO_2-Nachweis: Ca(OH)_2 + CO_2 -> CaCO_3 + H_2O",
+          "pH-Wert von Wollwaschmitteln rücksichtsvoll niedriger wegen Wollfasern",
+          "NaOH ist stark ätzend"
         ],
-        "final_result": "Laugen = Protonen-Akzeptoren",
+        "final_result": "",
         "source_page": 40
       }
     },

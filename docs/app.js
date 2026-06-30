@@ -255,7 +255,7 @@ function renderInteractive(task) {
   else if (cfg.type === "cloze-cards") widget = buildClozeCardsWidget(task, cfg);
   else if (cfg.type === "categorize") widget = buildCategorizeWidget(task, cfg);
   else if (cfg.type === "table") widget = buildTableWidget(task, cfg);
-
+  else if (cfg.type === "quiz") widget = buildQuizWidget(task, cfg);
   if (widget) {
     host.appendChild(widget);
     if (form) form.classList.add("with-interactive");
@@ -579,6 +579,91 @@ function buildClozeCardsWidget(task, cfg) {
   wrap.appendChild(result);
   wireCardSlotTaps(wrap, pool, ".slot", result);
   wireCardDrag(wrap, pool, ".slot", result);
+  return wrap;
+}
+
+/* ---- Quiz: Single-Choice pro Frage ---- */
+function buildQuizWidget(task, cfg) {
+  const wrap = document.createElement("div");
+  wrap.className = "interactive quiz";
+
+  const intro = document.createElement("div");
+  intro.className = "interactive-intro muted small";
+  intro.innerHTML = "W\u00e4hle pro Frage die richtige Antwort aus.";
+  wrap.appendChild(intro);
+
+  const questions = Array.isArray(cfg.questions) ? cfg.questions : [];
+  const groupSeed = "quiz_" + Math.random().toString(36).slice(2, 8) + "_";
+
+  questions.forEach((q, qi) => {
+    const block = document.createElement("section");
+    block.className = "quiz-question";
+    block.dataset.idx = String(qi);
+
+    const stem = document.createElement("div");
+    stem.className = "quiz-stem";
+    stem.innerHTML = renderChem(q.stem || "");
+    block.appendChild(stem);
+
+    const list = document.createElement("div");
+    list.className = "quiz-options";
+    const groupName = groupSeed + qi;
+    (q.options || []).forEach((opt, oi) => {
+      const label = document.createElement("label");
+      label.className = "quiz-option";
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = groupName;
+      input.value = String(oi);
+      input.dataset.correct = opt && opt.correct ? "1" : "0";
+      const span = document.createElement("span");
+      span.className = "quiz-option-text";
+      span.innerHTML = renderChem((opt && opt.text) || "");
+      label.appendChild(input);
+      label.appendChild(span);
+      list.appendChild(label);
+    });
+    block.appendChild(list);
+    wrap.appendChild(block);
+  });
+
+  const result = document.createElement("div");
+  result.className = "interactive-result";
+  result.hidden = true;
+
+  const actions = buildActions({
+    onCheck: () => {
+      let correct = 0;
+      let answered = 0;
+      const total = questions.length;
+      wrap.querySelectorAll(".quiz-question").forEach((block) => {
+        block.querySelectorAll(".quiz-option").forEach((l) =>
+          l.classList.remove("ok", "bad")
+        );
+        const chosen = block.querySelector("input:checked");
+        if (chosen) {
+          answered++;
+          const wrapper = chosen.closest(".quiz-option");
+          const isCorrect = chosen.dataset.correct === "1";
+          wrapper.classList.add(isCorrect ? "ok" : "bad");
+          if (isCorrect) correct++;
+        }
+      });
+      showResult(result, correct, total, answered >= total);
+    },
+    onReset: () => {
+      wrap.querySelectorAll("input[type=radio]").forEach((i) => {
+        i.checked = false;
+      });
+      wrap.querySelectorAll(".quiz-option").forEach((l) =>
+        l.classList.remove("ok", "bad")
+      );
+      result.hidden = true;
+    },
+  });
+
+  wrap.appendChild(actions);
+  wrap.appendChild(result);
   return wrap;
 }
 
