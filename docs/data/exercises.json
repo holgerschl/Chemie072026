@@ -152,51 +152,6 @@
       }
     },
     {
-      "id": "2",
-      "number": "2",
-      "topic": "Indikatoren",
-      "type": "multi_part",
-      "question": "Indikatoren",
-      "given": "",
-      "expected_answer_kind": "gemischt",
-      "subtasks": [
-        {
-          "id": "2a",
-          "number": "2a",
-          "topic": "Indikatoren Lückentext",
-          "type": "text",
-          "question": "Setze ein: Farbe, Farbskala, Farbstoffe, Farbton, Gemisch, Lauge, Säure, Universalindikator, pH-Wert\n\nIndikatoren sind _____________, die bei Zugabe einer _____________ oder einer _____________ ihre _____________ verändern. Unter einem _____________ versteht man ein _____________ verschiedener Indikatoren. Jeder _____________ hat einen eigenen _____________. Durch Vergleich mit einer _____________ kann der pH-Wert einer Lösung bestimmt werden.",
-          "given": "Wörter: Farbe, Farbskala, Farbstoffe, Farbton, Gemisch, Lauge, Säure, Universalindikator, pH-Wert",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "2b",
-          "number": "2b",
-          "topic": "pH-Skala ausmalen",
-          "type": "text",
-          "question": "Male die Kästchen der pH-Skala aus Aufgabe 1 entsprechend der Färbung des Universalindikators farbig aus.",
-          "given": "Bezug auf Aufgabe 1",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "2c",
-          "number": "2c",
-          "topic": "Indikatoren Tabelle",
-          "type": "text",
-          "question": "Setze die Indikatoren an der richtigen Stelle in die Tabelle ein: Bromthymolblau, Lackmus, Phenolphthalein, Universalindikator",
-          "given": "Tabelle mit Spalten: Indikator | Farbe im sauren Bereich | Farbe im alkalischen Bereich\nEinträge: rot→grün-blau; farblos→pink; gelb→blau; gelb-orange→blau",
-          "expected_answer_kind": "tabelle"
-        }
-      ],
-      "source_page": 0,
-      "solution": {
-        "answer": "",
-        "key_points": [],
-        "final_result": "",
-        "missing": true
-      }
-    },
-    {
       "id": "2a",
       "number": "2a",
       "topic": "Indikatoren Lückentext",
