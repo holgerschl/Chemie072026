@@ -347,8 +347,8 @@
       "number": "7",
       "topic": "Säure-Steckbriefe",
       "type": "multi_part",
-      "question": "Welcher Steckbrief gehört zu welcher Säure? Phosphorsäure, Salpetersäure, Schwefelsäure und Salzsäure. Trage die folgenden Ergänzungen an der richtigen Stelle ein: \"Erst das Wasser, dann die Säure, sonst geschieht das Ungeheure\"; Apatit; Königswasser; Wasserstoff; Magensäure; (Batteriesäure); Kohlenstoffdioxid; Ostwald-Verfahren; Colagetränke; Scheidewasser; Heute kann die Säure direkt durch die Reaktion der Elemente hergestellt werden",
-      "given": "Vier Steckbriefe mit teilweise fehlenden Informationen zu verschiedenen Säuren. Molare Masse, Dichte und weitere Eigenschaften sind teilweise angegeben.",
+      "question": "Ergänze die Steckbriefe der vier Säuren, indem Du die Karten in die passenden Lücken ziehst.",
+      "given": "Vier Steckbriefe (Salzsäure, Phosphorsäure, Schwefelsäure, Salpetersäure) mit insgesamt elf Lücken.",
       "expected_answer_kind": "tabelle",
       "subtasks": [
         {
@@ -373,23 +373,42 @@
         }
       ],
       "interactive": {
-        "type": "categorize",
-        "categories": [
+        "type": "cloze-cards",
+        "sections": [
           {
-            "label": "Salzsäure (HCl)",
-            "answers": ["Magensäure", "Kohlenstoffdioxid", "Heute kann die Säure direkt durch die Reaktion der Elemente hergestellt werden"]
+            "title": "Salzsäure (HCl)",
+            "body": "Salzsäure ist eine farblose Flüssigkeit. Sie kann hergestellt werden aus konzentrierter Schwefelsäure und Kochsalz (daher der Name). Hinweis zur Herstellung heute: ____. Die konzentrierte Säure bildet an feuchter Luft Nebel und ist ein guter elektrischer Leiter. Sie greift unedle Metalle unter Bildung von Wasserstoff an; Gold ist beständig. Kalk wird von der Säure unter Bildung von ____ zersetzt. Im menschlichen Körper kommt die Säure als ____ vor.",
+            "answers": [
+              "Heute kann die Säure direkt durch die Reaktion der Elemente hergestellt werden",
+              "Kohlenstoffdioxid",
+              "Magensäure"
+            ]
           },
           {
-            "label": "Phosphorsäure (H_3PO_4)",
-            "answers": ["Apatit", "Colagetränke"]
+            "title": "Phosphorsäure (H_3PO_4)",
+            "body": "Reine Phosphorsäure bildet wasserklare, harte, hygroskopische Kristalle. Die 85%ige Lösung ist sirupartig, weil die Säuremoleküle untereinander Wasserstoffbrücken ausbilden. Technisch wird die Säure hergestellt, indem das Mineral ____ mit Schwefelsäure behandelt wird. Die verdünnte Säure ist ungefährlich für den Menschen und wird als Säuerungsmittel verwendet, z. B. in ____. Die Salze der Säure sind wichtiger Bestandteil von Düngemitteln.",
+            "answers": [
+              "Apatit",
+              "Colagetränke"
+            ]
           },
           {
-            "label": "Schwefelsäure (H_2SO_4)",
-            "answers": ["Erst das Wasser, dann die Säure, sonst geschieht das Ungeheure", "Wasserstoff", "(Batteriesäure)"]
+            "title": "Schwefelsäure (H_2SO_4)",
+            "body": "Schwefelsäure ist eine geruchlose, farblose, ölige Flüssigkeit. Sie zerfrisst organische Stoffe (z. B. Baumwolle, Holz, Papier, Zucker) und färbt diese dabei schwarz. Sie ist stark hygroskopisch; beim Vermischen mit Wasser wird viel Wärme freigesetzt. Merksatz: ____. Hergestellt wird die Säure durch das Kontaktverfahren. Die verdünnte Säure zersetzt unedle Metalle unter Bildung von ____. Kupfer und edle Metalle werden nicht angegriffen. In der Autobatterie wird die 38%ige Säure als Elektrolyt eingesetzt — daher der Name ____.",
+            "answers": [
+              "Erst das Wasser, dann die Säure, sonst geschieht das Ungeheure",
+              "Wasserstoff",
+              "(Batteriesäure)"
+            ]
           },
           {
-            "label": "Salpetersäure (HNO_3)",
-            "answers": ["Scheidewasser", "Königswasser", "Ostwald-Verfahren"]
+            "title": "Salpetersäure (HNO_3)",
+            "body": "Die reine Säure ist unter Luftabschluss farblos, an Luft bilden sich rotbraune Dämpfe. Sie löst viele Metalle, darunter Zink, Eisen, Kupfer und Silber. Die 50%ige Säure greift Gold aber nicht an, deshalb können mit ihr Silber und Gold getrennt werden — sie heißt daher auch ____. Ein Gemisch mit Salzsäure löst auch Gold auf und wird ____ genannt. Technisch hergestellt wird die Säure durch katalytische Ammoniakverbrennung — das ____. Ihre Salze sind wichtig für Düngemittel, Farbstoffe, Sprengstoffe und Medikamente.",
+            "answers": [
+              "Scheidewasser",
+              "Königswasser",
+              "Ostwald-Verfahren"
+            ]
           }
         ]
       },

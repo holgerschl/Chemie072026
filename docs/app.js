@@ -252,6 +252,7 @@ function renderInteractive(task) {
   let widget = null;
   if (cfg.type === "matching") widget = buildMatchingWidget(task, cfg);
   else if (cfg.type === "cloze") widget = buildClozeWidget(task, cfg);
+  else if (cfg.type === "cloze-cards") widget = buildClozeCardsWidget(task, cfg);
   else if (cfg.type === "categorize") widget = buildCategorizeWidget(task, cfg);
   else if (cfg.type === "table") widget = buildTableWidget(task, cfg);
 
@@ -477,6 +478,98 @@ function buildClozeWidget(task, cfg) {
     onReset: () => {
       textBox.querySelectorAll(".slot .card").forEach((c) => pool.appendChild(c));
       textBox.querySelectorAll(".slot").forEach((s) => s.classList.remove("ok", "bad"));
+      result.hidden = true;
+      clearInteractiveSelection();
+    },
+  });
+
+  wrap.appendChild(actions);
+  wrap.appendChild(result);
+  wireCardSlotTaps(wrap, pool, ".slot", result);
+  wireCardDrag(wrap, pool, ".slot", result);
+  return wrap;
+}
+
+/* ---- Cloze-Cards: Mehrere Abschnitte mit \u00dcberschrift und L\u00fcckentext, gemeinsame Kartenablage ---- */
+function buildClozeCardsWidget(task, cfg) {
+  const wrap = document.createElement("div");
+  wrap.className = "interactive cloze cloze-cards";
+
+  const intro = document.createElement("div");
+  intro.className = "interactive-intro muted small";
+  intro.innerHTML =
+    '<strong>Ziehe</strong> die Karten in die passenden L\u00fccken \u2013 ' +
+    'oder tippe zuerst eine Karte und dann eine L\u00fccke. Eine Karte zur\u00fcck ' +
+    'in den Vorrat ziehst (oder tippst) Du genauso.';
+  wrap.appendChild(intro);
+
+  const sections = Array.isArray(cfg.sections) ? cfg.sections : [];
+  const allAnswers = [];
+  let blankCount = 0;
+
+  sections.forEach((section) => {
+    const sect = document.createElement("section");
+    sect.className = "cloze-section";
+
+    const title = document.createElement("h4");
+    title.className = "cloze-section-title";
+    title.innerHTML = renderChem(section.title || "");
+    sect.appendChild(title);
+
+    const textBox = document.createElement("div");
+    textBox.className = "cloze-text";
+    const parts = String(section.body || "").split(/_{4,}/);
+    const answers = Array.isArray(section.answers) ? section.answers : [];
+    parts.forEach((part, i) => {
+      const span = document.createElement("span");
+      span.className = "cloze-frag";
+      span.innerHTML = renderChem(part);
+      textBox.appendChild(span);
+      if (i < answers.length) {
+        const slot = document.createElement("span");
+        slot.className = "slot inline-slot";
+        slot.dataset.idx = String(blankCount);
+        slot.dataset.expected = answers[i];
+        slot.setAttribute("tabindex", "0");
+        slot.setAttribute("role", "button");
+        slot.setAttribute("aria-label", "L\u00fccke " + (blankCount + 1));
+        textBox.appendChild(slot);
+        allAnswers.push(answers[i]);
+        blankCount++;
+      }
+    });
+    sect.appendChild(textBox);
+    wrap.appendChild(sect);
+  });
+
+  const pool = document.createElement("div");
+  pool.className = "card-pool";
+  pool.setAttribute("aria-label", "Wortkarten");
+  shuffleInPlace(allAnswers.slice()).forEach((v) => pool.appendChild(makeCard(v)));
+  wrap.appendChild(pool);
+
+  const result = document.createElement("div");
+  result.className = "interactive-result";
+  result.hidden = true;
+
+  const actions = buildActions({
+    onCheck: () => {
+      let correct = 0;
+      const total = blankCount;
+      let allPlaced = true;
+      wrap.querySelectorAll(".slot").forEach((slot) => {
+        const c = slot.querySelector(".card");
+        slot.classList.remove("ok", "bad");
+        if (!c) { allPlaced = false; return; }
+        const ok = normalizeAnswer(c.dataset.value) === normalizeAnswer(slot.dataset.expected);
+        slot.classList.add(ok ? "ok" : "bad");
+        if (ok) correct++;
+      });
+      showResult(result, correct, total, allPlaced);
+    },
+    onReset: () => {
+      wrap.querySelectorAll(".slot .card").forEach((c) => pool.appendChild(c));
+      wrap.querySelectorAll(".slot").forEach((s) => s.classList.remove("ok", "bad"));
       result.hidden = true;
       clearInteractiveSelection();
     },
