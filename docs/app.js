@@ -1200,7 +1200,8 @@ function selectTask(id) {
   ui.hint.hidden = true;
   ui.solution.hidden = true;
   const hasSol = hasSolution(t);
-  ui.btnSol.disabled = !hasSol;
+  const hasInteractiveSol = !!(t && t.interactive);
+  ui.btnSol.disabled = !(hasSol || hasInteractiveSol);
   // KI-Bewertung nur sinnvoll, wenn Solution vorhanden
   ui.btnEval.disabled = !hasSol;
   if (t.subtasks && t.subtasks.length) {
@@ -1529,18 +1530,21 @@ function autofillInteractive(task) {
 function showSolution() {
   if (!state.currentId) return;
   const t = state.tasks.find((x) => x.id === state.currentId);
-  if (!t || !hasSolution(t)) {
+  if (!t) return;
+  const canAutofill = !!(t && t.interactive);
+  if (!canAutofill && !hasSolution(t)) {
     alert("Für diese Aufgabe ist keine Musterlösung vorhanden.");
     return;
   }
   if (!confirm("Wirklich die Musterlösung ansehen?")) return;
   // Interaktive Widgets: Karten/Antworten direkt einsetzen statt Text öffnen
-  if (t.interactive && autofillInteractive(t)) {
+  if (canAutofill && autofillInteractive(t)) {
     ui.solution.hidden = true;
     ui.solution.innerHTML = "";
     if (ui.interactive) ui.interactive.scrollIntoView({ behavior: "smooth", block: "nearest" });
     return;
   }
+  if (!hasSolution(t)) return;
   const sol = t.solution;
   let html = `<h3>Musterlösung</h3><div>${renderChem(sol.answer || "")}</div>`;
   if (sol.key_points && sol.key_points.length) {
