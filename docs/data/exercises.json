@@ -350,28 +350,7 @@
       "question": "Ergänze die Steckbriefe der vier Säuren, indem Du die Karten in die passenden Lücken ziehst.",
       "given": "Vier Steckbriefe (Salzsäure, Phosphorsäure, Schwefelsäure, Salpetersäure) mit insgesamt elf Lücken.",
       "expected_answer_kind": "tabelle",
-      "subtasks": [
-        {
-          "id": "7a",
-          "question": "Steckbrief 1 (oben links): Molare Masse: 36,46 g/mol, Dichte: 1,19 g/mL (38%ige Säure). Die Säure ist eine farblose Flüssigkeit. Sie kann hergestellt werden aus konzentrierter Schwefelsäure und Kochsalz (daher der Name). Die konzentrierte Säure bildet an feuchter Luft Nebel, sie ist ein guter elektrischer Leiter. Die Säure greift z.B. unedle Metalle unter Bildung von Wasserstoff an. Gold ist gegen die Säure beständig. Kalk wird von der Säure unter Bildung von _____ zersetzt. Die Säure kommt im menschlichen Körper als _____ vor.",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "7b",
-          "question": "Steckbrief 2 (oben rechts): Molare Masse: 97,995 g/mol (reine Säure), Dichte: 1,69 g/mL (85%ige Lösung). Die reine Säure bildet wasserklare, harte, hygroskopische Kristalle. Die 85%ige Lösung ist sirupartig, weil die einzelnen Säuremoleküle Wasserstoffbrücken untereinander ausbilden. Technisch wird die Säure hergestellt, indem das _____ mit Schwefelsäure behandelt wird. Die verdünnte Säure ist ungefährlich für den Menschen und wird als Säuerungsmittel in Lebensmitteln und Erfrischungsgetränken verwendet. Die Salze der Säure sind wichtiger Bestandteil von Düngemitteln.",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "7c",
-          "question": "Steckbrief 3 (unten links): Molare Masse: 98,079 g/mol (100%ige Säure), Dichte: 1,84 g/mL (97%ige Säure). Geruchlose, farblose, ölige Flüssigkeit. Die konzentrierte Säure zerfällt organische Stoffe (z.B. Baumwolle, Holz, Papier, Zucker) und färbt diese dabei schwarz. Die Säure ist stark hygroskopisch; beim Vermischen mit Wasser wird Wärme freigesetzt. (____). Sie wird hergestellt durch das Kontaktverfahren. Die konzentrierte Säure zeigt fast keine elektrische Leitfähigkeit. Die verdünnte Säure zersetzt unedle Metalle unter Bildung von _____. Kupfer und edle Metalle werden nicht angegriffen. In der Autobatterie wird die 38%ige Säure als Elektrolyt eingesetzt _____.",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "7d",
-          "question": "Steckbrief 4 (unten rechts): Molare Masse: 63,01 g/mol (reine Säure), Dichte: 1,42 g/mL. Die reine Säure ist unter Luftabschluss farblos, durch Kontakt mit anderen Stoffen entwickeln sich jedoch rotbraune Oxide, die die Säure enthalten und als Dämpfe entweichen. Die Säure wird daher unter Wasser aufbewahrt. Beim Stehen zerfällt die Säure; viele Metalle auf, darunter Zink, Eisen, Kupfer und Silber. Die 50%ige Säure kann aber Gold nicht ohne weiteres lösen. (____) allein nicht angegriffen, deshalb kann mit der 50%igen Säure Silber und Gold getrennt werden. Ein Gemisch mit Salzsäure löst auch Gold auf und wird deshalb _____ genannt. Technisch hergestellt wird die Säure durch katalytische Ammoniakverbrennung (_____). Auch die Salze dieser Säure sind wichtig für die Herstellung von Düngemitteln, aber auch von Farbstoffen, Sprengstoffen und Medikamenten.",
-          "expected_answer_kind": "freitext"
-        }
-      ],
+      "subtasks": [],
       "interactive": {
         "type": "cloze-cards",
         "sections": [
@@ -726,51 +705,44 @@
     {
       "id": "13",
       "number": "13",
-      "topic": "Zuordnung Säuren und Basen",
+      "topic": "Laugen-Steckbriefe",
       "type": "multi_part",
-      "question": "Welcher Steckbrief gehört zu welcher Lauge? Natronlauge, Ammoniakwasser, Kalilauge, Kalkwasser (Calciumhydroxidlösung). Trage die nachfolgenden Ergänzungen an der richtigen Stelle ein: Salmiakwasser; Branntkalk; Natronlauge; Kohlenstoffdioxid; hygroskopisch; Abflussreiniger",
-      "given": "Vier WANTED-Steckbriefe mit verschiedenen Eigenschaften (Molare Masse, Dichte, Mischbarkeit mit Wasser, Verwendung, Herstellung)",
+      "question": "Ergänze die Steckbriefe der vier Laugen, indem Du die Karten in die passenden Lücken ziehst.",
+      "given": "Vier Steckbriefe (Ammoniakwasser, Kalilauge, Natronlauge, Kalkwasser) mit insgesamt sechs Lücken.",
       "expected_answer_kind": "zuordnung",
-      "subtasks": [
-        {
-          "id": "13a",
-          "question": "Steckbrief 1 (oben links): Molare Masse 17,03 g/mol, Dichte 0,91 g/mL (25%ige Lösung), Mischbarkeit mit Wasser sehr gut. Die wässrige, wasserklare Lösung nennt man auch __________ und riecht nach einem bekanntlich stinkendem Gas. Die Herstellung der Lauge erfolgt auch, indem man dieses Gas in Wasser löst. Verwendung findet diese Lauge z.B. bei der Herstellung von Düngemitteln, von Kunstfasern und anderen Stickstoffverbindungen. Sie ist manchmal auch in sehr starken Putzmitteln (Grundreiniger) enthalten.",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "13b",
-          "question": "Steckbrief 2 (oben rechts): Molare Masse 56,105 g/mol, Dichte 1,5 g/mL (47%ige Lösung), Mischbarkeit mit Wasser sehr gut. Die Lauge ähnelt der __________, auch sie kann Haut und Augen verätzen. Die Kristalle dieser Lauge sind ebenfalls weißlich und hygroskopisch. Die Lauge nimmt Kohlenstoffdioxid aus der Luft auf und bindet es als Salz. Die Lauge wird zur Herstellung von Schmierseife und flüssigen Waschmitteln verwendet.",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "13c",
-          "question": "Steckbrief 3 (unten links): Molare Masse 40 g/mol, Dichte 1,35 g/mL (32%ige Lösung), Mischbarkeit mit Wasser sehr gut. Die Kristalle dieser Lauge sind weiß und stark __________. In Wasser lösen sich diese Kristalle unter Wärmeentwicklung zu der Lauge auf. Diese wirkt stark ätzend auf Haut und Augen. Die Lauge sowie die Kristalle werden in der Industrie verwendet. Bei der Papierherstellung verwendet man sie zum Aufschluss von Holz und Stroh. Im Haushalt findet man sie in fester Form in __________ für Holz. Laugenbrezeln erhalten durch diese Lauge ihre schmackhafte Kruste.",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "13d",
-          "question": "Steckbrief 4 (unten rechts): Molare Masse 74,093 g/mol, Dichte 2,20 g/mL, Mischbarkeit mit Wasser begrenzt. Im getrockneten Zustand handelt es sich um ein weißes, stäubiges Pulver, das sehr schlecht in Wasser löst. Die Lösung reizt die Haut und reagiert basisch. Die Herstellung erfolgt aus __________ in Wasser. Die Base dient als Nachweismittel von __________ (weißer Niederschlag). Weitere Anwendungsgebiete sind die Herstellung von Mörtel oder von Wandfarbe.",
-          "expected_answer_kind": "freitext"
-        }
-      ],
+      "subtasks": [],
       "interactive": {
-        "type": "categorize",
-        "categories": [
+        "type": "cloze-cards",
+        "sections": [
           {
-            "label": "Ammoniakwasser (NH_3)",
-            "answers": ["Salmiakwasser"]
+            "title": "Ammoniakwasser (NH_3)",
+            "body": "Ammoniakwasser ist eine wasserklare Flüssigkeit (25%ige Lösung: 0,91 g/mL) mit stechendem Geruch. Die wässrige Lösung wird auch ____ genannt und riecht nach dem bekannten Gas. Sie entsteht, indem man Ammoniak in Wasser löst. Verwendet wird sie z. B. bei der Herstellung von Düngemitteln, Kunstfasern und anderen Stickstoffverbindungen sowie in starken Putzmitteln (Grundreiniger).",
+            "answers": [
+              "Salmiakwasser"
+            ]
           },
           {
-            "label": "Kalilauge (KOH)",
-            "answers": ["Natronlauge"]
+            "title": "Kalilauge (KOH)",
+            "body": "Kalilauge ist eine Lösung von Kaliumhydroxid (56,105 g/mol, 47%ige Lösung: 1,5 g/mL). Sie ähnelt in vielen Eigenschaften der ____ und verätzt ebenfalls Haut und Augen. Die Kristalle sind weißlich und hygroskopisch. Aus der Luft nimmt die Lauge Kohlenstoffdioxid auf und bindet es als Salz. Verwendet wird sie zur Herstellung von Schmierseife und flüssigen Waschmitteln.",
+            "answers": [
+              "Natronlauge"
+            ]
           },
           {
-            "label": "Natronlauge (NaOH)",
-            "answers": ["hygroskopisch", "Abflussreiniger"]
+            "title": "Natronlauge (NaOH)",
+            "body": "Natronlauge ist eine Lösung von Natriumhydroxid (40 g/mol, 32%ige Lösung: 1,35 g/mL). Die Kristalle sind weiß und stark ____. In Wasser lösen sie sich unter starker Wärmeentwicklung zur stark ätzenden Lauge. In der Industrie dient sie u. a. zum Aufschluss von Holz und Stroh bei der Papierherstellung. Im Haushalt findet man sie in fester Form als ____. Laugenbrezeln erhalten durch sie ihre typische Kruste.",
+            "answers": [
+              "hygroskopisch",
+              "Abflussreiniger"
+            ]
           },
           {
-            "label": "Kalkwasser (Ca(OH)_2)",
-            "answers": ["Branntkalk", "Kohlenstoffdioxid"]
+            "title": "Kalkwasser (Ca(OH)_2)",
+            "body": "Kalkwasser ist die wässrige Lösung von Calciumhydroxid (74,093 g/mol, 2,20 g/mL). Im getrockneten Zustand ist es ein weißes, staubiges Pulver, das nur schlecht in Wasser löslich ist. Die Lösung reizt die Haut und reagiert basisch. Hergestellt wird Kalkwasser, indem man ____ in Wasser löscht. Es dient als Nachweismittel für ____ (weißer Niederschlag aus Calciumcarbonat). Weitere Anwendungen sind die Herstellung von Mörtel und von Wandfarbe.",
+            "answers": [
+              "Branntkalk",
+              "Kohlenstoffdioxid"
+            ]
           }
         ]
       },
