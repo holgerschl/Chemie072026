@@ -290,35 +290,35 @@
         ],
         "items": [
           {
-            "label": "A: Erst wenn man Säuren in Wasser löst, reagieren sie sauer.",
+            "label": "A: Erst wenn man Säuren in Wasser löst, reagieren sie sauer,",
             "answers": {
               "desc": "denn dabei werden hydratisierte Wasserstoff-Ionen (Protonen) gebildet (Protolyse).",
               "eq":   "HCl + H_2O -> H_3O^+ + Cl^-"
             }
           },
           {
-            "label": "B: Säuren reagieren mit unedlen Metallen.",
+            "label": "B: Säuren reagieren mit unedlen Metallen,",
             "answers": {
               "desc": "dabei bilden sich Wasserstoff und Metallsalze.",
               "eq":   "2 HCl + Zn -> H_2 + ZnCl_2"
             }
           },
           {
-            "label": "C: Säuren greifen Kalk an.",
+            "label": "C: Säuren greifen Kalk an,",
             "answers": {
               "desc": "dabei wird Kohlenstoffdioxid freigesetzt.",
               "eq":   "2 HCl + CaCO_3 -> CO_2 + H_2O + CaCl_2"
             }
           },
           {
-            "label": "D: Nichtmetalloxide reagieren mit Wasser.",
+            "label": "D: Nichtmetalloxide reagieren mit Wasser,",
             "answers": {
               "desc": "zu sauren Lösungen.",
               "eq":   "SO_2 + H_2O -> H_2SO_3"
             }
           },
           {
-            "label": "E: Es gibt auch die sogenannten Wasserstoffsäuren.",
+            "label": "E: Es gibt auch die sogenannten Wasserstoffsäuren,",
             "answers": {
               "desc": "die bei der Reaktion von Wasserstoff mit Halogenen entstehen.",
               "eq":   "H_2 + F_2 -> 2 HF"
