@@ -261,12 +261,46 @@
       ],
       "interactive": {
         "type": "matching",
+        "pools": [
+          { "key": "desc", "label": "Beschreibungen" },
+          { "key": "eq",   "label": "Reaktionsgleichungen" }
+        ],
         "items": [
-          { "label": "Erst wenn man Säuren in Wasser löst, reagieren sie sauer.", "answer": "HCl + H_2O -> H_3O^+ + Cl^-" },
-          { "label": "Säuren reagieren mit unedlen Metallen.", "answer": "2 HCl + Zn -> H_2 + ZnCl_2" },
-          { "label": "Säuren greifen Kalk an.", "answer": "2 HCl + CaCO_3 -> CO_2 + H_2O + CaCl_2" },
-          { "label": "Nichtmetalloxide reagieren mit Wasser.", "answer": "SO_2 + H_2O -> H_2SO_3" },
-          { "label": "Es gibt auch die sogenannten Wasserstoffsäuren.", "answer": "H_2 + F_2 -> 2 HF" }
+          {
+            "label": "A: Erst wenn man Säuren in Wasser löst, reagieren sie sauer.",
+            "answers": {
+              "desc": "denn dabei werden hydratisierte Wasserstoff-Ionen (Protonen) gebildet (Protolyse).",
+              "eq":   "HCl + H_2O -> H_3O^+ + Cl^-"
+            }
+          },
+          {
+            "label": "B: Säuren reagieren mit unedlen Metallen.",
+            "answers": {
+              "desc": "dabei bilden sich Wasserstoff und Metallsalze.",
+              "eq":   "2 HCl + Zn -> H_2 + ZnCl_2"
+            }
+          },
+          {
+            "label": "C: Säuren greifen Kalk an.",
+            "answers": {
+              "desc": "dabei wird Kohlenstoffdioxid freigesetzt.",
+              "eq":   "2 HCl + CaCO_3 -> CO_2 + H_2O + CaCl_2"
+            }
+          },
+          {
+            "label": "D: Nichtmetalloxide reagieren mit Wasser.",
+            "answers": {
+              "desc": "zu sauren Lösungen.",
+              "eq":   "SO_2 + H_2O -> H_2SO_3"
+            }
+          },
+          {
+            "label": "E: Es gibt auch die sogenannten Wasserstoffsäuren.",
+            "answers": {
+              "desc": "die bei der Reaktion von Wasserstoff mit Halogenen entstehen.",
+              "eq":   "H_2 + F_2 -> 2 HF"
+            }
+          }
         ]
       },
       "source_page": 0,

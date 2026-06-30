@@ -224,6 +224,7 @@ function makeCard(value, displayHtml) {
   const b = document.createElement("button");
   b.type = "button";
   b.className = "card";
+  if (typeof value === "string" && value.length > 22) b.classList.add("long");
   b.dataset.value = value;
   b.draggable = false; // wir nutzen Pointer-Events statt HTML5-DnD
   b.innerHTML = displayHtml != null ? displayHtml : renderChem(value);
@@ -256,7 +257,7 @@ function renderInteractive(task) {
   else host.hidden = true;
 }
 
-/* ---- Matching: Item links, Karte rechts ---- */
+/* ---- Matching: Item links, 1 oder mehrere Karten rechts ---- */
 function buildMatchingWidget(task, cfg) {
   const wrap = document.createElement("div");
   wrap.className = "interactive matching";
@@ -269,51 +270,113 @@ function buildMatchingWidget(task, cfg) {
     'in den Vorrat ziehst (oder tippst) Du genauso.';
   wrap.appendChild(intro);
 
-  // Pool of cards = unique answers, shuffled
-  const uniqueAnswers = [];
-  const seen = new Set();
-  cfg.items.forEach((it) => {
-    if (!seen.has(it.answer)) { seen.add(it.answer); uniqueAnswers.push(it.answer); }
-  });
-  const cards = shuffleInPlace(uniqueAnswers.slice());
+  const isMulti = Array.isArray(cfg.pools) && cfg.pools.length > 0;
 
-  // Slots
+  // Zeilen mit Slots aufbauen
   const slotsList = document.createElement("ul");
-  slotsList.className = "match-slots";
+  slotsList.className = "match-slots" + (isMulti ? " multi" : "");
+  if (isMulti) slotsList.style.setProperty("--match-cols", String(cfg.pools.length));
+
   cfg.items.forEach((item, idx) => {
     const li = document.createElement("li");
-    li.className = "match-row";
+    li.className = "match-row" + (isMulti ? " multi" : "");
     const lbl = document.createElement("span");
     lbl.className = "match-label";
     lbl.innerHTML = renderChem(item.label);
-    const slot = document.createElement("div");
-    slot.className = "slot";
-    slot.dataset.idx = String(idx);
-    slot.dataset.expected = item.answer;
-    slot.setAttribute("tabindex", "0");
-    slot.setAttribute("role", "button");
-    slot.setAttribute("aria-label", "Platz f\u00fcr " + item.label);
     li.appendChild(lbl);
-    li.appendChild(slot);
+
+    if (isMulti) {
+      cfg.pools.forEach((p) => {
+        const slot = document.createElement("div");
+        slot.className = "slot";
+        slot.dataset.idx = String(idx);
+        slot.dataset.poolKey = p.key;
+        const expected = (item.answers && item.answers[p.key]) || "";
+        slot.dataset.expected = expected;
+        slot.setAttribute("tabindex", "0");
+        slot.setAttribute("role", "button");
+        slot.setAttribute("aria-label", p.label + " f\u00fcr " + item.label);
+        li.appendChild(slot);
+      });
+    } else {
+      const slot = document.createElement("div");
+      slot.className = "slot";
+      slot.dataset.idx = String(idx);
+      slot.dataset.expected = item.answer;
+      slot.setAttribute("tabindex", "0");
+      slot.setAttribute("role", "button");
+      slot.setAttribute("aria-label", "Platz f\u00fcr " + item.label);
+      li.appendChild(slot);
+    }
     slotsList.appendChild(li);
   });
   wrap.appendChild(slotsList);
 
-  // Pool
-  const pool = document.createElement("div");
-  pool.className = "card-pool";
-  pool.setAttribute("aria-label", "Kartenvorrat");
-  cards.forEach((value) => pool.appendChild(makeCard(value)));
-  wrap.appendChild(pool);
+  // Pools aufbauen
+  const poolsByKey = {};
+  let defaultPool;
+  if (isMulti) {
+    cfg.pools.forEach((p) => {
+      const section = document.createElement("div");
+      section.className = "card-pool-section";
+      const label = document.createElement("div");
+      label.className = "card-pool-label muted small";
+      label.textContent = p.label;
+      const pool = document.createElement("div");
+      pool.className = "card-pool";
+      pool.dataset.poolKey = p.key;
+      pool.setAttribute("aria-label", p.label);
+      section.appendChild(label);
+      section.appendChild(pool);
+      wrap.appendChild(section);
+      poolsByKey[p.key] = pool;
+
+      const values = [];
+      const seen = new Set();
+      cfg.items.forEach((it) => {
+        const v = it.answers && it.answers[p.key];
+        if (v != null && !seen.has(v)) { seen.add(v); values.push(v); }
+      });
+      shuffleInPlace(values).forEach((v) => {
+        const card = makeCard(v);
+        card.dataset.poolKey = p.key;
+        pool.appendChild(card);
+      });
+    });
+    defaultPool = poolsByKey[cfg.pools[0].key];
+  } else {
+    const uniqueAnswers = [];
+    const seen = new Set();
+    cfg.items.forEach((it) => {
+      if (!seen.has(it.answer)) { seen.add(it.answer); uniqueAnswers.push(it.answer); }
+    });
+    const cards = shuffleInPlace(uniqueAnswers.slice());
+    defaultPool = document.createElement("div");
+    defaultPool.className = "card-pool";
+    defaultPool.setAttribute("aria-label", "Kartenvorrat");
+    cards.forEach((v) => defaultPool.appendChild(makeCard(v)));
+    wrap.appendChild(defaultPool);
+  }
 
   const result = document.createElement("div");
   result.className = "interactive-result";
   result.hidden = true;
 
+  function poolForCard(card) {
+    const key = card && card.dataset && card.dataset.poolKey;
+    if (key && poolsByKey[key]) return poolsByKey[key];
+    return defaultPool;
+  }
+  function canPlace(card, slot) {
+    if (!isMulti) return true;
+    return slot.dataset.poolKey === card.dataset.poolKey;
+  }
+
+  const totalSlots = isMulti ? cfg.items.length * cfg.pools.length : cfg.items.length;
+
   const actions = buildActions({
     onCheck: () => {
       let correct = 0;
-      const total = cfg.items.length;
       let allPlaced = true;
       slotsList.querySelectorAll(".slot").forEach((slot) => {
         const c = slot.querySelector(".card");
@@ -323,10 +386,10 @@ function buildMatchingWidget(task, cfg) {
         slot.classList.add(ok ? "ok" : "bad");
         if (ok) correct++;
       });
-      showResult(result, correct, total, allPlaced);
+      showResult(result, correct, totalSlots, allPlaced);
     },
     onReset: () => {
-      slotsList.querySelectorAll(".slot .card").forEach((c) => pool.appendChild(c));
+      slotsList.querySelectorAll(".slot .card").forEach((c) => poolForCard(c).appendChild(c));
       slotsList.querySelectorAll(".slot").forEach((s) => s.classList.remove("ok", "bad"));
       result.hidden = true;
       clearInteractiveSelection();
@@ -336,8 +399,9 @@ function buildMatchingWidget(task, cfg) {
   wrap.appendChild(actions);
   wrap.appendChild(result);
 
-  wireCardSlotTaps(wrap, pool, ".slot", result);
-  wireCardDrag(wrap, pool, ".slot", result);
+  const wireOpts = { poolFor: poolForCard, canPlace };
+  wireCardSlotTaps(wrap, defaultPool, ".slot", result, wireOpts);
+  wireCardDrag(wrap, defaultPool, ".slot", result, wireOpts);
   return wrap;
 }
 
@@ -662,6 +726,17 @@ function showResult(result, correct, total, allPlaced) {
 // slotSelector: CSS-Selektor der Slots/Bins (z.\u202fB. ".slot" oder ".bin-drop")
 function wireCardSlotTaps(wrap, pool, slotSelector, result, opts) {
   opts = opts || {};
+  const poolFor = (card) => {
+    if (typeof opts.poolFor === "function") {
+      const p = opts.poolFor(card);
+      if (p) return p;
+    }
+    return pool;
+  };
+  const canPlace = (card, slot) => {
+    if (typeof opts.canPlace === "function") return !!opts.canPlace(card, slot);
+    return true;
+  };
   wrap.addEventListener("click", (e) => {
     const card = e.target.closest(".card");
     const slot = e.target.closest(slotSelector);
@@ -670,7 +745,7 @@ function wireCardSlotTaps(wrap, pool, slotSelector, result, opts) {
                                             card.parentElement.classList.contains("slot"));
       if (inSlot) {
         const s = card.parentElement;
-        pool.appendChild(card);
+        poolFor(card).appendChild(card);
         card.classList.remove("selected", "ok", "bad");
         s.classList.remove("ok", "bad");
         if (result) result.hidden = true;
@@ -683,9 +758,13 @@ function wireCardSlotTaps(wrap, pool, slotSelector, result, opts) {
     }
     if (slot && interactiveSelectedCard) {
       const card2 = interactiveSelectedCard;
+      if (!canPlace(card2, slot)) {
+        // Falscher Stapel für diesen Slot – nichts tun.
+        return;
+      }
       if (!opts.multipleCardsPerSlot) {
         const existing = slot.querySelector(".card");
-        if (existing) pool.appendChild(existing);
+        if (existing) poolFor(existing).appendChild(existing);
       }
       slot.appendChild(card2);
       card2.classList.remove("selected", "ok", "bad");
@@ -698,11 +777,11 @@ function wireCardSlotTaps(wrap, pool, slotSelector, result, opts) {
   wrap.addEventListener("keydown", (e) => {
     if ((e.key === "Enter" || e.key === " ") && interactiveSelectedCard) {
       const slot = e.target.closest(slotSelector);
-      if (slot) {
+      if (slot && canPlace(interactiveSelectedCard, slot)) {
         e.preventDefault();
         if (!opts.multipleCardsPerSlot) {
           const existing = slot.querySelector(".card");
-          if (existing) pool.appendChild(existing);
+          if (existing) poolFor(existing).appendChild(existing);
         }
         slot.appendChild(interactiveSelectedCard);
         interactiveSelectedCard.classList.remove("selected");
@@ -769,7 +848,7 @@ function wireCardDrag(wrap, pool, slotSelector, result, opts) {
     const under = document.elementFromPoint(e.clientX, e.clientY);
     ds.ghost.style.display = "";
     wrap.querySelectorAll(".drop-hover").forEach((x) => x.classList.remove("drop-hover"));
-    const target = resolveDropTarget(under);
+    const target = resolveDropTarget(under, ds.card);
     if (target) target.classList.add("drop-hover");
     e.preventDefault();
   });
@@ -794,15 +873,18 @@ function wireCardDrag(wrap, pool, slotSelector, result, opts) {
     // Nach naechstem Click-Event Flag wieder ausschalten (siehe capture-Handler unten)
 
     if (!cancelled) {
-      const target = resolveDropTarget(under);
+      const target = resolveDropTarget(under, cur.card);
       if (target) placeCard(cur.card, target);
     }
   }
 
-  function resolveDropTarget(el) {
+  function resolveDropTarget(el, card) {
     if (!el) return null;
     const slot = el.closest(slotSelector);
-    if (slot && wrap.contains(slot)) return slot;
+    if (slot && wrap.contains(slot)) {
+      if (typeof opts.canPlace === "function" && !opts.canPlace(card, slot)) return null;
+      return slot;
+    }
     const inPool = el.closest(".card-pool");
     if (inPool && wrap.contains(inPool)) return inPool;
     return null;
@@ -810,12 +892,18 @@ function wireCardDrag(wrap, pool, slotSelector, result, opts) {
 
   function placeCard(card, target) {
     const isPool = target.classList && target.classList.contains("card-pool");
+    const homePool = (typeof opts.poolFor === "function" && opts.poolFor(card)) || pool;
     if (isPool) {
-      pool.appendChild(card);
+      // Bei Mehr-Pool-Widgets immer in den Heimat-Pool zur\u00fccklegen,
+      // egal auf welchen Pool gedroppt wurde.
+      homePool.appendChild(card);
     } else {
       if (!opts.multipleCardsPerSlot) {
         const existing = target.querySelector(".card");
-        if (existing && existing !== card) pool.appendChild(existing);
+        if (existing && existing !== card) {
+          const existingHome = (typeof opts.poolFor === "function" && opts.poolFor(existing)) || pool;
+          existingHome.appendChild(existing);
+        }
       }
       target.appendChild(card);
       target.classList.remove("ok", "bad");

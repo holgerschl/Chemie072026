@@ -256,7 +256,13 @@ button.ghost { background: transparent; }
   grid-template-columns: minmax(110px, max-content) 1fr;
   gap: 12px; align-items: center;
 }
-.match-label { font-weight: 600; }
+.match-row.multi {
+  grid-template-columns:
+    minmax(90px, max-content)
+    repeat(var(--match-cols, 2), minmax(180px, 1fr));
+  align-items: stretch;
+}
+.match-label { font-weight: 600; align-self: center; }
 .slot {
   min-height: 44px;
   padding: 4px 6px;
@@ -336,7 +342,27 @@ button.ghost { background: transparent; }
 
 @media (max-width: 520px) {
   .match-row { grid-template-columns: 1fr; gap: 4px; }
+  .match-row.multi { grid-template-columns: 1fr; }
   .match-label { font-size: 14px; }
+}
+
+/* ---- Mehrere Karten-Pools (z.B. Aufgabe 5) ---- */
+.card-pool-section { margin-top: 12px; }
+.card-pool-section + .card-pool-section { margin-top: 8px; }
+.card-pool-label { margin-bottom: 4px; font-weight: 600; }
+
+/* ---- Lange Karten-Texte (mehrere Zeilen erlaubt) ---- */
+.card.long {
+  white-space: normal;
+  max-width: 320px;
+  border-radius: 14px;
+  padding: 8px 12px;
+  text-align: left;
+  line-height: 1.3;
+  font-size: 14px;
+}
+.slot .card.long, .bin-drop .card.long, .inline-slot .card.long {
+  max-width: 100%;
 }
 
 /* ---- Cloze (L\u00fcckentext mit Inline-Slots) ---- */
