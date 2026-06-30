@@ -225,6 +225,38 @@
       }
     },
     {
+      "id": "2c",
+      "number": "2c",
+      "topic": "Indikatoren Tabelle",
+      "type": "text",
+      "question": "Setze die Indikatoren an der richtigen Stelle in die Tabelle ein: Bromthymolblau, Lackmus, Phenolphthalein, Universalindikator.",
+      "given": "Spalten: Farbe im sauren Bereich → Farbe im alkalischen Bereich. Zeilen: rot → grün-blau; farblos → pink; gelb → blau; gelb-orange → blau.",
+      "expected_answer_kind": "tabelle",
+      "interactive": {
+        "type": "matching",
+        "items": [
+          { "label": "rot → grün-blau",     "answer": "Lackmus" },
+          { "label": "farblos → pink",      "answer": "Phenolphthalein" },
+          { "label": "gelb → blau",         "answer": "Bromthymolblau" },
+          { "label": "gelb-orange → blau",  "answer": "Universalindikator" }
+        ]
+      },
+      "source_page": 36,
+      "solution": {
+        "id": "2c",
+        "number": "2c",
+        "answer": "Lackmus: rot → grün-blau\nPhenolphthalein: farblos → pink\nBromthymolblau: gelb → blau\nUniversalindikator: gelb-orange → blau",
+        "key_points": [
+          "Lackmus färbt sich in Säuren rot, in Laugen grün-blau",
+          "Phenolphthalein ist im sauren Bereich farblos, im alkalischen pink",
+          "Bromthymolblau wechselt von gelb (sauer) nach blau (alkalisch)",
+          "Universalindikator zeigt einen Farbverlauf von gelb-orange (sauer) nach blau (alkalisch)"
+        ],
+        "final_result": "",
+        "source_page": 36
+      }
+    },
+    {
       "id": "5",
       "number": "5",
       "topic": "Säuren und ihre Eigenschaften",
