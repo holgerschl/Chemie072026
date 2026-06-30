@@ -219,6 +219,22 @@ button.ghost { background: transparent; }
 .muted { color: var(--muted); }
 .small { font-size: 13px; }
 .center { text-align: center; padding: 40px 16px; }
+
+/* Hinweis ueber dem Antwortfeld */
+.hint-note { margin: 0 0 6px; line-height: 1.4; }
+.hint-note code {
+  background: rgba(127,127,127,0.18); padding: 1px 5px; border-radius: 4px;
+  font-size: 0.95em; white-space: nowrap;
+}
+
+/* Lesbare Sub-/Superscripts in der Chemie-Anzeige */
+.task-question sub, .task-question sup,
+.feedback sub, .feedback sup,
+.hint sub, .hint sup,
+.solution sub, .solution sup,
+.task-given sub, .task-given sup {
+  font-size: 0.78em; line-height: 0;
+}
 .spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(127,127,127,0.35); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: middle; margin-right: 8px; }
 @keyframes spin { to { transform: rotate(360deg); } }
 

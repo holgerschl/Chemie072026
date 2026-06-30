@@ -12,9 +12,6 @@
   <link rel="manifest" href="./manifest.webmanifest" />
   <title>Säuren &amp; Basen – Lernen</title>
   <link rel="stylesheet" href="./style.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous" />
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <header class="app-header">
@@ -69,8 +66,11 @@
 
         <form class="answer-area" onsubmit="return false;">
           <label for="answer">Deine Antwort</label>
+          <div class="hint-note muted small">
+            Formeln einfach mit <code>_</code> und <code>^</code> schreiben, z.&nbsp;B. <code>H_3O^+</code>, <code>Ca^2+</code>, <code>H_2SO_4</code>, <code>K_a</code>, <code>pH = -log[H_3O^+]</code>. Pfeil: <code>-&gt;</code>.
+          </div>
           <textarea id="answer" rows="5" autocomplete="off" autocorrect="on" spellcheck="true"
-                    placeholder="Schreibe Deine Lösung. Formeln in LaTeX, z.B. $H_3O^+$"></textarea>
+                    placeholder="Schreibe Deine Lösung. Formeln einfach: H_3O^+, Ca^2+, K_a"></textarea>
           <div class="actions primary-row">
             <button id="btn-evaluate" class="primary" type="submit">Prüfen</button>
             <button id="btn-next" type="button">Nächste →</button>

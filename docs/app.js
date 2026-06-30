@@ -66,16 +66,71 @@ const ui = {
 };
 
 /* ------------------- Helpers ------------------- */
-function renderMath(node) {
-  if (window.renderMathInElement) {
-    window.renderMathInElement(node, {
-      delimiters: [
-        { left: "$$", right: "$$", display: true },
-        { left: "$", right: "$", display: false },
-      ],
-      throwOnError: false,
-    });
+// Einfache Chemie-Formel-Darstellung:
+//   _x  ->  <sub>x</sub>      (x = einzelnes Zeichen oder Gruppe in {...})
+//   ^x  ->  <sup>x</sup>
+// Beispiele:  H_3O^+,  Ca^2+,  K_a,  SO_4^{2-},  H_2SO_4,  pH = -log[H_3O^+]
+// Falls die KI doch LaTeX zurückschickt, werden $...$/$$...$$ und gängige
+// Befehle (\frac, \cdot, \rightarrow, ...) entschärft.
+function renderChem(text) {
+  if (text == null) return "";
+  let s = String(text)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
+  // Dollar-Delimiter entfernen (Inhalt behalten)
+  s = s.replace(/\$\$([\s\S]+?)\$\$/g, "$1");
+  s = s.replace(/\$([^$\n]+?)\$/g, "$1");
+
+  // Häufige LaTeX-Befehle in Unicode/Klartext umsetzen
+  const symMap = {
+    "\\cdot": "\u00b7",
+    "\\times": "\u00d7",
+    "\\rightarrow": "\u2192",
+    "\\Rightarrow": "\u21d2",
+    "\\leftarrow": "\u2190",
+    "\\Leftarrow": "\u21d0",
+    "\\leftrightarrow": "\u2194",
+    "\\Leftrightarrow": "\u21d4",
+    "\\to": "\u2192",
+    "\\pm": "\u00b1",
+    "\\mp": "\u2213",
+    "\\approx": "\u2248",
+    "\\neq": "\u2260",
+    "\\geq": "\u2265",
+    "\\leq": "\u2264",
+    "\\ge": "\u2265",
+    "\\le": "\u2264",
+    "\\Delta": "\u0394",
+    "\\alpha": "\u03b1",
+    "\\beta": "\u03b2",
+    "\\gamma": "\u03b3",
+    "\\infty": "\u221e",
+    "\\circ": "\u00b0",
+  };
+  for (const k in symMap) {
+    s = s.replace(new RegExp(k.replace(/\\/g, "\\\\"), "g"), symMap[k]);
   }
+  s = s.replace(/\\frac\{([^{}]*)\}\{([^{}]*)\}/g, "$1/$2");
+  s = s.replace(/\\sqrt\{([^{}]*)\}/g, "\u221a($1)");
+  s = s.replace(/\\sqrt/g, "\u221a");
+  s = s.replace(/\\log/g, "log").replace(/\\ln/g, "ln");
+  s = s.replace(/\\text\{([^{}]*)\}/g, "$1");
+  // übrig gebliebene Backslash-Kommandos bzw. \\ entfernen
+  s = s.replace(/\\\\/g, "<br>");
+  s = s.replace(/\\([a-zA-Z]+)\s?/g, "$1");
+
+  // Sub-/Superscript mit Gruppe in {...}
+  s = s.replace(/_\{([^{}]+)\}/g, "<sub>$1</sub>");
+  s = s.replace(/\^\{([^{}]+)\}/g, "<sup>$1</sup>");
+  // Sub-/Superscript ohne Klammern: Buchstaben/Ziffern/+/-/=
+  s = s.replace(/_([A-Za-z0-9+\-=]+)/g, "<sub>$1</sub>");
+  s = s.replace(/\^([A-Za-z0-9+\-=]+)/g, "<sup>$1</sup>");
+
+  // Zeilenumbrüche
+  s = s.replace(/\r?\n/g, "<br>");
+  return s;
 }
 
 function escapeHtml(s) {
@@ -176,8 +231,8 @@ function selectTask(id) {
   ui.number.textContent = t.number || t.id;
   ui.topic.textContent = t.topic || "";
   ui.type.textContent = t.type || "";
-  ui.question.textContent = t.question || "";
-  ui.given.textContent = t.given ? `Gegeben: ${t.given}` : "";
+  ui.question.innerHTML = renderChem(t.question || "");
+  ui.given.innerHTML = t.given ? "Gegeben: " + renderChem(t.given) : "";
   ui.answer.value = localStorage.getItem(LS.ANSWER_PREFIX + id) || "";
   ui.feedback.hidden = true;
   ui.hint.hidden = true;
@@ -186,18 +241,15 @@ function selectTask(id) {
   ui.btnSol.disabled = !hasSol;
   // KI-Bewertung nur sinnvoll, wenn Solution vorhanden
   ui.btnEval.disabled = !hasSol;
-  renderMath(ui.question);
-  renderMath(ui.given);
   if (t.subtasks && t.subtasks.length) {
     const ol = document.createElement("ol");
     ol.style.marginTop = "8px";
     t.subtasks.forEach((s) => {
       const li = document.createElement("li");
-      li.innerHTML = `<strong>${escapeHtml(s.id || "")}</strong> ${escapeHtml(s.question || "")}`;
+      li.innerHTML = `<strong>${escapeHtml(s.id || "")}</strong> ${renderChem(s.question || "")}`;
       ol.appendChild(li);
     });
     ui.question.appendChild(ol);
-    renderMath(ol);
   }
   if (location.hash !== `#${id}`) history.replaceState(null, "", `#${id}`);
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -308,13 +360,18 @@ ENDERGEBNIS (falls vorhanden): ${sol.final_result || ""}
 ANTWORT DER SCHUELERIN:
 """${answer}"""
 
-Bewerte fachlich. Sei wohlwollend bei Formulierungs- und Notationsunterschieden (z.B. $H^+$ vs. $H_3O^+$, Komma vs. Punkt als Dezimaltrenner, gerundete Zwischenergebnisse). Sei aber streng bei sachlich falschen Aussagen.
+Bewerte fachlich. Sei wohlwollend bei Formulierungs- und Notationsunterschieden (z.B. H^+ vs. H_3O^+, Komma vs. Punkt als Dezimaltrenner, gerundete Zwischenergebnisse). Sei aber streng bei sachlich falschen Aussagen.
+
+Verwende in Deinem Feedback EINFACHE Formelnotation (KEIN LaTeX, KEINE Dollarzeichen):
+  - Subscript mit _ (z.B. H_3O^+, K_a, H_2SO_4)
+  - Superscript mit ^ (z.B. Ca^2+, SO_4^2-)
+  - Reaktionspfeil als ->
 
 Gib AUSSCHLIESSLICH JSON in folgendem Schema zurück:
 {
   "verdict": "correct" | "partially_correct" | "incorrect" | "unclear",
   "score": <Ganzzahl 0–100>,
-  "feedback": "<2–5 Sätze konstruktive Rückmeldung auf Deutsch, mit LaTeX-Formeln in $...$>",
+  "feedback": "<2–5 Sätze konstruktive Rückmeldung auf Deutsch>",
   "correct_points": ["<richtig erkannte Aspekte>"],
   "missing_points": ["<noch fehlende/falsche Aspekte>"]
 }`;
@@ -350,15 +407,14 @@ function showFeedback(res) {
 
   const label = ({ correct: "richtig", partially_correct: "teilweise richtig", incorrect: "falsch", unclear: "unklar" })[res.verdict] || res.verdict;
   let html = `<div class="score">Bewertung: ${label} (${res.score || 0}/100)</div>`;
-  html += `<div>${escapeHtml(res.feedback || "")}</div>`;
+  html += `<div>${renderChem(res.feedback || "")}</div>`;
   if (res.correct_points && res.correct_points.length) {
-    html += `<div style="margin-top:8px"><em>Richtig:</em><ul class="points-correct">${res.correct_points.map((p) => `<li>${escapeHtml(p)}</li>`).join("")}</ul></div>`;
+    html += `<div style="margin-top:8px"><em>Richtig:</em><ul class="points-correct">${res.correct_points.map((p) => `<li>${renderChem(p)}</li>`).join("")}</ul></div>`;
   }
   if (res.missing_points && res.missing_points.length) {
-    html += `<div style="margin-top:8px"><em>Noch verbesserungswürdig:</em><ul class="points-missing">${res.missing_points.map((p) => `<li>${escapeHtml(p)}</li>`).join("")}</ul></div>`;
+    html += `<div style="margin-top:8px"><em>Noch verbesserungswürdig:</em><ul class="points-missing">${res.missing_points.map((p) => `<li>${renderChem(p)}</li>`).join("")}</ul></div>`;
   }
   ui.feedback.innerHTML = html;
-  renderMath(ui.feedback);
   ui.feedback.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
@@ -396,12 +452,15 @@ ${ui.answer.value.trim() || "(noch nichts geschrieben)"}
 HINWEIS-LEVEL: ${level}
 ${levelInstructions[level] || levelInstructions[1]}
 
-Antworte in 1–3 Sätzen auf Deutsch. Verwende LaTeX für Formeln (z.B. $K_a$, $pH = -\\log[H_3O^+]$). Nur Fließtext, kein JSON, kein Markdown-Codeblock.`;
+Antworte in 1–3 Sätzen auf Deutsch. Verwende EINFACHE Formelnotation (KEIN LaTeX, KEINE Dollarzeichen):
+  - Subscript mit _ (z.B. H_3O^+, K_a, H_2SO_4)
+  - Superscript mit ^ (z.B. Ca^2+, SO_4^2-)
+  - Reaktionspfeil als ->
+Nur Fließtext, kein JSON, kein Markdown-Codeblock.`;
 
     const text = await callAnthropic(prompt, { maxTokens: 400 });
     ui.hint.hidden = false;
-    ui.hint.innerHTML = `<div class="level">Tipp – Stufe ${level}</div><div>${escapeHtml(text)}</div>`;
-    renderMath(ui.hint);
+    ui.hint.innerHTML = `<div class="level">Tipp – Stufe ${level}</div><div>${renderChem(text)}</div>`;
     ui.hint.scrollIntoView({ behavior: "smooth", block: "nearest" });
   } catch (err) {
     ui.hint.hidden = false;
@@ -420,16 +479,15 @@ function showSolution() {
   }
   if (!confirm("Wirklich die Musterlösung ansehen?")) return;
   const sol = t.solution;
-  let html = `<h3>Musterlösung</h3><div>${escapeHtml(sol.answer || "")}</div>`;
+  let html = `<h3>Musterlösung</h3><div>${renderChem(sol.answer || "")}</div>`;
   if (sol.key_points && sol.key_points.length) {
-    html += `<div style="margin-top:6px"><strong>Kernpunkte:</strong><ul>${sol.key_points.map((p) => `<li>${escapeHtml(p)}</li>`).join("")}</ul></div>`;
+    html += `<div style="margin-top:6px"><strong>Kernpunkte:</strong><ul>${sol.key_points.map((p) => `<li>${renderChem(p)}</li>`).join("")}</ul></div>`;
   }
   if (sol.final_result) {
-    html += `<div class="final">Endergebnis: ${escapeHtml(sol.final_result)}</div>`;
+    html += `<div class="final">Endergebnis: ${renderChem(sol.final_result)}</div>`;
   }
   ui.solution.hidden = false;
   ui.solution.innerHTML = html;
-  renderMath(ui.solution);
   ui.solution.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
