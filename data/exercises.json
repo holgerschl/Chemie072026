@@ -815,26 +815,37 @@
       }
     },
     {
-      "id": "16",
-      "number": "16",
+      "id": "16a",
+      "number": "16a",
       "topic": "Salznomenklatur",
-      "type": "multi_part",
-      "question": "Gegeben sind die folgenden Salze: NaBr; $NaHSO_4$; $CaCO_3$; $Ba_3(PO_4)_2$",
-      "given": "Salze: NaBr, $NaHSO_4$, $CaCO_3$, $Ba_3(PO_4)_2$",
-      "expected_answer_kind": "freitext",
-      "subtasks": [
-        {
-          "id": "16a",
-          "question": "Benenne die Salze.",
-          "expected_answer_kind": "freitext"
-        }
-      ],
+      "type": "text",
+      "question": "Benenne die folgenden Salze.",
+      "given": "Salze: NaBr, NaHSO_4, CaCO_3, Ba_3(PO_4)_2",
+      "expected_answer_kind": "tabelle",
+      "subtasks": [],
+      "interactive": {
+        "type": "table",
+        "columns": ["Formel", "Name"],
+        "rows": [
+          { "answers": [ { "given": "NaBr" },        "Natriumbromid" ] },
+          { "answers": [ { "given": "NaHSO_4" },     "Natriumhydrogensulfat" ] },
+          { "answers": [ { "given": "CaCO_3" },      "Calciumcarbonat" ] },
+          { "answers": [ { "given": "Ba_3(PO_4)_2" }, "Bariumphosphat" ] }
+        ]
+      },
       "source_page": 43,
       "solution": {
-        "answer": "",
-        "key_points": [],
+        "id": "16a",
+        "number": "16a",
+        "answer": "NaBr: Natriumbromid\nNaHSO_4: Natriumhydrogensulfat\nCaCO_3: Calciumcarbonat\nBa_3(PO_4)_2: Bariumphosphat",
+        "key_points": [
+          "NaBr — Natriumbromid",
+          "NaHSO_4 — Natriumhydrogensulfat (saures Salz, da H im Anion)",
+          "CaCO_3 — Calciumcarbonat",
+          "Ba_3(PO_4)_2 — Bariumphosphat"
+        ],
         "final_result": "",
-        "missing": true
+        "source_page": 43
       }
     },
     {
@@ -842,10 +853,20 @@
       "number": "16b",
       "topic": "Salze formulieren",
       "type": "text",
-      "question": "Formuliere die Reaktionsgleichungen für die Entstehung dieser Salze: NaBr; NaHSO_4; CaCO_3; Ba_3(PO_4)_2.",
+      "question": "Ergänze in der Tabelle die Reaktionsgleichungen für die Entstehung der vier Salze (Base + Säure → Salz + Wasser). Achte auf die Stöchiometrie.",
       "given": "Salze (aus Aufgabe 16a): NaBr, NaHSO_4, CaCO_3, Ba_3(PO_4)_2",
-      "expected_answer_kind": "gleichung",
+      "expected_answer_kind": "tabelle",
       "subtasks": [],
+      "interactive": {
+        "type": "table",
+        "columns": ["Base", "Säure", "Salz", "Wasser"],
+        "rows": [
+          { "answers": [ "NaOH",        "HBr",      { "given": "NaBr" },          "H_2O" ] },
+          { "answers": [ "NaOH",        "H_2SO_4",  { "given": "NaHSO_4" },       "H_2O" ] },
+          { "answers": [ "Ca(OH)_2",    "H_2CO_3",  { "given": "CaCO_3" },        "2 H_2O" ] },
+          { "answers": [ "3 Ba(OH)_2",  "2 H_3PO_4", { "given": "Ba_3(PO_4)_2" }, "6 H_2O" ] }
+        ]
+      },
       "source_page": 44,
       "solution": {
         "id": "16b",
