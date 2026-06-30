@@ -517,7 +517,7 @@
         ],
         "items": [
           {
-            "label": "A: Laugen sind in der Lage, Protonen aufzunehmen.",
+            "label": "A: Laugen sind in der Lage, Protonen aufzunehmen:",
             "answers": {
               "desc": "Bei der Natronlauge (NaOH) ist dafür die Hydroxid-Gruppe zuständig.",
               "eq":   "NaOH -> Na^+ + OH^-;  OH^- + H^+ -> H_2O"
