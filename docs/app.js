@@ -1433,6 +1433,99 @@ Nur Fließtext, kein JSON, kein Markdown-Codeblock.`;
   }
 }
 
+function autofillInteractive(task) {
+  const wrap = ui.interactive && ui.interactive.querySelector(".interactive");
+  if (!wrap || !task || !task.interactive) return false;
+  const cfg = task.interactive;
+  const type = cfg.type;
+
+  const resultBox = wrap.querySelector(".interactive-result");
+  if (resultBox) resultBox.hidden = true;
+
+  if (type === "matching" || type === "cloze" || type === "cloze-cards") {
+    const pools = Array.from(wrap.querySelectorAll(".card-pool"));
+    if (!pools.length) return false;
+    const defaultPool = pools[0];
+    const poolForKey = (key) => {
+      if (!key) return defaultPool;
+      return pools.find((p) => p.dataset.poolKey === key) || defaultPool;
+    };
+    // 1) Alle Karten zurück in den richtigen Vorrat
+    wrap.querySelectorAll(".slot .card").forEach((c) => {
+      poolForKey(c.dataset.poolKey).appendChild(c);
+    });
+    wrap.querySelectorAll(".slot").forEach((s) => s.classList.remove("ok", "bad"));
+    // 2) Für jede Lücke die passende Karte einlegen
+    wrap.querySelectorAll(".slot").forEach((slot) => {
+      const expected = slot.dataset.expected;
+      if (!expected) return;
+      const expNorm = normalizeAnswer(expected);
+      const slotPoolKey = slot.dataset.poolKey || "";
+      let card = null;
+      for (const p of pools) {
+        if (slotPoolKey && p.dataset.poolKey && p.dataset.poolKey !== slotPoolKey) continue;
+        const candidate = Array.from(p.querySelectorAll(".card")).find(
+          (c) => normalizeAnswer(c.dataset.value) === expNorm
+        );
+        if (candidate) { card = candidate; break; }
+      }
+      if (card) {
+        slot.appendChild(card);
+        slot.classList.add("ok");
+      }
+    });
+    return true;
+  }
+
+  if (type === "categorize") {
+    const valueToLabel = new Map();
+    (cfg.categories || []).forEach((cat) => {
+      (cat.answers || []).forEach((a) => valueToLabel.set(a, cat.label));
+    });
+    const pool = wrap.querySelector(".card-pool");
+    if (!pool) return false;
+    wrap.querySelectorAll(".bin-drop .card").forEach((c) => {
+      c.classList.remove("ok", "bad");
+      pool.appendChild(c);
+    });
+    const drops = Array.from(wrap.querySelectorAll(".bin-drop"));
+    Array.from(pool.querySelectorAll(".card")).forEach((card) => {
+      const targetLabel = valueToLabel.get(card.dataset.value);
+      const drop = drops.find((d) => d.dataset.label === targetLabel);
+      if (drop) {
+        drop.appendChild(card);
+        card.classList.add("ok");
+      }
+    });
+    return true;
+  }
+
+  if (type === "table") {
+    wrap.querySelectorAll(".cell-input").forEach((inp) => {
+      inp.value = inp.dataset.expected || "";
+      inp.classList.remove("bad");
+      inp.classList.add("ok");
+    });
+    return true;
+  }
+
+  if (type === "quiz") {
+    wrap.querySelectorAll(".quiz-question").forEach((block) => {
+      block.querySelectorAll(".quiz-option").forEach((l) => l.classList.remove("ok", "bad"));
+      block.querySelectorAll("input[type=radio]").forEach((i) => { i.checked = false; });
+      const correctInput = block.querySelector('input[data-correct="1"]');
+      if (correctInput) {
+        correctInput.checked = true;
+        const wrapper = correctInput.closest(".quiz-option");
+        if (wrapper) wrapper.classList.add("ok");
+      }
+    });
+    return true;
+  }
+
+  return false;
+}
+
 function showSolution() {
   if (!state.currentId) return;
   const t = state.tasks.find((x) => x.id === state.currentId);
@@ -1441,6 +1534,13 @@ function showSolution() {
     return;
   }
   if (!confirm("Wirklich die Musterlösung ansehen?")) return;
+  // Interaktive Widgets: Karten/Antworten direkt einsetzen statt Text öffnen
+  if (t.interactive && autofillInteractive(t)) {
+    ui.solution.hidden = true;
+    ui.solution.innerHTML = "";
+    if (ui.interactive) ui.interactive.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    return;
+  }
   const sol = t.solution;
   let html = `<h3>Musterlösung</h3><div>${renderChem(sol.answer || "")}</div>`;
   if (sol.key_points && sol.key_points.length) {
