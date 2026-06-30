@@ -1,0 +1,14 @@
+{
+  "name": "Säuren & Basen – Lernen",
+  "short_name": "Säuren & Basen",
+  "description": "Lernkarten zum Thema Säuren und Basen mit KI-gestützter Antwort-Bewertung.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#2255cc",
+  "orientation": "any",
+  "icons": [
+    { "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

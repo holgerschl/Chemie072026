@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#2255cc" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="S\u00e4uren \u0026 Basen" />
+  <link rel="apple-touch-icon" href="/static/icon.svg" />
+  <link rel="icon" href="/static/icon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="/static/manifest.webmanifest" />
+  <title>S\u00e4uren &amp; Basen \u2013 Lernen</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <!-- KaTeX f\u00fcr Formel-Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="app-header">
+    <button id="btn-menu" class="icon-btn" aria-label="Aufgabenliste \u00f6ffnen" aria-expanded="false">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z"/></svg>
+    </button>
+    <div class="header-titles">
+      <h1>S\u00e4uren &amp; Basen</h1>
+      <div class="progress muted" id="progress-text">\u2013</div>
+    </div>
+    <button id="btn-prev" class="icon-btn" aria-label="Vorherige Aufgabe">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M15.41 16.59 10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg>
+    </button>
+    <button id="btn-next-top" class="icon-btn" aria-label="N\u00e4chste Aufgabe">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="m8.59 16.59 4.58-4.59-4.58-4.59L10 6l6 6-6 6z"/></svg>
+    </button>
+  </header>
+
+  <div id="backdrop" hidden></div>
+
+  <main class="app-main">
+    <aside id="sidebar" aria-label="Aufgabenliste">
+      <div class="sidebar-header">
+        <h2>Aufgaben</h2>
+        <button id="btn-close-sidebar" class="icon-btn small" aria-label="Liste schlie\u00dfen">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </div>
+      <div class="filter">
+        <label for="topic-filter">Thema</label>
+        <select id="topic-filter"><option value="">Alle</option></select>
+      </div>
+      <div class="filter">
+        <input type="search" id="search" placeholder="Suchen\u2026" autocomplete="off" />
+      </div>
+      <ol id="task-list" role="list"></ol>
+    </aside>
+
+    <section id="task-view">
+      <div id="task-empty" class="muted center">Lade Aufgaben\u2026</div>
+      <article id="task-card" hidden>
+        <div class="task-meta">
+          <span id="task-number" class="task-number"></span>
+          <span class="badge" id="task-topic"></span>
+          <span class="badge subtle" id="task-type"></span>
+        </div>
+        <div id="task-question" class="task-question"></div>
+        <div id="task-given" class="task-given"></div>
+
+        <form class="answer-area" onsubmit="return false;">
+          <label for="answer">Deine Antwort</label>
+          <textarea id="answer" rows="5" autocomplete="off" autocorrect="on" spellcheck="true"
+                    placeholder="Schreibe Deine L\u00f6sung. Formeln in LaTeX, z.B. $H_3O^+$"></textarea>
+          <div class="actions primary-row">
+            <button id="btn-evaluate" class="primary" type="submit">Pr\u00fcfen</button>
+            <button id="btn-next" type="button">N\u00e4chste \u2192</button>
+          </div>
+          <div class="actions secondary-row">
+            <button id="btn-hint1" type="button">Tipp 1</button>
+            <button id="btn-hint2" type="button">Tipp 2</button>
+            <button id="btn-hint3" type="button">Tipp 3</button>
+            <button id="btn-solution" class="ghost danger" type="button">Musterl\u00f6sung</button>
+          </div>
+        </form>
+
+        <div id="feedback" class="feedback" hidden></div>
+        <div id="hint-box" class="hint" hidden></div>
+        <div id="solution-box" class="solution" hidden></div>
+      </article>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

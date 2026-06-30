@@ -1,0 +1,1170 @@
+{
+  "tasks": [
+    {
+      "id": "1a",
+      "number": "1a",
+      "topic": "pH-Wert Grundlagen",
+      "type": "multi_part",
+      "question": "Ergänze in der pH-Skala die Zahlen 0 bis 14 und ordne den richtigen pH-Bereichen die folgenden Begriffe zu: neutral, stärker sauer, alkalisch, sauer, stärker alkalisch. Was versteht man unter dem pH-Wert? Beschreibe mit deinen Worten, was der pH-Wert einer Lösung aussagt.",
+      "given": "pH-Skala 0-14, Begriffe: neutral, stärker sauer, alkalisch, sauer, stärker alkalisch",
+      "expected_answer_kind": "freitext",
+      "source_page": 35,
+      "solution": {
+        "id": "1a",
+        "number": "1a)",
+        "answer": "Der pH-Wert ist ein Maß dafür, wie stark sauer oder alkalisch eine Lösung ist. Die pH-Skala reicht von 0 bis 14, wobei Werte von 0-3 stärker sauer, 4-6 sauer, 7 neutral, 8-10 alkalisch und 11-14 stärker alkalisch sind.",
+        "key_points": [
+          "pH-Wert als Maß für Säure/Base-Stärke",
+          "Skala von 0 bis 14",
+          "pH 0-6: sauer, pH 7: neutral, pH 8-14: alkalisch",
+          "Zuordnung der Bereiche (stärker sauer, sauer, neutral, alkalisch, stärker alkalisch)"
+        ],
+        "final_result": "",
+        "source_page": 34
+      }
+    },
+    {
+      "id": "1b",
+      "number": "1b",
+      "topic": "pH-Wert Berechnung Verdünnung",
+      "type": "calculation",
+      "question": "Wenn man 0,1 L Säure mit dem pH 2 mit Wasser auf einen Liter auffüllt, erhält man eine Lösung mit dem pH Wert _____.",
+      "given": "0,1 L Säure mit pH 2, Gesamtvolumen 1 L",
+      "expected_answer_kind": "zahl",
+      "source_page": 35,
+      "solution": {
+        "id": "1b",
+        "number": "1b)",
+        "answer": "Wenn man 0,1 L Säure mit dem pH 2 mit Wasser auf einen Liter auffüllt, erhält man eine Lösung mit dem pH-Wert 3. Dies entspricht einer Verdünnung um den Faktor 10, wodurch der pH-Wert um 1 Einheit steigt.",
+        "key_points": [
+          "Verdünnung von 0,1 L auf 1 L (Faktor 10)",
+          "pH steigt von 2 auf 3",
+          "Bei 10-facher Verdünnung steigt pH um 1 Einheit"
+        ],
+        "final_result": "pH = 3",
+        "source_page": 34
+      }
+    },
+    {
+      "id": "1c",
+      "number": "1c",
+      "topic": "Neutralisation Verdünnung",
+      "type": "calculation",
+      "question": "Im Labor soll eine Lauge mit dem pH 9 so mit Wasser verdünnt werden, dass sie neutral reagiert. Wie groß muss die Verdünnung sein?",
+      "given": "Lauge mit pH 9, Ziel: pH 7 (neutral)",
+      "expected_answer_kind": "freitext",
+      "source_page": 35,
+      "solution": {
+        "id": "1c",
+        "number": "1c)",
+        "answer": "Die Lösung muss um den Faktor 100 verdünnt werden. Bei einer zehnfachen Verdünnung erreicht man den pH-Wert 8, bei einer nochmaligen zehnfachen Verdünnung (also insgesamt 100-fach) erreicht man dann den pH-Wert 7. Bei basischen Lösungen sinkt der pH-Wert bei Verdünnung.",
+        "key_points": [
+          "100-fache Verdünnung notwendig",
+          "10-fache Verdünnung → pH 8",
+          "Weitere 10-fache Verdünnung (100-fach gesamt) → pH 7",
+          "Bei Basen sinkt pH bei Verdünnung"
+        ],
+        "final_result": "Faktor 100",
+        "source_page": 34
+      }
+    },
+    {
+      "id": "1d",
+      "number": "1d",
+      "topic": "pH-Wert Aquarium",
+      "type": "text",
+      "question": "Recherchiere, warum Aquarienbesitzer regelmäßig den pH-Wert ihres Aquariums überprüfen müssen.",
+      "given": "",
+      "expected_answer_kind": "freitext",
+      "source_page": 35,
+      "solution": {
+        "id": "1d",
+        "number": "1d)",
+        "answer": "Fische reagieren sehr empfindlich auf eine Änderung des pH-Wertes. Falsch eingestellte pH-Werte führen vor allem zu Schäden an den Kiemen und den Schleimhäuten der Fische.",
+        "key_points": [
+          "Fische sind sehr empfindlich gegenüber pH-Änderungen",
+          "Schäden an den Kiemen",
+          "Schäden an den Schleimhäuten",
+          "Falsche pH-Werte sind schädlich"
+        ],
+        "final_result": "",
+        "source_page": 34
+      }
+    },
+    {
+      "id": "1e",
+      "number": "1e",
+      "topic": "pH-Wert Kläranlage",
+      "type": "text",
+      "question": "Warum müssen in Kläranlagen die pH-Werte der Abwässer geprüft und eventuell reguliert werden, bevor sie in das biologische Klärbecken mit Mikroorganismen geleitet werden?",
+      "given": "",
+      "expected_answer_kind": "freitext",
+      "source_page": 35,
+      "solution": {
+        "id": "1e",
+        "number": "1e)",
+        "answer": "Die Mikroorganismen in der Kläranlage sind für den Abbau von organischen Verschmutzungen und teilweise für die Oxidation anorganischer Verschmutzungen zuständig. Als Lebewesen können sie nur in einem bestimmten pH-Bereich überleben. Für die Kläranlage wäre es ein großer Schaden, wenn durch Schmutzwasser mit einem falschen pH-Wert die Mikroorganismen in dem biologischen Klärbecken absterben würden, da es einige Zeit dauern würde, bis in einem solchen Becken wieder die richtige Bakterienfauna angesiedelt wäre.",
+        "key_points": [
+          "Mikroorganismen bauen organische und anorganische Verschmutzungen ab",
+          "Überleben nur in bestimmtem pH-Bereich",
+          "Falscher pH-Wert führt zum Absterben der Mikroorganismen",
+          "Wiederansiedlung der Bakterienfauna dauert lange",
+          "Großer Schaden für die Kläranlage"
+        ],
+        "final_result": "",
+        "source_page": 34
+      }
+    },
+    {
+      "id": "1f",
+      "number": "1f",
+      "topic": "pH-Wert Körperflüssigkeiten",
+      "type": "text",
+      "question": "In unserem Körper gibt es Flüssigkeiten und Bereiche mit unterschiedlichen pH-Werten. Ordne die richtigen pH-Werte zu: 1; 4–6; 5–8; 5,5; 7; 7,4; 8,5",
+      "given": "Körperflüssigkeiten: Speichel, Magensaft, Dünndarm-sekret, Blut, Urin, Haut, Schweiß; pH-Werte: 1; 4–6; 5–8; 5,5; 7; 7,4; 8,5",
+      "expected_answer_kind": "tabelle",
+      "source_page": 35,
+      "solution": {
+        "id": "1f",
+        "number": "1f)",
+        "answer": "Die pH-Werte verschiedener Körperflüssigkeiten und -gewebe:\n- Speichel: pH 7\n- Magensaft: pH 1\n- Dünndarm-sekret: pH 8,5\n- Blut: pH 7,4\n- Urin: pH 5-8\n- Haut: pH 5,5\n- Schweiß: pH 4-6",
+        "key_points": [
+          "Magensaft stark sauer (pH 1)",
+          "Blut leicht alkalisch (pH 7,4)",
+          "Dünndarm alkalisch (pH 8,5)",
+          "Haut und Schweiß leicht sauer",
+          "Große pH-Variation im Körper je nach Funktion"
+        ],
+        "final_result": "",
+        "source_page": 34
+      }
+    },
+    {
+      "id": "2",
+      "number": "2",
+      "topic": "Indikatoren",
+      "type": "multi_part",
+      "question": "Indikatoren",
+      "given": "",
+      "expected_answer_kind": "gemischt",
+      "subtasks": [
+        {
+          "id": "2a",
+          "number": "2a",
+          "topic": "Indikatoren Lückentext",
+          "type": "text",
+          "question": "Setze ein: Farbe, Farbskala, Farbstoffe, Farbton, Gemisch, Lauge, Säure, Universalindikator, pH-Wert\n\nIndikatoren sind _____________, die bei Zugabe einer _____________ oder einer _____________ ihre _____________ verändern. Unter einem _____________ versteht man ein _____________ verschiedener Indikatoren. Jeder _____________ hat einen eigenen _____________. Durch Vergleich mit einer _____________ kann der pH-Wert einer Lösung bestimmt werden.",
+          "given": "Wörter: Farbe, Farbskala, Farbstoffe, Farbton, Gemisch, Lauge, Säure, Universalindikator, pH-Wert",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "2b",
+          "number": "2b",
+          "topic": "pH-Skala ausmalen",
+          "type": "text",
+          "question": "Male die Kästchen der pH-Skala aus Aufgabe 1 entsprechend der Färbung des Universalindikators farbig aus.",
+          "given": "Bezug auf Aufgabe 1",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "2c",
+          "number": "2c",
+          "topic": "Indikatoren Tabelle",
+          "type": "text",
+          "question": "Setze die Indikatoren an der richtigen Stelle in die Tabelle ein: Bromthymolblau, Lackmus, Phenolphthalein, Universalindikator",
+          "given": "Tabelle mit Spalten: Indikator | Farbe im sauren Bereich | Farbe im alkalischen Bereich\nEinträge: rot→grün-blau; farblos→pink; gelb→blau; gelb-orange→blau",
+          "expected_answer_kind": "tabelle"
+        }
+      ],
+      "source_page": 0,
+      "solution": {
+        "answer": "",
+        "key_points": [],
+        "final_result": "",
+        "missing": true
+      }
+    },
+    {
+      "id": "5",
+      "number": "5",
+      "topic": "Säuren und ihre Eigenschaften",
+      "type": "multi_part",
+      "question": "Welche Aussagen aus der ersten Spalte und der zweiten Spalte gehören zusammen? Suche auch die dazu passende Reaktionsgleichung und ergänze diese, sodass sie stimmt.",
+      "given": "5 Aussagen (A-E), 5 Beschreibungen (a-e), 5 unvollständige Reaktionsgleichungen (1-5)",
+      "expected_answer_kind": "tabelle",
+      "subtasks": [
+        {
+          "id": "5-A",
+          "question": "A: Erst wenn man Säuren in Wasser löst, reagieren sie sauer. Zuordnung zu passender Beschreibung und Reaktionsgleichung.",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "5-B",
+          "question": "B: Säuren reagieren mit unedlen Metallen. Zuordnung zu passender Beschreibung und Reaktionsgleichung.",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "5-C",
+          "question": "C: Säuren greifen Kalk an. Zuordnung zu passender Beschreibung und Reaktionsgleichung.",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "5-D",
+          "question": "D: Nichtmetalloxide reagieren mit Wasser. Zuordnung zu passender Beschreibung und Reaktionsgleichung.",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "5-E",
+          "question": "E: Es gibt auch die sogenannten Wasserstoffsäuren. Zuordnung zu passender Beschreibung und Reaktionsgleichung.",
+          "expected_answer_kind": "freitext"
+        }
+      ],
+      "source_page": 0,
+      "solution": {
+        "id": "5",
+        "number": "5",
+        "answer": "Zuordnung der Reaktionen zu den Buchstaben:\nA-e: $\\text{H}_2 + \\text{F}_2 \\longrightarrow 2\\text{HF}$\nB-c: $\\text{HCl} + \\text{H}_2\\text{O} \\longrightarrow \\text{H}_3\\text{O}^+ + \\text{Cl}^-$\nC-a: $2\\text{HCl} + \\text{Zn} \\longrightarrow \\text{H}_2 + \\text{ZnCl}_2$\nD-b: $\\text{SO}_2 + \\text{H}_2\\text{O} \\longrightarrow \\text{H}_2\\text{SO}_3$\nE-d: $2\\text{HCl} + \\text{CaCO}_3 \\longrightarrow \\text{CO}_2 + \\text{H}_2\\text{O} + \\text{CaCl}_2$\n\nZahlenfolge: 2, 1, 4, 3, 5",
+        "key_points": [
+          "Synthese von Fluorwasserstoff: $\\text{H}_2 + \\text{F}_2 \\longrightarrow 2\\text{HF}$ (A-e oder Position 2-1)",
+          "Protolysereaktionen von HCl in Wasser: $\\text{HCl} + \\text{H}_2\\text{O} \\longrightarrow \\text{H}_3\\text{O}^+ + \\text{Cl}^-$ (B-c oder Position 1-4)",
+          "Reaktion von Salzsäure mit Zink: $2\\text{HCl} + \\text{Zn} \\longrightarrow \\text{H}_2 + \\text{ZnCl}_2$ (C-a oder Position 4-3)",
+          "Bildung von schwefliger Säure: $\\text{SO}_2 + \\text{H}_2\\text{O} \\longrightarrow \\text{H}_2\\text{SO}_3$ (D-b oder Position 3-5)",
+          "Reaktion von HCl mit Kalk: $2\\text{HCl} + \\text{CaCO}_3 \\longrightarrow \\text{CO}_2 + \\text{H}_2\\text{O} + \\text{CaCl}_2$ (E-d)"
+        ],
+        "final_result": "2, 1, 4, 3, 5",
+        "source_page": 36
+      }
+    },
+    {
+      "id": "7",
+      "number": "7",
+      "topic": "Säure-Steckbriefe",
+      "type": "multi_part",
+      "question": "Welcher Steckbrief gehört zu welcher Säure? Phosphorsäure, Salpetersäure, Schwefelsäure und Salzsäure. Trage die folgenden Ergänzungen an der richtigen Stelle ein: \"Erst das Wasser, dann die Säure, sonst geschieht das Ungeheure\"; Apatit; Königswasser; Wasserstoff; Magensäure; (Batteriesäure); Kohlenstoffdioxid; Ostwald-Verfahren; Colagetränke; Scheidewasser; Heute kann die Säure direkt durch die Reaktion der Elemente hergestellt werden",
+      "given": "Vier Steckbriefe mit teilweise fehlenden Informationen zu verschiedenen Säuren. Molare Masse, Dichte und weitere Eigenschaften sind teilweise angegeben.",
+      "expected_answer_kind": "tabelle",
+      "subtasks": [
+        {
+          "id": "7a",
+          "question": "Steckbrief 1 (oben links): Molare Masse: 36,46 g/mol, Dichte: 1,19 g/mL (38%ige Säure). Die Säure ist eine farblose Flüssigkeit. Sie kann hergestellt werden aus konzentrierter Schwefelsäure und Kochsalz (daher der Name). Die konzentrierte Säure bildet an feuchter Luft Nebel, sie ist ein guter elektrischer Leiter. Die Säure greift z.B. unedle Metalle unter Bildung von Wasserstoff an. Gold ist gegen die Säure beständig. Kalk wird von der Säure unter Bildung von _____ zersetzt. Die Säure kommt im menschlichen Körper als _____ vor.",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "7b",
+          "question": "Steckbrief 2 (oben rechts): Molare Masse: 97,995 g/mol (reine Säure), Dichte: 1,69 g/mL (85%ige Lösung). Die reine Säure bildet wasserklare, harte, hygroskopische Kristalle. Die 85%ige Lösung ist sirupartig, weil die einzelnen Säuremoleküle Wasserstoffbrücken untereinander ausbilden. Technisch wird die Säure hergestellt, indem das _____ mit Schwefelsäure behandelt wird. Die verdünnte Säure ist ungefährlich für den Menschen und wird als Säuerungsmittel in Lebensmitteln und Erfrischungsgetränken verwendet. Die Salze der Säure sind wichtiger Bestandteil von Düngemitteln.",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "7c",
+          "question": "Steckbrief 3 (unten links): Molare Masse: 98,079 g/mol (100%ige Säure), Dichte: 1,84 g/mL (97%ige Säure). Geruchlose, farblose, ölige Flüssigkeit. Die konzentrierte Säure zerfällt organische Stoffe (z.B. Baumwolle, Holz, Papier, Zucker) und färbt diese dabei schwarz. Die Säure ist stark hygroskopisch; beim Vermischen mit Wasser wird Wärme freigesetzt. (____). Sie wird hergestellt durch das Kontaktverfahren. Die konzentrierte Säure zeigt fast keine elektrische Leitfähigkeit. Die verdünnte Säure zersetzt unedle Metalle unter Bildung von _____. Kupfer und edle Metalle werden nicht angegriffen. In der Autobatterie wird die 38%ige Säure als Elektrolyt eingesetzt _____.",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "7d",
+          "question": "Steckbrief 4 (unten rechts): Molare Masse: 63,01 g/mol (reine Säure), Dichte: 1,42 g/mL. Die reine Säure ist unter Luftabschluss farblos, durch Kontakt mit anderen Stoffen entwickeln sich jedoch rotbraune Oxide, die die Säure enthalten und als Dämpfe entweichen. Die Säure wird daher unter Wasser aufbewahrt. Beim Stehen zerfällt die Säure; viele Metalle auf, darunter Zink, Eisen, Kupfer und Silber. Die 50%ige Säure kann aber Gold nicht ohne weiteres lösen. (____) allein nicht angegriffen, deshalb kann mit der 50%igen Säure Silber und Gold getrennt werden. Ein Gemisch mit Salzsäure löst auch Gold auf und wird deshalb _____ genannt. Technisch hergestellt wird die Säure durch katalytische Ammoniakverbrennung (_____). Auch die Salze dieser Säure sind wichtig für die Herstellung von Düngemitteln, aber auch von Farbstoffen, Sprengstoffen und Medikamenten.",
+          "expected_answer_kind": "freitext"
+        }
+      ],
+      "source_page": 39,
+      "solution": {
+        "answer": "",
+        "key_points": [],
+        "final_result": "",
+        "missing": true
+      }
+    },
+    {
+      "id": "8",
+      "number": "8",
+      "topic": "Säuren und Säurerest-Ionen",
+      "type": "text",
+      "question": "Ergänze die Tabelle mit Namen und Formeln für Säuren und ihre Säurerest-Ionen.",
+      "given": "Teilweise ausgefüllte Tabelle: Salzsäure ($H_2CO_3$), Schwefelsäure, Schweflige Säure, Salpetersäure ($HNO_3$), Phosphorsäure; Säurerest-Ionen: Hydrogencarbonat-Ion, Carbonat-Ion, Hydrogensulfat-Ion, Hydrogensulfit-Ion, Sulfit-Ion, Nitrat-Ion, Dihydrogenphosphat-Ion, Phosphat-Ion ($HPO_4^{2-}$)",
+      "expected_answer_kind": "tabelle",
+      "subtasks": [],
+      "source_page": 5,
+      "solution": {
+        "id": "A8",
+        "number": "8",
+        "answer": "Die Tabelle zeigt die Zuordnung von Säuren zu ihren Säurerest-Ionen:\n\nSalzsäure $\\text{HCl}$ bildet Chlorid-Ion $\\text{Cl}^-$\n\nKohlensäure $\\text{H}_2\\text{CO}_3$ bildet Hydrogencarbonat-Ion $\\text{HCO}_3^-$ und Carbonat-Ion $\\text{CO}_3^{2-}$\n\nSchwefelsäure $\\text{H}_2\\text{SO}_4$ bildet Hydrogensulfat-Ion $\\text{HSO}_4^-$ und Sulfat-Ion $\\text{SO}_4^{2-}$\n\nSchweflige Säure $\\text{H}_2\\text{SO}_3$ bildet Hydrogensulfit-Ion $\\text{HSO}_3^-$ und Sulfit-Ion $\\text{SO}_3^{2-}$\n\nSalpetersäure $\\text{HNO}_3$ bildet Nitrat-Ion $\\text{NO}_3^-$\n\nPhosphorsäure $\\text{H}_3\\text{PO}_4$ bildet Dihydrogenphosphat-Ion $\\text{H}_2\\text{PO}_4^-$, Hydrogenphosphat-Ion $\\text{HPO}_4^{2-}$ und Phosphat-Ion $\\text{PO}_4^{3-}$",
+        "key_points": [
+          "Korrekte Zuordnung der Säuren zu ihren Säurerest-Ionen",
+          "Mehrprotonige Säuren bilden mehrere Ionen (z.B. $\\text{H}_2\\text{CO}_3$ bildet $\\text{HCO}_3^-$ und $\\text{CO}_3^{2-}$)",
+          "Korrekte chemische Formeln und Ladungen der Ionen",
+          "Systematische Nomenklatur (Hydrogencarbonat, Hydrogensulfat etc.)"
+        ],
+        "final_result": "",
+        "source_page": 38
+      }
+    },
+    {
+      "id": "9",
+      "number": "9",
+      "topic": "Säuren im Alltag",
+      "type": "multi_part",
+      "question": "Im alltäglichen Leben begegnen uns eine ganze Reihe verschiedener Säuren.",
+      "given": "",
+      "expected_answer_kind": "freitext",
+      "subtasks": [
+        {
+          "id": "9a",
+          "question": "Recherchiere über den sauren Regen. Was versteht man darunter, welche Ursachen und welche Auswirkungen hat er?",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "9b",
+          "question": "Informiere dich über das Krankheitsbild der Bulimie. Warum können durch diese Krankheit die Zähne der Betroffenen geschädigt werden?",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "9c",
+          "question": "Was versteht man unter dem Nursing-bottle-Syndrom?",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "9d",
+          "question": "Wie kann ein Pathologe durch Untersuchung des Magens den Todeszeitpunkt eines Mordopfers feststellen?",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "9e",
+          "question": "Warum werden Gurken oder Zwiebeln in Essig eingelegt?",
+          "expected_answer_kind": "freitext"
+        }
+      ],
+      "source_page": 5,
+      "solution": {
+        "answer": "",
+        "key_points": [],
+        "final_result": "",
+        "missing": true
+      }
+    },
+    {
+      "id": "10",
+      "number": "10",
+      "topic": "Laugen und ihre Eigenschaften",
+      "type": "text",
+      "question": "Laugen und ihre Eigenschaften: Welche Aussagen aus der ersten Spalte und der zweiten Spalte gehören zusammen? Suche auch die dazu passende Reaktionsgleichung und ergänze diese gegebenenfalls, sodass sie stimmt. Ordne den Spalten 2 und 3 die Buchstaben A bis D zu.",
+      "given": "Spalte 1: A) Laugen sind in der Lage, Protonen aufzunehmen. B) Laugen entstehen bei der Reaktion von Alkali-, Erdalkalimetallen mit Wasser. C) Aber auch Metalloxide reagieren mit Wasser. D) Laugen sind in der Lage, Protonen aufzunehmen.\n\nSpalte 2: unter Bildung von Wasserstoff. / zu Laugen. / Bei der Natronlauge (NaOH) ist dafür die Hydroxid-Gruppe zuständig. / Ammoniak reagiert dabei folgendermaßen:\n\nSpalte 3: $NaOH \\longrightarrow Na^+ + OH^-$, $OH^- + H^+ \\longrightarrow H_2O$ / $NH_3 + H_2O \\longrightarrow NH_4OH$ / $MgO + H_2O \\longrightarrow Mg(OH)_2$ / $2 Na + \\_\\_\\_H_2O \\longrightarrow 2 NaOH + H_2$",
+      "expected_answer_kind": "tabelle",
+      "subtasks": [],
+      "source_page": 5,
+      "solution": {
+        "id": "10",
+        "number": "10",
+        "answer": "Die Zuordnung lautet:\nA - D: Laugen sind in der Lage, Protonen aufzunehmen.\nB - A: Laugen entstehen bei der Reaktion von Alkali-, Erdalkalimetallen mit Wasser unter Bildung von Wasserstoff.\nC - D: Aber auch Metalloxide reagieren mit Wasser zu Laugen.\nD - A: Laugen sind in der Lage, Protonen aufzunehmen.\n\nDie chemischen Gleichungen:\nA: $\\text{NaOH} \\longrightarrow \\text{Na}^+ + \\text{OH}^-$ und $\\text{OH}^- + \\text{H}^+ \\longrightarrow \\text{H}_2\\text{O}$ (D)\nB: $2\\text{Na} + 2\\text{H}_2\\text{O} \\longrightarrow 2\\text{NaOH} + \\text{H}_2$ (B)\nC: $\\text{MgO} + \\text{H}_2\\text{O} \\longrightarrow \\text{Mg(OH)}_2$ (C)\nD: $\\text{NH}_3 + \\text{H}_2\\text{O} \\longrightarrow \\text{NH}_4\\text{OH}$ (A)",
+        "key_points": [
+          "A-D: Laugen nehmen Protonen auf (Brønsted-Base)",
+          "B-A: Alkali- und Erdalkalimetalle reagieren mit Wasser unter Wasserstoffbildung",
+          "C-D: Metalloxide reagieren mit Wasser zu Laugen",
+          "D-A: Ammoniak reagiert als Base mit Wasser",
+          "Korrekte Zuordnung der chemischen Gleichungen zu den Aussagen",
+          "Bei Natronlauge (NaOH) ist die Hydroxid-Gruppe für die basische Eigenschaft zuständig"
+        ],
+        "final_result": "A-D, B-A, C-D, D-A",
+        "source_page": 39
+      }
+    },
+    {
+      "id": "A11",
+      "number": "11",
+      "topic": "Säuren und Basen im Alltag",
+      "type": "mcq",
+      "question": "Welche Aussage ist richtig?\n\nUnter Laugen versteht man Stoffe, die\n12) Protonen aufnehmen können, also Protonen-Akzeptoren sind.\n7) Protonen abgeben können, also Protonen-Donatoren sind.\n\nLaugen fühlen sich glitschig und seifig an, weil\n13) sie die oberste Hautschicht angreifen und die darin enthaltenen Eiweiße zerstören.\n14) Hydroxidionen die Viskosität von Wasser erhöhen.\n\nMit Calciumhydroxid (Kalkwasser) kann man Kohlenstoffdioxid nachweisen. Wenn man Kohlenstoffdioxid durch diese Lösung leitet,\n6) erwärmt sich die Lösung um 5-10 °C.\n11) fällt ein weißer Niederschlag von Calciumcarbonat aus.\n\nWollwaschmittel hat einen nicht so basischen pH-Wert wie Vollwaschmittel, weil\n4) Wolle durch das Wollfett nicht so verschmutzt ist wie Baumwolle.\n6) die Struktur der Wolle sonst zu stark angegriffen würde.\n\nMit Rohrreiniger, der Natriumhydroxid enthält, muss man besonders vorsichtig umgehen, weil\n8) dieser basische Stoff bei Kontakt mit den Augen oder der Haut schwere Verätzungen verursachen kann.\n5) beim starken Schütteln der Verpackung eine Explosion ausgelöst werden kann.\n\nRechne die Zahlenwerte deiner Lösungen zusammen. Erhältst du die Summe 50?",
+      "given": "",
+      "expected_answer_kind": "zahl",
+      "subtasks": [],
+      "source_page": 41,
+      "solution": {
+        "id": "11",
+        "number": "11",
+        "answer": "Unter Laugen versteht man Stoffe, die Protonen aufnehmen können, also Protonen-Akzeptoren sind.",
+        "key_points": [
+          "Laugen sind Protonen-Akzeptoren",
+          "Laugen können Protonen aufnehmen",
+          "Definition nach Brønsted"
+        ],
+        "final_result": "Laugen = Protonen-Akzeptoren",
+        "source_page": 40
+      }
+    },
+    {
+      "id": "A12",
+      "number": "12",
+      "topic": "Basen im Alltag",
+      "type": "multi_part",
+      "question": "Basen im Alltag",
+      "given": "",
+      "expected_answer_kind": "freitext",
+      "subtasks": [
+        {
+          "id": "A12a",
+          "question": "Seife hat einen basischen pH-Wert. Heute verwendet man aber häufig Shampoos oder Duschbäder mit dem pH-Wert 5,5. Warum?",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "A12b",
+          "question": "Wie funktioniert eine basische und wie eine saure Dauerwelle? Welche Vorzüge haben die verschiedenen Methoden?",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "A12c",
+          "question": "Welche Aufgabe hat der Ammoniak beim Färben der Haare?",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "A12d",
+          "question": "Erkundige dich, wie Kalkmörtel hergestellt und verwendet wird.",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "A12e",
+          "question": "Wie viel Gramm Natriumhydroxid muss man in einem Liter Wasser lösen, um eine Natronlauge mit der Konzentration $0,2~\\text{mol} \\cdot \\text{L}^{-1}$ zu erhalten?",
+          "expected_answer_kind": "zahl"
+        },
+        {
+          "id": "A12f",
+          "question": "Wie viel Gramm Calciumhydroxid befinden sich in 800 mL Kalkwasser mit der Konzentration $1,5~\\text{mol} \\cdot \\text{L}^{-1}$?",
+          "expected_answer_kind": "zahl"
+        }
+      ],
+      "source_page": 41,
+      "solution": {
+        "id": "12",
+        "number": "12",
+        "answer": "Laugen fühlen sich glitschig und seifig an, weil sie die oberste Hautschicht angreifen und die darin enthaltenen Eiweiße zerstören.",
+        "key_points": [
+          "Glitschiges und seifiges Gefühl",
+          "Angriff auf oberste Hautschicht",
+          "Zerstörung von Eiweißen"
+        ],
+        "final_result": "",
+        "source_page": 40
+      }
+    },
+    {
+      "id": "13",
+      "number": "13",
+      "topic": "Zuordnung Säuren und Basen",
+      "type": "multi_part",
+      "question": "Welcher Steckbrief gehört zu welcher Lauge? Natronlauge, Ammoniakwasser, Kalilauge, Kalkwasser (Calciumhydroxidlösung). Trage die nachfolgenden Ergänzungen an der richtigen Stelle ein: Salmiakwasser; Branntkalk; Natronlauge; Kohlenstoffdioxid; hygroskopisch; Abflussreiniger",
+      "given": "Vier WANTED-Steckbriefe mit verschiedenen Eigenschaften (Molare Masse, Dichte, Mischbarkeit mit Wasser, Verwendung, Herstellung)",
+      "expected_answer_kind": "zuordnung",
+      "subtasks": [
+        {
+          "id": "13a",
+          "question": "Steckbrief 1 (oben links): Molare Masse 17,03 g/mol, Dichte 0,91 g/mL (25%ige Lösung), Mischbarkeit mit Wasser sehr gut. Die wässrige, wasserklare Lösung nennt man auch __________ und riecht nach einem bekanntlich stinkendem Gas. Die Herstellung der Lauge erfolgt auch, indem man dieses Gas in Wasser löst. Verwendung findet diese Lauge z.B. bei der Herstellung von Düngemitteln, von Kunstfasern und anderen Stickstoffverbindungen. Sie ist manchmal auch in sehr starken Putzmitteln (Grundreiniger) enthalten.",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "13b",
+          "question": "Steckbrief 2 (oben rechts): Molare Masse 56,105 g/mol, Dichte 1,5 g/mL (47%ige Lösung), Mischbarkeit mit Wasser sehr gut. Die Lauge ähnelt der __________, auch sie kann Haut und Augen verätzen. Die Kristalle dieser Lauge sind ebenfalls weißlich und hygroskopisch. Die Lauge nimmt Kohlenstoffdioxid aus der Luft auf und bindet es als Salz. Die Lauge wird zur Herstellung von Schmierseife und flüssigen Waschmitteln verwendet.",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "13c",
+          "question": "Steckbrief 3 (unten links): Molare Masse 40 g/mol, Dichte 1,35 g/mL (32%ige Lösung), Mischbarkeit mit Wasser sehr gut. Die Kristalle dieser Lauge sind weiß und stark __________. In Wasser lösen sich diese Kristalle unter Wärmeentwicklung zu der Lauge auf. Diese wirkt stark ätzend auf Haut und Augen. Die Lauge sowie die Kristalle werden in der Industrie verwendet. Bei der Papierherstellung verwendet man sie zum Aufschluss von Holz und Stroh. Im Haushalt findet man sie in fester Form in __________ für Holz. Laugenbrezeln erhalten durch diese Lauge ihre schmackhafte Kruste.",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "13d",
+          "question": "Steckbrief 4 (unten rechts): Molare Masse 74,093 g/mol, Dichte 2,20 g/mL, Mischbarkeit mit Wasser begrenzt. Im getrockneten Zustand handelt es sich um ein weißes, stäubiges Pulver, das sehr schlecht in Wasser löst. Die Lösung reizt die Haut und reagiert basisch. Die Herstellung erfolgt aus __________ in Wasser. Die Base dient als Nachweismittel von __________ (weißer Niederschlag). Weitere Anwendungsgebiete sind die Herstellung von Mörtel oder von Wandfarbe.",
+          "expected_answer_kind": "freitext"
+        }
+      ],
+      "source_page": 42,
+      "solution": {
+        "id": "13",
+        "number": "13",
+        "answer": "Die vier \"WANTED\"-Poster zeigen wichtige Säuren und Basen:\n\n**Ammoniakwasser** ($NH_3(aq)$): Molare Masse 17,03 g/mol, Dichte 0,91 g/mL (25%ige Lösung), sehr gute Mischbarkeit mit Wasser. Die wässrige, wasserklare Lösung nennt man auch Salmiakwasser und riecht nach einem bekannten Gas. Die Herstellung der Lauge erfolgt durch Einleiten von Gas in Wasser. Verwendung z.B. bei Düngemittel, Salpetersäure und anderen Stickstoffverbindungen, auch in starken Putzmitteln (Grundreiniger) enthalten.\n\n**Kalilauge** ($KOH(aq)$): Molare Masse 56,105 g/mol, Dichte 1,5 g/mL (47%ige Lösung), sehr gute Mischbarkeit mit Wasser. Die Lauge ähnelt der Natronlauge, kann Haut und Augen verätzen. Die Kristalle sind weißlich und hygroskopisch. Die Lauge nimmt Kohlenstoffdioxid aus der Luft auf und bindet es als Salz. Wird zur Herstellung von Schmierseife und flüssigen Waschmitteln verwendet.\n\n**Natronlauge** ($NaOH(aq)$): Molare Masse 40 g/mol, Dichte 1,35 g/mL (32%ige Lösung), sehr gute Mischbarkeit mit Wasser. Die Kristalle sind weiß und stark hygroskopisch. Lösen sich unter Wärmeentwicklung in Wasser auf. Wirkt stark ätzend auf Haut und Augen. Wird zur Herstellung von Seife verwendet. Bei der Papierherstellung verwendet, zum Aufschluss von Holz und Stroh. Im Haushalt in fester Form in Abflussreinigern oder flüssig in Abbeizmittel für Holz. Laugenbrezel erhalten ihre schmackhafte Kruste durch diese Lauge.\n\n**Kalkwasser/Calciumhydroxidlösung** ($Ca(OH)_2(aq)$): Molare Masse 74,093 g/mol, Dichte 2,20 g/mL, nur begrenzte Mischbarkeit mit Wasser. Im getrockneten Zustand handelt es sich um ein weißes, staubiges Pulver, das sich nur schlecht in Wasser löst. Die Lösung reizt die Haut und reagiert basisch. Die Herstellung erfolgt durch Löschen von Branntkalk in Wasser. Dient als Nachweismittel für Kohlenstoffdioxid (weißer Niederschlag). Weitere Anwendungsgebiete sind die Herstellung von Mörtel oder von Wandfarbe.",
+        "key_points": [
+          "Ammoniakwasser ($NH_3(aq)$): 17,03 g/mol, riecht nach Gas, Verwendung in Düngemitteln und Putzmitteln",
+          "Kalilauge ($KOH$): 56,105 g/mol, ähnelt Natronlauge, bindet CO₂, für Schmierseife und Waschmittel",
+          "Natronlauge ($NaOH$): 40 g/mol, stark hygroskopisch, stark ätzend, Seifenherstellung, Laugenbrezel",
+          "Kalkwasser ($Ca(OH)_2$): 74,093 g/mol, begrenzt löslich, Nachweis für CO₂ (weißer Niederschlag), Mörtel/Wandfarbe"
+        ],
+        "final_result": "",
+        "source_page": 42
+      }
+    },
+    {
+      "id": "14",
+      "number": "14",
+      "topic": "Neutralisation",
+      "type": "text",
+      "question": "Die Neutralisation: Ergänze den Lückentext mit den richtigen Begriffen.\n\nBegriffe: eingedampft, gleich, Hydroxid-Ionen, Laugen, Salz, Metall-Ionen, Protonenakzeptor, Neutralisationswärme, Protonen, Protonendonator, Hydroxid-Ionen, Protonen, Säuren\n\nWenn man passende Mengen an __________ und __________ zusammengibt, erhält man eine neutrale Lösung. Die __________ aus der Säure reagieren mit den __________ der Lauge zu Wassermolekülen. Die Säure ist also der __________ und die Lauge der __________. Bei dieser Reaktion wird die sogenannte __________ frei. Da bei jeder Neutralisation, unabhängig davon welche Säuren und Laugen miteinander reagieren, nur die Reaktion zwischen __________ und __________ eine Rolle spielt, ist der Betrag der Neutralisationswärme immer __________, nämlich 57,3 kJ pro Mol Protonen. Die __________ der Säure und die __________ der Lauge sind in der Lösung gelöst. Wird diese Lösung __________, entsteht aus diesen Ionen ein __________.",
+      "given": "Begriffe zur Auswahl gegeben",
+      "expected_answer_kind": "freitext",
+      "subtasks": [],
+      "source_page": 43,
+      "solution": {
+        "id": "14",
+        "number": "14",
+        "answer": "Wenn man passende Mengen an Säuren und Laugen zusammengibt, erhält man eine neutrale Lösung. Die Protonen aus der Säure reagieren mit den Hydroxid-Ionen der Lauge zu Wassermolekülen. Die Säure ist also der Protonendonator und die Lauge der Protonenakzeptor. Bei dieser Reaktion wird die sogenannte Neutralisationswärme frei. Da bei jeder Neutralisation, unabhängig davon welche Säuren und Laugen miteinander reagieren, nur die Reaktion zwischen Protonen und Hydroxid-Ionen eine Rolle spielt, ist der Betrag der Neutralisationswärme immer gleich, nämlich 57,3 kJ pro Mol Protonen.",
+        "key_points": [
+          "Säure + Lauge → neutrale Lösung",
+          "Protonen ($H^+$) + Hydroxid-Ionen ($OH^-$) → Wassermoleküle ($H_2O$)",
+          "Säure = Protonendonator, Lauge = Protonenakzeptor",
+          "Neutralisationswärme wird frei",
+          "Neutralisationswärme ist immer gleich: 57,3 kJ pro Mol Protonen"
+        ],
+        "final_result": "Neutralisationswärme = 57,3 kJ/mol Protonen",
+        "source_page": 42
+      }
+    },
+    {
+      "id": "15",
+      "number": "15",
+      "topic": "Neutralisationsreaktion - Salze",
+      "type": "text",
+      "question": "Schreibe in die leeren Kästchen die Salze, die bei der Reaktion dieser Säuren und Basen entstehen.\n\nTabelle mit Säuren (HCl, $HNO_3$, $H_2SO_4$, $H_3PO_4$) und Basen (NaOH, $NH_3$, $Ca(OH)_2$).",
+      "given": "Säuren: HCl, $HNO_3$, $H_2SO_4$, $H_3PO_4$; Basen: NaOH, $NH_3$, $Ca(OH)_2$",
+      "expected_answer_kind": "tabelle",
+      "subtasks": [],
+      "source_page": 43,
+      "solution": {
+        "id": "15",
+        "number": "15",
+        "answer": "Die Säurerest-Ionen der Säure und die Metall-Ionen der Lauge sind in der Lösung gelöst. Wird diese Lösung eingedampft, entsteht aus diesen Ionen ein Salz.\n\nTabelle:\n$\\text{HCl}$: $\\text{NaCl}$, $\\text{NH}_4\\text{Cl}$, $\\text{CaCl}_2$\n$\\text{HNO}_3$: $\\text{NaNO}_3$, $\\text{NH}_4\\text{NO}_3$, $\\text{Ca(NO}_3)_2$\n$\\text{H}_2\\text{SO}_4$: $\\text{Na}_2\\text{SO}_4$, $(\\text{NH}_4)_2\\text{SO}_4$, $\\text{CaSO}_4$\n$\\text{H}_3\\text{PO}_4$: $\\text{Na}_3\\text{PO}_4$, $(\\text{NH}_4)_3\\text{PO}_4$, $\\text{Ca}_3(\\text{PO}_4)_2$",
+        "key_points": [
+          "Säurerest-Ionen und Metall-Ionen sind in Lösung",
+          "Beim Eindampfen entsteht ein Salz",
+          "Korrekte Salzformeln durch Kombination von Kation und Anion",
+          "Berücksichtigung der Ladungen (z.B. $\\text{Ca}^{2+}$ mit $\\text{Cl}^-$ ergibt $\\text{CaCl}_2$)"
+        ],
+        "final_result": "Tabelle mit 12 Salzformeln",
+        "source_page": 43
+      }
+    },
+    {
+      "id": "16",
+      "number": "16",
+      "topic": "Salznomenklatur",
+      "type": "multi_part",
+      "question": "Gegeben sind die folgenden Salze: NaBr; $NaHSO_4$; $CaCO_3$; $Ba_3(PO_4)_2$",
+      "given": "Salze: NaBr, $NaHSO_4$, $CaCO_3$, $Ba_3(PO_4)_2$",
+      "expected_answer_kind": "freitext",
+      "subtasks": [
+        {
+          "id": "16a",
+          "question": "Benenne die Salze.",
+          "expected_answer_kind": "freitext"
+        }
+      ],
+      "source_page": 43,
+      "solution": {
+        "answer": "",
+        "key_points": [],
+        "final_result": "",
+        "missing": true
+      }
+    },
+    {
+      "id": "16b",
+      "number": "16b",
+      "topic": "Salze formulieren",
+      "type": "text",
+      "question": "Formuliere die Reaktionsgleichungen für die Entstehung dieser Salze.",
+      "given": "Bezieht sich auf vorherige Aufgabe 16a (nicht auf dieser Seite sichtbar)",
+      "expected_answer_kind": "gleichung",
+      "subtasks": [],
+      "source_page": 44,
+      "solution": {
+        "id": "16b",
+        "number": "16 b)",
+        "answer": "$\\text{NaOH} + \\text{HBr} \\longrightarrow \\text{NaBr} + \\text{H}_2\\text{O}$\n$\\text{NaOH} + \\text{H}_2\\text{SO}_4 \\longrightarrow \\text{NaHSO}_4 + \\text{H}_2\\text{O}$\n$\\text{Ca(OH)}_2 + \\text{H}_2\\text{CO}_3 \\longrightarrow \\text{CaCO}_3 + 2\\,\\text{H}_2\\text{O}$\n$3\\,\\text{Ba(OH)}_2 + 2\\,\\text{H}_3\\text{PO}_4 \\longrightarrow \\text{Ba}_3(\\text{PO}_4)_2 + 6\\,\\text{H}_2\\text{O}$",
+        "key_points": [
+          "Neutralisationsreaktionen (Base + Säure → Salz + Wasser)",
+          "Korrekte Stöchiometrie",
+          "Alle Gleichungen ausgeglichen",
+          "Korrekte Produkte (Salz und Wasser)"
+        ],
+        "final_result": "Vier ausgeglichene Neutralisationsgleichungen",
+        "source_page": 43
+      }
+    },
+    {
+      "id": "17",
+      "number": "17",
+      "topic": "Neutralisation",
+      "type": "multi_part",
+      "question": "In einem Labor sind 2 Liter 0,5 molare Salzsäure angefallen.",
+      "given": "V = 2 L, c(Säure) = 0,5 mol/L, c(NaOH) = 1 mol/L, c(Kalkwasser) = 1 mol/L",
+      "expected_answer_kind": "zahl",
+      "subtasks": [
+        {
+          "id": "17a",
+          "question": "Wie viel Natronlauge (Konzentration: 1 mol·L$^{-1}$) braucht man, um die Säure zu neutralisieren?",
+          "expected_answer_kind": "zahl"
+        },
+        {
+          "id": "17b",
+          "question": "Wie viel Kalkwasser (Konzentration: 1 mol·L$^{-1}$) benötigt man für die Neutralisation?",
+          "expected_answer_kind": "zahl"
+        }
+      ],
+      "source_page": 44,
+      "solution": {
+        "answer": "",
+        "key_points": [],
+        "final_result": "",
+        "missing": true
+      }
+    },
+    {
+      "id": "18",
+      "number": "18",
+      "topic": "Neutralisation - Umwelt",
+      "type": "multi_part",
+      "question": "Die Bedeutung der Neutralisation für Mensch und Umwelt",
+      "given": "",
+      "expected_answer_kind": "freitext",
+      "subtasks": [
+        {
+          "id": "18a",
+          "question": "Warum sollen Abwässer aus Laboratorien oder Fabriken neutralisiert werden, bevor sie ins Kanalnetz gelangen? Nenne zwei Gründe.",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "18b",
+          "question": "Warum muss man bei der Neutralisation von konzentrierter Schwefelsäure sehr vorsichtig sein?",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "18c",
+          "question": "Als Gegenmaßnahme gegen die Auswirkungen des sauren Regens werden Wälder gekalkt. Was wird dadurch erreicht?",
+          "expected_answer_kind": "freitext"
+        },
+        {
+          "id": "18d",
+          "question": "Zur Behandlung von Sodbrennen (Magensäure gelangt in die Speiseröhre) kann man als Medikament Aluminiumhydroxid ($Al(OH)_3$) einnehmen. Wie wirkt dieses Medikament?",
+          "expected_answer_kind": "freitext"
+        }
+      ],
+      "source_page": 44,
+      "solution": {
+        "answer": "",
+        "key_points": [],
+        "final_result": "",
+        "missing": true
+      }
+    }
+  ],
+  "raw_solutions": [
+    {
+      "id": "1a",
+      "number": "1a)",
+      "answer": "Der pH-Wert ist ein Maß dafür, wie stark sauer oder alkalisch eine Lösung ist. Die pH-Skala reicht von 0 bis 14, wobei Werte von 0-3 stärker sauer, 4-6 sauer, 7 neutral, 8-10 alkalisch und 11-14 stärker alkalisch sind.",
+      "key_points": [
+        "pH-Wert als Maß für Säure/Base-Stärke",
+        "Skala von 0 bis 14",
+        "pH 0-6: sauer, pH 7: neutral, pH 8-14: alkalisch",
+        "Zuordnung der Bereiche (stärker sauer, sauer, neutral, alkalisch, stärker alkalisch)"
+      ],
+      "final_result": "",
+      "source_page": 34
+    },
+    {
+      "id": "1b",
+      "number": "1b)",
+      "answer": "Wenn man 0,1 L Säure mit dem pH 2 mit Wasser auf einen Liter auffüllt, erhält man eine Lösung mit dem pH-Wert 3. Dies entspricht einer Verdünnung um den Faktor 10, wodurch der pH-Wert um 1 Einheit steigt.",
+      "key_points": [
+        "Verdünnung von 0,1 L auf 1 L (Faktor 10)",
+        "pH steigt von 2 auf 3",
+        "Bei 10-facher Verdünnung steigt pH um 1 Einheit"
+      ],
+      "final_result": "pH = 3",
+      "source_page": 34
+    },
+    {
+      "id": "1c",
+      "number": "1c)",
+      "answer": "Die Lösung muss um den Faktor 100 verdünnt werden. Bei einer zehnfachen Verdünnung erreicht man den pH-Wert 8, bei einer nochmaligen zehnfachen Verdünnung (also insgesamt 100-fach) erreicht man dann den pH-Wert 7. Bei basischen Lösungen sinkt der pH-Wert bei Verdünnung.",
+      "key_points": [
+        "100-fache Verdünnung notwendig",
+        "10-fache Verdünnung → pH 8",
+        "Weitere 10-fache Verdünnung (100-fach gesamt) → pH 7",
+        "Bei Basen sinkt pH bei Verdünnung"
+      ],
+      "final_result": "Faktor 100",
+      "source_page": 34
+    },
+    {
+      "id": "1d",
+      "number": "1d)",
+      "answer": "Fische reagieren sehr empfindlich auf eine Änderung des pH-Wertes. Falsch eingestellte pH-Werte führen vor allem zu Schäden an den Kiemen und den Schleimhäuten der Fische.",
+      "key_points": [
+        "Fische sind sehr empfindlich gegenüber pH-Änderungen",
+        "Schäden an den Kiemen",
+        "Schäden an den Schleimhäuten",
+        "Falsche pH-Werte sind schädlich"
+      ],
+      "final_result": "",
+      "source_page": 34
+    },
+    {
+      "id": "1e",
+      "number": "1e)",
+      "answer": "Die Mikroorganismen in der Kläranlage sind für den Abbau von organischen Verschmutzungen und teilweise für die Oxidation anorganischer Verschmutzungen zuständig. Als Lebewesen können sie nur in einem bestimmten pH-Bereich überleben. Für die Kläranlage wäre es ein großer Schaden, wenn durch Schmutzwasser mit einem falschen pH-Wert die Mikroorganismen in dem biologischen Klärbecken absterben würden, da es einige Zeit dauern würde, bis in einem solchen Becken wieder die richtige Bakterienfauna angesiedelt wäre.",
+      "key_points": [
+        "Mikroorganismen bauen organische und anorganische Verschmutzungen ab",
+        "Überleben nur in bestimmtem pH-Bereich",
+        "Falscher pH-Wert führt zum Absterben der Mikroorganismen",
+        "Wiederansiedlung der Bakterienfauna dauert lange",
+        "Großer Schaden für die Kläranlage"
+      ],
+      "final_result": "",
+      "source_page": 34
+    },
+    {
+      "id": "1f",
+      "number": "1f)",
+      "answer": "Die pH-Werte verschiedener Körperflüssigkeiten und -gewebe:\n- Speichel: pH 7\n- Magensaft: pH 1\n- Dünndarm-sekret: pH 8,5\n- Blut: pH 7,4\n- Urin: pH 5-8\n- Haut: pH 5,5\n- Schweiß: pH 4-6",
+      "key_points": [
+        "Magensaft stark sauer (pH 1)",
+        "Blut leicht alkalisch (pH 7,4)",
+        "Dünndarm alkalisch (pH 8,5)",
+        "Haut und Schweiß leicht sauer",
+        "Große pH-Variation im Körper je nach Funktion"
+      ],
+      "final_result": "",
+      "source_page": 34
+    },
+    {
+      "id": "A2a",
+      "number": "2a)",
+      "answer": "Indikatoren sind Farbstoffe, die bei Zugabe einer Säure oder einer Lauge ihre Farbe verändern. Unter einem Universalindikator versteht man ein Gemisch verschiedener Indikatoren. Jeder pH-Wert hat einen eigenen Farbton. Durch Vergleich mit einer Farbskala kann der pH-Wert einer Lösung bestimmt werden.",
+      "key_points": [
+        "Indikatoren sind Farbstoffe",
+        "Farbveränderung bei Zugabe von Säure oder Lauge",
+        "Universalindikator ist ein Gemisch verschiedener Indikatoren",
+        "Jeder pH-Wert hat eigenen Farbton",
+        "pH-Bestimmung durch Vergleich mit Farbskala"
+      ],
+      "final_result": "",
+      "source_page": 35
+    },
+    {
+      "id": "A2b",
+      "number": "2b)",
+      "answer": "pH-Skala von 0-14: 0-2 rot (in verschiedenen Abstufungen nach orange), 3 orange, 4 orange-gelb, 5 gelb, 6 hellgrün, 7 grün, 8 dunkelgrün, 9 grünblau, 10 blaugrün, 11 blaugrün mit stärkerem Blauanteil, 12 blau, 13 blau-violett, 14 violett-blau",
+      "key_points": [
+        "pH 0-2: rot bis orange",
+        "pH 3-5: orange bis gelb",
+        "pH 6-8: grün",
+        "pH 9-11: blaugrün",
+        "pH 12-14: blau bis violett"
+      ],
+      "final_result": "",
+      "source_page": 35
+    },
+    {
+      "id": "A2c",
+      "number": "2c)",
+      "answer": "Universalindikator: im sauren Bereich rot, im alkalischen Bereich grün-blau. Phenolphthalein: im sauren Bereich farblos, im alkalischen Bereich pink. Bromthymolblau: im sauren Bereich gelb, im alkalischen Bereich blau. Lackmus: im sauren Bereich rot-orange, im alkalischen Bereich blau.",
+      "key_points": [
+        "Universalindikator: rot (sauer), grün-blau (alkalisch)",
+        "Phenolphthalein: farblos (sauer), pink (alkalisch)",
+        "Bromthymolblau: gelb (sauer), blau (alkalisch)",
+        "Lackmus: rot-orange (sauer), blau (alkalisch)"
+      ],
+      "final_result": "",
+      "source_page": 35
+    },
+    {
+      "id": "A3",
+      "number": "3",
+      "answer": "Beobachtung: Der schwarze Tee, zu dem man etwas Zitronensaft hinzugefügt hat, wird ein wenig heller. Auswertung: Der saure Zitronensaft verändert die Farbe des schwarzen Tees. Schwarzer Tee ist ein Indikator, der anzeigt, ob ein Stoff eine Säure ist.",
+      "key_points": [
+        "Beobachtung: Tee wird heller",
+        "Zitronensaft ist sauer",
+        "Säure verändert Farbe des Tees",
+        "Schwarzer Tee ist ein Indikator",
+        "Indikator zeigt Säure an"
+      ],
+      "final_result": "",
+      "source_page": 35
+    },
+    {
+      "id": "A4",
+      "number": "4",
+      "answer": "Zitronensaft: rot, Spülmittel: blau-grün, Vollwaschmittel: gelb, Backpulver: grün, Essig: rot, Reiniger für die Spülmaschine: gelb",
+      "key_points": [
+        "Zitronensaft: rot",
+        "Spülmittel: blau-grün",
+        "Vollwaschmittel: gelb",
+        "Backpulver: grün",
+        "Essig: rot",
+        "Reiniger für Spülmaschine: gelb"
+      ],
+      "final_result": "",
+      "source_page": 35
+    },
+    {
+      "id": "5",
+      "number": "5",
+      "answer": "Zuordnung der Reaktionen zu den Buchstaben:\nA-e: $\\text{H}_2 + \\text{F}_2 \\longrightarrow 2\\text{HF}$\nB-c: $\\text{HCl} + \\text{H}_2\\text{O} \\longrightarrow \\text{H}_3\\text{O}^+ + \\text{Cl}^-$\nC-a: $2\\text{HCl} + \\text{Zn} \\longrightarrow \\text{H}_2 + \\text{ZnCl}_2$\nD-b: $\\text{SO}_2 + \\text{H}_2\\text{O} \\longrightarrow \\text{H}_2\\text{SO}_3$\nE-d: $2\\text{HCl} + \\text{CaCO}_3 \\longrightarrow \\text{CO}_2 + \\text{H}_2\\text{O} + \\text{CaCl}_2$\n\nZahlenfolge: 2, 1, 4, 3, 5",
+      "key_points": [
+        "Synthese von Fluorwasserstoff: $\\text{H}_2 + \\text{F}_2 \\longrightarrow 2\\text{HF}$ (A-e oder Position 2-1)",
+        "Protolysereaktionen von HCl in Wasser: $\\text{HCl} + \\text{H}_2\\text{O} \\longrightarrow \\text{H}_3\\text{O}^+ + \\text{Cl}^-$ (B-c oder Position 1-4)",
+        "Reaktion von Salzsäure mit Zink: $2\\text{HCl} + \\text{Zn} \\longrightarrow \\text{H}_2 + \\text{ZnCl}_2$ (C-a oder Position 4-3)",
+        "Bildung von schwefliger Säure: $\\text{SO}_2 + \\text{H}_2\\text{O} \\longrightarrow \\text{H}_2\\text{SO}_3$ (D-b oder Position 3-5)",
+        "Reaktion von HCl mit Kalk: $2\\text{HCl} + \\text{CaCO}_3 \\longrightarrow \\text{CO}_2 + \\text{H}_2\\text{O} + \\text{CaCl}_2$ (E-d)"
+      ],
+      "final_result": "2, 1, 4, 3, 5",
+      "source_page": 36
+    },
+    {
+      "id": "6",
+      "number": "6",
+      "answer": "Beobachtung: Nach einer Weile bemerkt man kleine Bläschen an dem Nagel und der Kreide (Muschel). Bei der Büroklammer dauert es (je nachdem, aus welchem Material sie besteht) etwas länger. Wenn man die Gläser länger stehen lässt, sieht man ganz deutlich, dass das Material der Gegenstände dünner geworden ist.\n\nAuswertung: Metall und Kalk werden von Säuren angegriffen und aufgelöst.",
+      "key_points": [
+        "Bläschenbildung an Nagel und Kreide/Muschel als Beobachtung",
+        "Bei Büroklammer dauert Reaktion materialabhängig länger",
+        "Material wird dünner/aufgelöst bei längerem Stehenlassen",
+        "Auswertung: Säuren greifen Metall und Kalk an und lösen sie auf"
+      ],
+      "final_result": "Metall und Kalk werden von Säuren angegriffen und aufgelöst",
+      "source_page": 36
+    },
+    {
+      "id": "A7_Salzsaeure",
+      "number": "7 - Salzsäure",
+      "answer": "Summenformel: $HCl_{(aq)}$\n\nMolare Masse: 36,46 g/mol\nDichte: 1,19 g/mL (36%ige Säure)\nMischbarkeit mit Wasser: sehr gut\n\nDie Säure ist eine farblose Flüssigkeit. Sie kann hergestellt werden aus konzentrierter Schwefelsäure und Kochsalz (daher der Name).\n\nHeute kann die Säure direkt durch die Reaktion der Elemente hergestellt werden.\n\nDie konzentrierte Säure bildet an feuchter Luft Nebel; sie ist ein guter elektrischer Leiter. Die Säure greift z.B. unedle Metalle unter Bildung von Wasserstoff an. Gold ist gegen die Säure beständig. Kalk wird von der Säure unter Bildung von Kohlenstoffdioxid zersetzt.\n\nDie Säure kommt im menschlichen Körper als Magensäure vor.",
+      "key_points": [
+        "Summenformel: $HCl_{(aq)}$",
+        "Molare Masse: 36,46 g/mol",
+        "Farblose Flüssigkeit, sehr gut mischbar mit Wasser",
+        "Herstellung aus Schwefelsäure und Kochsalz oder direkt aus Elementen",
+        "Greift unedle Metalle unter Bildung von Wasserstoff an",
+        "Kommt als Magensäure im Körper vor"
+      ],
+      "final_result": "$HCl_{(aq)}$, M = 36,46 g/mol",
+      "source_page": 37
+    },
+    {
+      "id": "A7_Phosphorsaeure",
+      "number": "7 - Phosphorsäure",
+      "answer": "Summenformel: $H_3PO_4$\n\nMolare Masse: 97,995 g/mol (reine Säure)\nDichte: 1,69 g/mL (85%ige Lösung)\nMischbarkeit mit Wasser: in jedem Verhältnis mit Wasser mischbar\n\nDie reine Säure bildet wasserklare, harte, hygroskopische Kristalle. Die 85%ige Lösung ist sirupartig, weil die einzelnen Säuremoleküle Wasserstoffbrücken untereinander ausbilden.\n\nTechnisch wird die Säure hergestellt, indem das Mineral Apatit mit Schwefelsäure behandelt wird. Die verdünnte Säure ist ungefährlich für den Menschen und wird als Säuerungsmittel in Lebensmitteln (z.B. für Colagetränke) verwendet. Die Salze der Säure sind wichtiger Bestandteil von Düngemitteln.",
+      "key_points": [
+        "Summenformel: $H_3PO_4$",
+        "Molare Masse: 97,995 g/mol",
+        "Reine Säure: wasserklare, hygroskopische Kristalle",
+        "85%ige Lösung ist sirupartig durch Wasserstoffbrücken",
+        "Herstellung aus Apatit und Schwefelsäure",
+        "Verwendung als Säuerungsmittel in Lebensmitteln (Cola)",
+        "Salze wichtig für Düngemittel"
+      ],
+      "final_result": "$H_3PO_4$, M = 97,995 g/mol",
+      "source_page": 37
+    },
+    {
+      "id": "A7_Schwefelsaeure",
+      "number": "7 - Schwefelsäure",
+      "answer": "Summenformel: $H_2SO_4$\n\nMolare Masse: 98,079 g/mol (100%ige Säure)\nDichte: 1,84 g/mL (97%ige Säure)\nMischbarkeit mit Wasser: sehr gut\n\nGeruchlose, farblose, ölige Flüssigkeit. Die konzentrierte Säure zerstört organische Stoffe (z.B. Baumwolle, Holz, Papier, Zucker) und färbt diese dabei schwarz. Die Säure ist stark hygroskopisch; beim Vermischen mit Wasser wird Wärme freigesetzt.\n\nEtzt das Wasser, dann die Säure, sonst geschieht das Ungeheure!\n\nSie wird hergestellt durch das Kontaktverfahren. Die konzentrierte Säure zeigt fast keine elektrische Leitfähigkeit. Die verdünnte Säure zersetzt unedle Metalle unter Bildung von Wasserstoff. Kupfer und edle Metalle werden nicht angegriffen. In der Autobatterie wird die 38%ige Säure als Elektrolyt eingesetzt (Batteriesäure).",
+      "key_points": [
+        "Summenformel: $H_2SO_4$",
+        "Molare Masse: 98,079 g/mol",
+        "Ölige, farblose Flüssigkeit, stark hygroskopisch",
+        "Zerstört organische Stoffe (Verkohlung)",
+        "Merksatz: Erst das Wasser, dann die Säure",
+        "Herstellung durch Kontaktverfahren",
+        "Verdünnte Säure zersetzt unedle Metalle unter $H_2$-Bildung",
+        "Verwendung als Batteriesäure (38%)"
+      ],
+      "final_result": "$H_2SO_4$, M = 98,079 g/mol",
+      "source_page": 37
+    },
+    {
+      "id": "A7_Salpetersaeure",
+      "number": "7 - Salpetersäure",
+      "answer": "Summenformel: $HNO_3$\n\nMolare Masse: 63,01 g/mol (reine Säure)\nDichte: 1,42 g/mL\nMischbarkeit mit Wasser: in jedem Verhältnis mischbar\n\nDie reine Säure ist unter Luftabschluss farblos, durch Kontakt mit anderen Stoffen entwickeln sich jedoch rotbraune Oxide, die die Säure anfärben und als Dämpfe entwichen. Die Säure wirkt stark oxidierend und kann Stroh entzünden und löst viele Metalle auf, auch Kupfer und Silber. Gold wird von der Säure alleine nicht angegriffen. Deshalb kann mit der 50%igen Säure eine Goldprobe durchgeführt werden (Scheideewasser).\n\nEin Gemisch mit Salzsäure löst auch Gold auf und wird daher als Königswasser bezeichnet. Technisch hergestellt wird die Säure durch katalytische Ammoniakverbrennung (Ostwald-Verfahren). Auch die Salze dieser Säure sind wichtig für die Herstellung von Düngemitteln, aber auch von Farbstoffen, Sprengstoffen und Medikamenten.",
+      "key_points": [
+        "Summenformel: $HNO_3$",
+        "Molare Masse: 63,01 g/mol",
+        "Reine Säure farblos, entwickelt rotbraune Oxide (Dämpfe)",
+        "Stark oxidierend, löst viele Metalle (auch Cu, Ag), nicht Gold",
+        "50%ige Säure als Scheidewasser für Goldprobe",
+        "Gemisch mit HCl = Königswasser (löst Gold)",
+        "Herstellung durch Ostwald-Verfahren (katalytische Ammoniakverbrennung)",
+        "Salze wichtig für Düngemittel, Farbstoffe, Sprengstoffe, Medikamente"
+      ],
+      "final_result": "$HNO_3$, M = 63,01 g/mol",
+      "source_page": 37
+    },
+    {
+      "id": "A5",
+      "number": "5",
+      "answer": "Der pH-Wert einer schwachen Säure kann nicht direkt über die Konzentration berechnet werden, da die Säure nicht vollständig dissoziiert. Stattdessen muss das Gleichgewicht der Dissoziation berücksichtigt werden. Für eine schwache Säure $HA$ gilt: $HA \\rightleftharpoons H^+ + A^-$. Mit der Säurekonstante $K_S = \\frac{[H^+][A^-]}{[HA]}$ und der Näherung für schwache Säuren ergibt sich: $[H^+] \\approx \\sqrt{K_S \\cdot c_0}$, wobei $c_0$ die Ausgangskonzentration ist. Daraus folgt: $pH = -\\log([H^+]) = -\\log(\\sqrt{K_S \\cdot c_0}) = \\frac{1}{2}(pK_S - \\log c_0)$.",
+      "key_points": [
+        "Schwache Säuren dissoziieren nicht vollständig",
+        "Gleichgewicht der Dissoziation muss berücksiert werden",
+        "Verwendung der Säurekonstante $K_S$",
+        "Näherungsformel $[H^+] \\approx \\sqrt{K_S \\cdot c_0}$",
+        "pH-Berechnung über $pH = \\frac{1}{2}(pK_S - \\log c_0)$"
+      ],
+      "final_result": "$pH = \\frac{1}{2}(pK_S - \\log c_0)$",
+      "source_page": 5
+    },
+    {
+      "id": "A8",
+      "number": "8",
+      "answer": "Die Tabelle zeigt die Zuordnung von Säuren zu ihren Säurerest-Ionen:\n\nSalzsäure $\\text{HCl}$ bildet Chlorid-Ion $\\text{Cl}^-$\n\nKohlensäure $\\text{H}_2\\text{CO}_3$ bildet Hydrogencarbonat-Ion $\\text{HCO}_3^-$ und Carbonat-Ion $\\text{CO}_3^{2-}$\n\nSchwefelsäure $\\text{H}_2\\text{SO}_4$ bildet Hydrogensulfat-Ion $\\text{HSO}_4^-$ und Sulfat-Ion $\\text{SO}_4^{2-}$\n\nSchweflige Säure $\\text{H}_2\\text{SO}_3$ bildet Hydrogensulfit-Ion $\\text{HSO}_3^-$ und Sulfit-Ion $\\text{SO}_3^{2-}$\n\nSalpetersäure $\\text{HNO}_3$ bildet Nitrat-Ion $\\text{NO}_3^-$\n\nPhosphorsäure $\\text{H}_3\\text{PO}_4$ bildet Dihydrogenphosphat-Ion $\\text{H}_2\\text{PO}_4^-$, Hydrogenphosphat-Ion $\\text{HPO}_4^{2-}$ und Phosphat-Ion $\\text{PO}_4^{3-}$",
+      "key_points": [
+        "Korrekte Zuordnung der Säuren zu ihren Säurerest-Ionen",
+        "Mehrprotonige Säuren bilden mehrere Ionen (z.B. $\\text{H}_2\\text{CO}_3$ bildet $\\text{HCO}_3^-$ und $\\text{CO}_3^{2-}$)",
+        "Korrekte chemische Formeln und Ladungen der Ionen",
+        "Systematische Nomenklatur (Hydrogencarbonat, Hydrogensulfat etc.)"
+      ],
+      "final_result": "",
+      "source_page": 38
+    },
+    {
+      "id": "A9a",
+      "number": "9a)",
+      "answer": "Durch die Verbrennung von fossilen Brennstoffen entstehen Oxide wie Kohlenstoffdioxid, Schwefeldioxid und Stickoxide unterschiedlicher Zusammensetzung. Durch die Reaktion mit dem Regenwasser bilden sich Säuren, die den pH-Wert des Regens stark absinken lassen. Dieser saure Regen greift Gebäude und Denkmäler an und lässt den pH-Wert in Gewässern und im Boden ebenfalls absinken. Dies beeinträchtigt die Gesundheit der darin lebenden Organismen, z.B. der Fische in den Gewässern, aber auch Bäume werden dauerhaft geschädigt.",
+      "key_points": [
+        "Verbrennung fossiler Brennstoffe erzeugt Oxide ($\\text{CO}_2$, $\\text{SO}_2$, $\\text{NO}_x$)",
+        "Reaktion mit Regenwasser bildet Säuren",
+        "pH-Wert-Absenkung in Regen, Gewässern und Boden",
+        "Schädigung von Gebäuden und Denkmälern",
+        "Beeinträchtigung von Organismen (Fische, Bäume)"
+      ],
+      "final_result": "",
+      "source_page": 38
+    },
+    {
+      "id": "A9b",
+      "number": "9b)",
+      "answer": "An Bulimie erkrankte Menschen nehmen große Mengen an Lebensmitteln zu sich, die sie nach dem Essen wieder erbrechen. Dabei wird auch immer stark saure Magensäure erbrochen, die so regelmäßig Kontakt mit den Zähnen hat. Durch diese Säure wird der Zahnschmelz demineralisiert, er bietet nicht mehr einen so guten Schutz gegen schädigende Einflüsse.",
+      "key_points": [
+        "Bulimie führt zu häufigem Erbrechen",
+        "Magensäure gelangt regelmäßig in Kontakt mit den Zähnen",
+        "Säure demineralisiert den Zahnschmelz",
+        "Schutzfunktion des Zahnschmelzes wird beeinträchtigt"
+      ],
+      "final_result": "",
+      "source_page": 38
+    },
+    {
+      "id": "10",
+      "number": "10",
+      "answer": "Die Zuordnung lautet:\nA - D: Laugen sind in der Lage, Protonen aufzunehmen.\nB - A: Laugen entstehen bei der Reaktion von Alkali-, Erdalkalimetallen mit Wasser unter Bildung von Wasserstoff.\nC - D: Aber auch Metalloxide reagieren mit Wasser zu Laugen.\nD - A: Laugen sind in der Lage, Protonen aufzunehmen.\n\nDie chemischen Gleichungen:\nA: $\\text{NaOH} \\longrightarrow \\text{Na}^+ + \\text{OH}^-$ und $\\text{OH}^- + \\text{H}^+ \\longrightarrow \\text{H}_2\\text{O}$ (D)\nB: $2\\text{Na} + 2\\text{H}_2\\text{O} \\longrightarrow 2\\text{NaOH} + \\text{H}_2$ (B)\nC: $\\text{MgO} + \\text{H}_2\\text{O} \\longrightarrow \\text{Mg(OH)}_2$ (C)\nD: $\\text{NH}_3 + \\text{H}_2\\text{O} \\longrightarrow \\text{NH}_4\\text{OH}$ (A)",
+      "key_points": [
+        "A-D: Laugen nehmen Protonen auf (Brønsted-Base)",
+        "B-A: Alkali- und Erdalkalimetalle reagieren mit Wasser unter Wasserstoffbildung",
+        "C-D: Metalloxide reagieren mit Wasser zu Laugen",
+        "D-A: Ammoniak reagiert als Base mit Wasser",
+        "Korrekte Zuordnung der chemischen Gleichungen zu den Aussagen",
+        "Bei Natronlauge (NaOH) ist die Hydroxid-Gruppe für die basische Eigenschaft zuständig"
+      ],
+      "final_result": "A-D, B-A, C-D, D-A",
+      "source_page": 39
+    },
+    {
+      "id": "11",
+      "number": "11",
+      "answer": "Unter Laugen versteht man Stoffe, die Protonen aufnehmen können, also Protonen-Akzeptoren sind.",
+      "key_points": [
+        "Laugen sind Protonen-Akzeptoren",
+        "Laugen können Protonen aufnehmen",
+        "Definition nach Brønsted"
+      ],
+      "final_result": "Laugen = Protonen-Akzeptoren",
+      "source_page": 40
+    },
+    {
+      "id": "12",
+      "number": "12",
+      "answer": "Laugen fühlen sich glitschig und seifig an, weil sie die oberste Hautschicht angreifen und die darin enthaltenen Eiweiße zerstören.",
+      "key_points": [
+        "Glitschiges und seifiges Gefühl",
+        "Angriff auf oberste Hautschicht",
+        "Zerstörung von Eiweißen"
+      ],
+      "final_result": "",
+      "source_page": 40
+    },
+    {
+      "id": "13",
+      "number": "13",
+      "answer": "Die vier \"WANTED\"-Poster zeigen wichtige Säuren und Basen:\n\n**Ammoniakwasser** ($NH_3(aq)$): Molare Masse 17,03 g/mol, Dichte 0,91 g/mL (25%ige Lösung), sehr gute Mischbarkeit mit Wasser. Die wässrige, wasserklare Lösung nennt man auch Salmiakwasser und riecht nach einem bekannten Gas. Die Herstellung der Lauge erfolgt durch Einleiten von Gas in Wasser. Verwendung z.B. bei Düngemittel, Salpetersäure und anderen Stickstoffverbindungen, auch in starken Putzmitteln (Grundreiniger) enthalten.\n\n**Kalilauge** ($KOH(aq)$): Molare Masse 56,105 g/mol, Dichte 1,5 g/mL (47%ige Lösung), sehr gute Mischbarkeit mit Wasser. Die Lauge ähnelt der Natronlauge, kann Haut und Augen verätzen. Die Kristalle sind weißlich und hygroskopisch. Die Lauge nimmt Kohlenstoffdioxid aus der Luft auf und bindet es als Salz. Wird zur Herstellung von Schmierseife und flüssigen Waschmitteln verwendet.\n\n**Natronlauge** ($NaOH(aq)$): Molare Masse 40 g/mol, Dichte 1,35 g/mL (32%ige Lösung), sehr gute Mischbarkeit mit Wasser. Die Kristalle sind weiß und stark hygroskopisch. Lösen sich unter Wärmeentwicklung in Wasser auf. Wirkt stark ätzend auf Haut und Augen. Wird zur Herstellung von Seife verwendet. Bei der Papierherstellung verwendet, zum Aufschluss von Holz und Stroh. Im Haushalt in fester Form in Abflussreinigern oder flüssig in Abbeizmittel für Holz. Laugenbrezel erhalten ihre schmackhafte Kruste durch diese Lauge.\n\n**Kalkwasser/Calciumhydroxidlösung** ($Ca(OH)_2(aq)$): Molare Masse 74,093 g/mol, Dichte 2,20 g/mL, nur begrenzte Mischbarkeit mit Wasser. Im getrockneten Zustand handelt es sich um ein weißes, staubiges Pulver, das sich nur schlecht in Wasser löst. Die Lösung reizt die Haut und reagiert basisch. Die Herstellung erfolgt durch Löschen von Branntkalk in Wasser. Dient als Nachweismittel für Kohlenstoffdioxid (weißer Niederschlag). Weitere Anwendungsgebiete sind die Herstellung von Mörtel oder von Wandfarbe.",
+      "key_points": [
+        "Ammoniakwasser ($NH_3(aq)$): 17,03 g/mol, riecht nach Gas, Verwendung in Düngemitteln und Putzmitteln",
+        "Kalilauge ($KOH$): 56,105 g/mol, ähnelt Natronlauge, bindet CO₂, für Schmierseife und Waschmittel",
+        "Natronlauge ($NaOH$): 40 g/mol, stark hygroskopisch, stark ätzend, Seifenherstellung, Laugenbrezel",
+        "Kalkwasser ($Ca(OH)_2$): 74,093 g/mol, begrenzt löslich, Nachweis für CO₂ (weißer Niederschlag), Mörtel/Wandfarbe"
+      ],
+      "final_result": "",
+      "source_page": 42
+    },
+    {
+      "id": "14",
+      "number": "14",
+      "answer": "Wenn man passende Mengen an Säuren und Laugen zusammengibt, erhält man eine neutrale Lösung. Die Protonen aus der Säure reagieren mit den Hydroxid-Ionen der Lauge zu Wassermolekülen. Die Säure ist also der Protonendonator und die Lauge der Protonenakzeptor. Bei dieser Reaktion wird die sogenannte Neutralisationswärme frei. Da bei jeder Neutralisation, unabhängig davon welche Säuren und Laugen miteinander reagieren, nur die Reaktion zwischen Protonen und Hydroxid-Ionen eine Rolle spielt, ist der Betrag der Neutralisationswärme immer gleich, nämlich 57,3 kJ pro Mol Protonen.",
+      "key_points": [
+        "Säure + Lauge → neutrale Lösung",
+        "Protonen ($H^+$) + Hydroxid-Ionen ($OH^-$) → Wassermoleküle ($H_2O$)",
+        "Säure = Protonendonator, Lauge = Protonenakzeptor",
+        "Neutralisationswärme wird frei",
+        "Neutralisationswärme ist immer gleich: 57,3 kJ pro Mol Protonen"
+      ],
+      "final_result": "Neutralisationswärme = 57,3 kJ/mol Protonen",
+      "source_page": 42
+    },
+    {
+      "id": "15",
+      "number": "15",
+      "answer": "Die Säurerest-Ionen der Säure und die Metall-Ionen der Lauge sind in der Lösung gelöst. Wird diese Lösung eingedampft, entsteht aus diesen Ionen ein Salz.\n\nTabelle:\n$\\text{HCl}$: $\\text{NaCl}$, $\\text{NH}_4\\text{Cl}$, $\\text{CaCl}_2$\n$\\text{HNO}_3$: $\\text{NaNO}_3$, $\\text{NH}_4\\text{NO}_3$, $\\text{Ca(NO}_3)_2$\n$\\text{H}_2\\text{SO}_4$: $\\text{Na}_2\\text{SO}_4$, $(\\text{NH}_4)_2\\text{SO}_4$, $\\text{CaSO}_4$\n$\\text{H}_3\\text{PO}_4$: $\\text{Na}_3\\text{PO}_4$, $(\\text{NH}_4)_3\\text{PO}_4$, $\\text{Ca}_3(\\text{PO}_4)_2$",
+      "key_points": [
+        "Säurerest-Ionen und Metall-Ionen sind in Lösung",
+        "Beim Eindampfen entsteht ein Salz",
+        "Korrekte Salzformeln durch Kombination von Kation und Anion",
+        "Berücksichtigung der Ladungen (z.B. $\\text{Ca}^{2+}$ mit $\\text{Cl}^-$ ergibt $\\text{CaCl}_2$)"
+      ],
+      "final_result": "Tabelle mit 12 Salzformeln",
+      "source_page": 43
+    },
+    {
+      "id": "12a",
+      "number": "12 a)",
+      "answer": "Der pH-Wert von 5,5 entspricht dem pH-Wert des Säureschutzmantels unserer Haut. Durch einen intakten Säureschutzmantel ist unsere Haut besser vor krankmachenden Pilzen und Bakterien geschützt.",
+      "key_points": [
+        "pH-Wert 5,5 entspricht Säureschutzmantel der Haut",
+        "Schutz vor Pilzen und Bakterien",
+        "Bedeutung des intakten Säureschutzmantels"
+      ],
+      "final_result": "pH = 5,5",
+      "source_page": 40
+    },
+    {
+      "id": "12b",
+      "number": "12 b)",
+      "answer": "Für eine Dauerwelle müssen chemische Bindungen (die sogenannten Schwefelbrücken) im Haar geöffnet werden. Die Haare werden in eine neue Form gelegt und die Brücken werden in dieser neuen Form anders als vorher verknüpft. Zum Öffnen dieser Schwefelbrücken können saure oder alkalische Reagenzien verwendet werden. Alkalische Reagenzien wirken stärker und erzielen auch bei widerspenstigem Haar eine lang anhaltende Lockung. Die saure Dauerwelle ist milder, der pH-Wert ähnelt mehr dem natürlichen pH-Wert der Haare. Mit der sauren Dauerwelle können auch gefärbte Haare gewellt werden, allerdings ist die Dauerwelle nicht so haltbar und es hat sich gezeigt, dass die verwendeten Substanzen ein höheres Allergierisiko haben.",
+      "key_points": [
+        "Öffnen von Schwefelbrücken im Haar",
+        "Neuverknüpfung in anderer Form",
+        "Alkalische Dauerwelle: stärker, lang anhaltend",
+        "Saure Dauerwelle: milder, pH näher am natürlichen Wert, für gefärbte Haare geeignet",
+        "Saure Dauerwelle: weniger haltbar, höheres Allergierisiko"
+      ],
+      "final_result": "",
+      "source_page": 40
+    },
+    {
+      "id": "c",
+      "number": "c)",
+      "answer": "Der Ammoniak führt zu einem Aufquellen der Haare, sodass die Farbstoffe beim Färben in das Innere der Haare gelangen, dadurch wird die Färbung dauerhafter.",
+      "key_points": [
+        "Ammoniak führt zum Aufquellen der Haare",
+        "Farbstoffe gelangen ins Innere der Haare",
+        "Färbung wird dadurch dauerhafter"
+      ],
+      "final_result": "",
+      "source_page": 41
+    },
+    {
+      "id": "d",
+      "number": "d)",
+      "answer": "Mörtel wird verwendet, um Steine dauerhaft miteinander zu verbinden oder um Gebäude zu verputzen. Gewonnen wird Mörtel aus Kalkstein, der gebrannt wird.\n\n$\\text{CaCO}_3 \\longrightarrow \\text{CaO} + \\text{CO}_2$\n\nDieser Branntkalk (CaO) wird auf der Baustelle mit Wasser (Kalk löschen) und Sand zum eigentlichen Mörtel verrührt, der zum Mauern oder Verputzen verwendet wird.\n\n$\\text{CaO} + \\text{H}_2\\text{O} \\longrightarrow \\text{Ca(OH)}_2$ (Löschkalk, eine Base)\n\nIn den nachfolgenden Wochen härtet der Mörtel durch einen chemischen Prozess aus. Durch Aufnahme von Kohlenstoffdioxid aus der Luft bildet sich stabiles Calciumcarbonat.\n\n$\\text{Ca(OH)}_2 + \\text{CO}_2 \\longrightarrow \\text{CaCO}_3 + \\text{H}_2\\text{O}$",
+      "key_points": [
+        "Mörtel verbindet Steine oder wird zum Verputzen verwendet",
+        "Herstellung aus Kalkstein durch Brennen: $\\text{CaCO}_3 \\rightarrow \\text{CaO} + \\text{CO}_2$",
+        "Löschen mit Wasser: $\\text{CaO} + \\text{H}_2\\text{O} \\rightarrow \\text{Ca(OH)}_2$",
+        "Aushärtung durch CO₂-Aufnahme: $\\text{Ca(OH)}_2 + \\text{CO}_2 \\rightarrow \\text{CaCO}_3 + \\text{H}_2\\text{O}$"
+      ],
+      "final_result": "",
+      "source_page": 41
+    },
+    {
+      "id": "e",
+      "number": "e)",
+      "answer": "Ein Mol Natriumhydroxid wiegt 40 g. Um eine Lösung der Konzentration $0{,}2 \\, \\text{mol} \\cdot \\text{L}^{-1}$ zu erhalten, muss man also 8 g Natriumhydroxid in einem Liter Wasser lösen.",
+      "key_points": [
+        "Molare Masse von NaOH: 40 g/mol",
+        "Berechnung: $0{,}2 \\, \\text{mol/L} \\times 40 \\, \\text{g/mol} = 8 \\, \\text{g}$",
+        "8 g NaOH in 1 L Wasser lösen"
+      ],
+      "final_result": "8 g NaOH pro Liter",
+      "source_page": 41
+    },
+    {
+      "id": "f",
+      "number": "f)",
+      "answer": "1 Mol Calciumhydroxid ($\\text{Ca(OH)}_2$) wiegt 74 g. In einem Liter mit der Konzentration $1{,}5 \\, \\text{mol} \\cdot \\text{L}^{-1}$ sind also 111 g Calciumhydroxid gelöst. In 800 mL (0,8 L) sind es dann 88,8 g.",
+      "key_points": [
+        "Molare Masse von $\\text{Ca(OH)}_2$: 74 g/mol",
+        "Masse in 1 L: $1{,}5 \\, \\text{mol/L} \\times 74 \\, \\text{g/mol} = 111 \\, \\text{g}$",
+        "Masse in 800 mL: $111 \\, \\text{g} \\times 0{,}8 = 88{,}8 \\, \\text{g}$"
+      ],
+      "final_result": "88,8 g",
+      "source_page": 41
+    },
+    {
+      "id": "16a",
+      "number": "16 a)",
+      "answer": "$\\text{NaBr}$: Natriumbromid\n$\\text{NaHSO}_4$: Natriumhydrogensulfat\n$\\text{CaCO}_3$: Calciumcarbonat\n$\\text{Ba}_3(\\text{PO}_4)_2$: Bariumphosphat",
+      "key_points": [
+        "Korrekte deutsche Salznamen",
+        "Metall-Name + Säurerest-Name",
+        "Bei Hydrogensalzen: 'hydrogen' im Namen",
+        "Korrekte Endungen (-id, -at, -it)"
+      ],
+      "final_result": "Vier korrekte Salznamen",
+      "source_page": 43
+    },
+    {
+      "id": "16b",
+      "number": "16 b)",
+      "answer": "$\\text{NaOH} + \\text{HBr} \\longrightarrow \\text{NaBr} + \\text{H}_2\\text{O}$\n$\\text{NaOH} + \\text{H}_2\\text{SO}_4 \\longrightarrow \\text{NaHSO}_4 + \\text{H}_2\\text{O}$\n$\\text{Ca(OH)}_2 + \\text{H}_2\\text{CO}_3 \\longrightarrow \\text{CaCO}_3 + 2\\,\\text{H}_2\\text{O}$\n$3\\,\\text{Ba(OH)}_2 + 2\\,\\text{H}_3\\text{PO}_4 \\longrightarrow \\text{Ba}_3(\\text{PO}_4)_2 + 6\\,\\text{H}_2\\text{O}$",
+      "key_points": [
+        "Neutralisationsreaktionen (Base + Säure → Salz + Wasser)",
+        "Korrekte Stöchiometrie",
+        "Alle Gleichungen ausgeglichen",
+        "Korrekte Produkte (Salz und Wasser)"
+      ],
+      "final_result": "Vier ausgeglichene Neutralisationsgleichungen",
+      "source_page": 43
+    },
+    {
+      "id": "17a",
+      "number": "17 a)",
+      "answer": "Da sowohl die Salzsäure als auch die Natronlauge einwertig sind, braucht man 1 Liter Natronlauge. Die Konzentration der Natronlauge ist doppelt so hoch wie die Konzentration der Salzsäure, daher braucht man nur das halbe Volumen.",
+      "key_points": [
+        "Beide Säure und Base sind einwertig",
+        "Konzentration der Natronlauge ist doppelt so hoch",
+        "Daher wird nur halbes Volumen benötigt",
+        "Antwort: 1 Liter (sollte 0,5 Liter sein - Fehler im Original)"
+      ],
+      "final_result": "0,5 Liter Natronlauge",
+      "source_page": 43
+    },
+    {
+      "id": "17b",
+      "number": "17 b)",
+      "answer": "Von dem Kalkwasser benötigt man sogar nur 0,5 Liter. Zum einen ist die Konzentration doppelt so hoch wie die Konzentration der Salzsäure, zudem besitzt Kalkwasser ($\\text{Ca(OH)}_2$) 2 Hydroxid-Ionen pro Molekül, sodass ein Molekül Calciumhydroxid 2 Moleküle der Salzsäure (HCl) neutralisieren kann.",
+      "key_points": [
+        "Konzentration von Kalkwasser ist doppelt so hoch",
+        "$\\text{Ca(OH)}_2$ ist zweiwertige Base (2 OH⁻-Ionen)",
+        "Ein Molekül $\\text{Ca(OH)}_2$ neutralisiert 2 HCl-Moleküle",
+        "Daher nur 0,5 Liter benötigt"
+      ],
+      "final_result": "0,5 Liter Kalkwasser",
+      "source_page": 43
+    },
+    {
+      "id": "18a",
+      "number": "18 a)",
+      "answer": "Abwässer mit einem sauren oder alkalischen pH-Wert können die Abwasserleitungen schädigen und auf Dauer zerstören. Das Abwasser wird einer Kläranlage zugeführt, bevor es danach in Flüsse geleitet wird. Die wichtigen Mikroorganismen in einer Kläranlage können durch ungünstige pH-Werte absterben.",
+      "key_points": [
+        "Schädigung der Abwasserleitungen durch extreme pH-Werte",
+        "Mikroorganismen in Kläranlagen sind pH-empfindlich",
+        "Ungünstige pH-Werte können Mikroorganismen töten",
+        "Schutz der Gewässer"
+      ],
+      "final_result": "",
+      "source_page": 43
+    }
+  ]
+}

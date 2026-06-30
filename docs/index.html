@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#2255cc" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Säuren &amp; Basen" />
+  <link rel="apple-touch-icon" href="./icon.svg" />
+  <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <title>Säuren &amp; Basen – Lernen</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="app-header">
+    <button id="btn-menu" class="icon-btn" aria-label="Aufgabenliste öffnen" aria-expanded="false">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z"/></svg>
+    </button>
+    <div class="header-titles">
+      <h1>Säuren &amp; Basen</h1>
+      <div class="progress muted" id="progress-text">–</div>
+    </div>
+    <button id="btn-prev" class="icon-btn" aria-label="Vorherige Aufgabe">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M15.41 16.59 10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg>
+    </button>
+    <button id="btn-next-top" class="icon-btn" aria-label="Nächste Aufgabe">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="m8.59 16.59 4.58-4.59-4.58-4.59L10 6l6 6-6 6z"/></svg>
+    </button>
+    <button id="btn-settings" class="icon-btn" aria-label="Einstellungen">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M19.14 12.94c.04-.31.06-.62.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54A.484.484 0 0 0 13.91 2h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94 0 .31.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+    </button>
+  </header>
+
+  <div id="backdrop" hidden></div>
+
+  <main class="app-main">
+    <aside id="sidebar" aria-label="Aufgabenliste">
+      <div class="sidebar-header">
+        <h2>Aufgaben</h2>
+        <button id="btn-close-sidebar" class="icon-btn small" aria-label="Liste schließen">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </div>
+      <div class="filter">
+        <label for="topic-filter">Thema</label>
+        <select id="topic-filter"><option value="">Alle</option></select>
+      </div>
+      <div class="filter">
+        <input type="search" id="search" placeholder="Suchen…" autocomplete="off" />
+      </div>
+      <ol id="task-list" role="list"></ol>
+    </aside>
+
+    <section id="task-view">
+      <div id="task-empty" class="muted center">Lade Aufgaben…</div>
+      <article id="task-card" hidden>
+        <div class="task-meta">
+          <span id="task-number" class="task-number"></span>
+          <span class="badge" id="task-topic"></span>
+          <span class="badge subtle" id="task-type"></span>
+        </div>
+        <div id="task-question" class="task-question"></div>
+        <div id="task-given" class="task-given"></div>
+
+        <form class="answer-area" onsubmit="return false;">
+          <label for="answer">Deine Antwort</label>
+          <textarea id="answer" rows="5" autocomplete="off" autocorrect="on" spellcheck="true"
+                    placeholder="Schreibe Deine Lösung. Formeln in LaTeX, z.B. $H_3O^+$"></textarea>
+          <div class="actions primary-row">
+            <button id="btn-evaluate" class="primary" type="submit">Prüfen</button>
+            <button id="btn-next" type="button">Nächste →</button>
+          </div>
+          <div class="actions secondary-row">
+            <button id="btn-hint1" type="button">Tipp 1</button>
+            <button id="btn-hint2" type="button">Tipp 2</button>
+            <button id="btn-hint3" type="button">Tipp 3</button>
+            <button id="btn-solution" class="ghost danger" type="button">Musterlösung</button>
+          </div>
+        </form>
+
+        <div id="feedback" class="feedback" hidden></div>
+        <div id="hint-box" class="hint" hidden></div>
+        <div id="solution-box" class="solution" hidden></div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Einstellungen / API-Key-Dialog -->
+  <dialog id="settings-dialog">
+    <form method="dialog" class="settings">
+      <h2>Einstellungen</h2>
+      <p class="muted small">
+        Damit die KI-Bewertung und Tipps funktionieren, brauchst Du einen <a href="https://console.anthropic.com/" target="_blank" rel="noopener">Anthropic-API-Key</a>.
+        Der Key wird ausschließlich lokal in Deinem Browser gespeichert und direkt an Anthropic geschickt — nirgendwo sonst.
+      </p>
+      <label for="api-key">Anthropic API Key</label>
+      <input type="password" id="api-key" placeholder="sk-ant-…" autocomplete="off" />
+
+      <label for="model">Modell</label>
+      <select id="model">
+        <option value="claude-sonnet-4-5">claude-sonnet-4-5 (empfohlen)</option>
+        <option value="claude-opus-4-5">claude-opus-4-5 (genauer, teurer)</option>
+        <option value="claude-haiku-4-5">claude-haiku-4-5 (schneller, günstiger)</option>
+      </select>
+
+      <div class="settings-row">
+        <label><input type="checkbox" id="show-progress" /> Fortschritt anzeigen</label>
+      </div>
+
+      <div class="dialog-actions">
+        <button type="button" id="btn-clear-progress" class="ghost">Fortschritt zurücksetzen</button>
+        <button type="button" id="btn-cancel-settings">Abbrechen</button>
+        <button type="button" id="btn-save-settings" class="primary">Speichern</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="./app.js"></script>
+</body>
+</html>

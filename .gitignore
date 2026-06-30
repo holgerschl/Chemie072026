@@ -1,0 +1,12 @@
+__pycache__/
+.venv/
+.env
+.env.txt
+_uebungen.txt
+_loesungen.txt
+_*.txt
+data/pages/
+data/extracted_raw/
+extract.log
+# Webapp ist Backend für lokalen Gebrauch; nur docs/ wird publiziert.
+# data/exercises.json bleibt im Repo, damit Lerneinheiten ohne erneutes OCR funktionieren.
