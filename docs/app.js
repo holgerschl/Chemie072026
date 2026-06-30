@@ -582,11 +582,14 @@ function buildTableWidget(task, cfg) {
 
   const intro = document.createElement("div");
   intro.className = "interactive-intro muted small";
-  intro.innerHTML =
-    'Tippe die Salzformel in jede Zelle. Unter-/Hochstellung kannst Du einfach ' +
-    'mit <code>_</code> und <code>^</code> schreiben, also <code>NaCl</code>, ' +
-    '<code>CaCl_2</code>, <code>(NH_4)_2SO_4</code>.';
+  intro.innerHTML = cfg.intro ||
+    'Tippe in jede leere Zelle die richtige Antwort. Unter- und Hochstellung ' +
+    'kannst Du einfach mit <code>_</code> und <code>^</code> schreiben, also ' +
+    '<code>NaCl</code>, <code>CaCl_2</code>, <code>(NH_4)_2SO_4</code>.';
   wrap.appendChild(intro);
+
+  // Brauchen wir eine Zeilen-Kopf-Spalte?
+  const hasRowLabels = cfg.rows.some((r) => r && r.label != null && r.label !== "");
 
   const tableWrap = document.createElement("div");
   tableWrap.className = "table-scroll";
@@ -596,7 +599,7 @@ function buildTableWidget(task, cfg) {
   // header
   const thead = document.createElement("thead");
   const headerRow = document.createElement("tr");
-  headerRow.appendChild(document.createElement("th"));
+  if (hasRowLabels) headerRow.appendChild(document.createElement("th"));
   cfg.columns.forEach((col) => {
     const th = document.createElement("th");
     th.innerHTML = renderChem(col);
@@ -609,20 +612,31 @@ function buildTableWidget(task, cfg) {
   const tbody = document.createElement("tbody");
   cfg.rows.forEach((row) => {
     const tr = document.createElement("tr");
-    const rowLabel = document.createElement("th");
-    rowLabel.scope = "row";
-    rowLabel.innerHTML = renderChem(row.label);
-    tr.appendChild(rowLabel);
-    row.answers.forEach((expected) => {
+    if (hasRowLabels) {
+      const rowLabel = document.createElement("th");
+      rowLabel.scope = "row";
+      rowLabel.innerHTML = renderChem(row.label || "");
+      tr.appendChild(rowLabel);
+    }
+    row.answers.forEach((cell) => {
       const td = document.createElement("td");
-      const input = document.createElement("input");
-      input.type = "text";
-      input.className = "cell-input";
-      input.autocomplete = "off";
-      input.autocapitalize = "off";
-      input.spellcheck = false;
-      input.dataset.expected = expected;
-      td.appendChild(input);
+      // Zelle vorgegeben? -> nur Text anzeigen, kein Eingabefeld
+      if (cell && typeof cell === "object" && cell.given != null) {
+        td.className = "cell-given";
+        td.innerHTML = renderChem(String(cell.given));
+      } else {
+        const expected = typeof cell === "string"
+          ? cell
+          : (cell && cell.expected) || "";
+        const input = document.createElement("input");
+        input.type = "text";
+        input.className = "cell-input";
+        input.autocomplete = "off";
+        input.autocapitalize = "off";
+        input.spellcheck = false;
+        input.dataset.expected = expected;
+        td.appendChild(input);
+      }
       tr.appendChild(td);
     });
     tbody.appendChild(tr);

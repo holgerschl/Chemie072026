@@ -441,6 +441,11 @@ button.ghost { background: transparent; }
 }
 .interactive-table thead th { background: rgba(127,127,127,0.08); font-weight: 700; }
 .interactive-table tbody th { background: rgba(127,127,127,0.04); font-weight: 700; min-width: 70px; }
+.interactive-table td.cell-given {
+  font-weight: 500;
+  background: rgba(127,127,127,0.05);
+  padding: 8px 10px;
+}
 .cell-input {
   width: 100%;
   min-width: 90px;

@@ -379,24 +379,80 @@
       }
     },
     {
-      "id": "8",
-      "number": "8",
-      "topic": "Säuren und Säurerest-Ionen",
+      "id": "8a",
+      "number": "8a",
+      "topic": "Säuren – Name und Formel",
       "type": "text",
-      "question": "Ergänze die Tabelle mit Namen und Formeln für Säuren und ihre Säurerest-Ionen.",
-      "given": "Teilweise ausgefüllte Tabelle: Salzsäure ($H_2CO_3$), Schwefelsäure, Schweflige Säure, Salpetersäure ($HNO_3$), Phosphorsäure; Säurerest-Ionen: Hydrogencarbonat-Ion, Carbonat-Ion, Hydrogensulfat-Ion, Hydrogensulfit-Ion, Sulfit-Ion, Nitrat-Ion, Dihydrogenphosphat-Ion, Phosphat-Ion ($HPO_4^{2-}$)",
+      "question": "Ergänze die Tabelle: Trage zu jeder Säure den fehlenden Namen oder die fehlende Formel ein.",
+      "given": "Vorgegeben sind: Salzsäure (Name), H_2CO_3 (Formel), Schwefelsäure (Name), Schweflige Säure (Name), HNO_3 (Formel), Phosphorsäure (Name).",
       "expected_answer_kind": "tabelle",
       "subtasks": [],
-      "source_page": 5,
+      "interactive": {
+        "type": "table",
+        "columns": ["Name", "Formel"],
+        "rows": [
+          { "answers": [ { "given": "Salzsäure" },        "HCl" ] },
+          { "answers": [ "Kohlensäure",                    { "given": "H_2CO_3" } ] },
+          { "answers": [ { "given": "Schwefelsäure" },    "H_2SO_4" ] },
+          { "answers": [ { "given": "Schweflige Säure" }, "H_2SO_3" ] },
+          { "answers": [ "Salpetersäure",                  { "given": "HNO_3" } ] },
+          { "answers": [ { "given": "Phosphorsäure" },    "H_3PO_4" ] }
+        ]
+      },
+      "source_page": 38,
       "solution": {
-        "id": "A8",
-        "number": "8",
-        "answer": "Die Tabelle zeigt die Zuordnung von Säuren zu ihren Säurerest-Ionen:\n\nSalzsäure $\\text{HCl}$ bildet Chlorid-Ion $\\text{Cl}^-$\n\nKohlensäure $\\text{H}_2\\text{CO}_3$ bildet Hydrogencarbonat-Ion $\\text{HCO}_3^-$ und Carbonat-Ion $\\text{CO}_3^{2-}$\n\nSchwefelsäure $\\text{H}_2\\text{SO}_4$ bildet Hydrogensulfat-Ion $\\text{HSO}_4^-$ und Sulfat-Ion $\\text{SO}_4^{2-}$\n\nSchweflige Säure $\\text{H}_2\\text{SO}_3$ bildet Hydrogensulfit-Ion $\\text{HSO}_3^-$ und Sulfit-Ion $\\text{SO}_3^{2-}$\n\nSalpetersäure $\\text{HNO}_3$ bildet Nitrat-Ion $\\text{NO}_3^-$\n\nPhosphorsäure $\\text{H}_3\\text{PO}_4$ bildet Dihydrogenphosphat-Ion $\\text{H}_2\\text{PO}_4^-$, Hydrogenphosphat-Ion $\\text{HPO}_4^{2-}$ und Phosphat-Ion $\\text{PO}_4^{3-}$",
+        "id": "8a",
+        "number": "8a",
+        "answer": "Salzsäure: HCl\nKohlensäure: H_2CO_3\nSchwefelsäure: H_2SO_4\nSchweflige Säure: H_2SO_3\nSalpetersäure: HNO_3\nPhosphorsäure: H_3PO_4",
         "key_points": [
-          "Korrekte Zuordnung der Säuren zu ihren Säurerest-Ionen",
-          "Mehrprotonige Säuren bilden mehrere Ionen (z.B. $\\text{H}_2\\text{CO}_3$ bildet $\\text{HCO}_3^-$ und $\\text{CO}_3^{2-}$)",
-          "Korrekte chemische Formeln und Ladungen der Ionen",
-          "Systematische Nomenklatur (Hydrogencarbonat, Hydrogensulfat etc.)"
+          "Salzsäure HCl",
+          "Kohlensäure H_2CO_3",
+          "Schwefelsäure H_2SO_4",
+          "Schweflige Säure H_2SO_3",
+          "Salpetersäure HNO_3",
+          "Phosphorsäure H_3PO_4"
+        ],
+        "final_result": "",
+        "source_page": 38
+      }
+    },
+    {
+      "id": "8b",
+      "number": "8b",
+      "topic": "Säurerest-Ionen – Name und Formel",
+      "type": "text",
+      "question": "Ergänze die Tabelle: Trage zu jedem Säurerest-Ion den fehlenden Namen oder die fehlende Formel ein. (Das erste Ion gehört zur Salzsäure.)",
+      "given": "Vorgegeben sind die meisten Namen sowie die Formel HPO_4^{2-} für das Hydrogenphosphat-Ion.",
+      "expected_answer_kind": "tabelle",
+      "subtasks": [],
+      "interactive": {
+        "type": "table",
+        "columns": ["Name", "Formel"],
+        "rows": [
+          { "answers": [ "Chlorid-Ion",                            "Cl^-" ] },
+          { "answers": [ { "given": "Hydrogencarbonat-Ion" },     "HCO_3^-" ] },
+          { "answers": [ { "given": "Carbonat-Ion" },             "CO_3^{2-}" ] },
+          { "answers": [ { "given": "Hydrogensulfat-Ion" },       "HSO_4^-" ] },
+          { "answers": [ { "given": "Hydrogensulfit-Ion" },       "HSO_3^-" ] },
+          { "answers": [ { "given": "Sulfit-Ion" },               "SO_3^{2-}" ] },
+          { "answers": [ { "given": "Nitrat-Ion" },               "NO_3^-" ] },
+          { "answers": [ { "given": "Dihydrogenphosphat-Ion" },   "H_2PO_4^-" ] },
+          { "answers": [ "Hydrogenphosphat-Ion",                   { "given": "HPO_4^{2-}" } ] },
+          { "answers": [ { "given": "Phosphat-Ion" },             "PO_4^{3-}" ] }
+        ]
+      },
+      "source_page": 38,
+      "solution": {
+        "id": "8b",
+        "number": "8b",
+        "answer": "Chlorid-Ion: Cl^-\nHydrogencarbonat-Ion: HCO_3^-\nCarbonat-Ion: CO_3^{2-}\nHydrogensulfat-Ion: HSO_4^-\nHydrogensulfit-Ion: HSO_3^-\nSulfit-Ion: SO_3^{2-}\nNitrat-Ion: NO_3^-\nDihydrogenphosphat-Ion: H_2PO_4^-\nHydrogenphosphat-Ion: HPO_4^{2-}\nPhosphat-Ion: PO_4^{3-}",
+        "key_points": [
+          "Chlorid-Ion Cl^-",
+          "Hydrogencarbonat-Ion HCO_3^- / Carbonat-Ion CO_3^{2-}",
+          "Hydrogensulfat-Ion HSO_4^-",
+          "Hydrogensulfit-Ion HSO_3^- / Sulfit-Ion SO_3^{2-}",
+          "Nitrat-Ion NO_3^-",
+          "Dihydrogenphosphat-Ion H_2PO_4^- / Hydrogenphosphat-Ion HPO_4^{2-} / Phosphat-Ion PO_4^{3-}"
         ],
         "final_result": "",
         "source_page": 38
