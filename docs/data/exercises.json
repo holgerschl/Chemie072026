@@ -529,24 +529,59 @@
       "number": "10",
       "topic": "Laugen und ihre Eigenschaften",
       "type": "text",
-      "question": "Laugen und ihre Eigenschaften: Welche Aussagen aus der ersten Spalte und der zweiten Spalte gehören zusammen? Suche auch die dazu passende Reaktionsgleichung und ergänze diese gegebenenfalls, sodass sie stimmt. Ordne den Spalten 2 und 3 die Buchstaben A bis D zu.",
-      "given": "Spalte 1: A) Laugen sind in der Lage, Protonen aufzunehmen. B) Laugen entstehen bei der Reaktion von Alkali-, Erdalkalimetallen mit Wasser. C) Aber auch Metalloxide reagieren mit Wasser. D) Laugen sind in der Lage, Protonen aufzunehmen.\n\nSpalte 2: unter Bildung von Wasserstoff. / zu Laugen. / Bei der Natronlauge (NaOH) ist dafür die Hydroxid-Gruppe zuständig. / Ammoniak reagiert dabei folgendermaßen:\n\nSpalte 3: $NaOH \\longrightarrow Na^+ + OH^-$, $OH^- + H^+ \\longrightarrow H_2O$ / $NH_3 + H_2O \\longrightarrow NH_4OH$ / $MgO + H_2O \\longrightarrow Mg(OH)_2$ / $2 Na + \\_\\_\\_H_2O \\longrightarrow 2 NaOH + H_2$",
+      "question": "Welche Aussagen aus der ersten Spalte und der zweiten Spalte gehören zusammen? Suche auch die dazu passende Reaktionsgleichung.",
+      "given": "4 Aussagen (A-D), 4 Beschreibungen, 4 Reaktionsgleichungen",
       "expected_answer_kind": "tabelle",
       "subtasks": [],
-      "source_page": 5,
+      "interactive": {
+        "type": "matching",
+        "pools": [
+          { "key": "desc", "label": "Beschreibungen" },
+          { "key": "eq",   "label": "Reaktionsgleichungen" }
+        ],
+        "items": [
+          {
+            "label": "A: Laugen sind in der Lage, Protonen aufzunehmen.",
+            "answers": {
+              "desc": "Bei der Natronlauge (NaOH) ist dafür die Hydroxid-Gruppe zuständig.",
+              "eq":   "NaOH -> Na^+ + OH^-;  OH^- + H^+ -> H_2O"
+            }
+          },
+          {
+            "label": "B: Laugen entstehen bei der Reaktion von Alkali- und Erdalkalimetallen mit Wasser,",
+            "answers": {
+              "desc": "unter Bildung von Wasserstoff.",
+              "eq":   "2 Na + 2 H_2O -> 2 NaOH + H_2"
+            }
+          },
+          {
+            "label": "C: Aber auch Metalloxide reagieren mit Wasser",
+            "answers": {
+              "desc": "zu Laugen.",
+              "eq":   "MgO + H_2O -> Mg(OH)_2"
+            }
+          },
+          {
+            "label": "D: Auch Ammoniak ist eine Lauge.",
+            "answers": {
+              "desc": "Ammoniak reagiert dabei folgendermaßen:",
+              "eq":   "NH_3 + H_2O -> NH_4OH"
+            }
+          }
+        ]
+      },
+      "source_page": 39,
       "solution": {
         "id": "10",
         "number": "10",
-        "answer": "Die Zuordnung lautet:\nA - D: Laugen sind in der Lage, Protonen aufzunehmen.\nB - A: Laugen entstehen bei der Reaktion von Alkali-, Erdalkalimetallen mit Wasser unter Bildung von Wasserstoff.\nC - D: Aber auch Metalloxide reagieren mit Wasser zu Laugen.\nD - A: Laugen sind in der Lage, Protonen aufzunehmen.\n\nDie chemischen Gleichungen:\nA: $\\text{NaOH} \\longrightarrow \\text{Na}^+ + \\text{OH}^-$ und $\\text{OH}^- + \\text{H}^+ \\longrightarrow \\text{H}_2\\text{O}$ (D)\nB: $2\\text{Na} + 2\\text{H}_2\\text{O} \\longrightarrow 2\\text{NaOH} + \\text{H}_2$ (B)\nC: $\\text{MgO} + \\text{H}_2\\text{O} \\longrightarrow \\text{Mg(OH)}_2$ (C)\nD: $\\text{NH}_3 + \\text{H}_2\\text{O} \\longrightarrow \\text{NH}_4\\text{OH}$ (A)",
+        "answer": "A: Laugen sind in der Lage, Protonen aufzunehmen. — Bei der Natronlauge (NaOH) ist dafür die Hydroxid-Gruppe zuständig. — NaOH -> Na^+ + OH^-;  OH^- + H^+ -> H_2O\nB: Laugen entstehen bei der Reaktion von Alkali- und Erdalkalimetallen mit Wasser, unter Bildung von Wasserstoff. — 2 Na + 2 H_2O -> 2 NaOH + H_2\nC: Aber auch Metalloxide reagieren mit Wasser zu Laugen. — MgO + H_2O -> Mg(OH)_2\nD: Auch Ammoniak ist eine Lauge. — Ammoniak reagiert dabei folgendermaßen: NH_3 + H_2O -> NH_4OH",
         "key_points": [
-          "A-D: Laugen nehmen Protonen auf (Brønsted-Base)",
-          "B-A: Alkali- und Erdalkalimetalle reagieren mit Wasser unter Wasserstoffbildung",
-          "C-D: Metalloxide reagieren mit Wasser zu Laugen",
-          "D-A: Ammoniak reagiert als Base mit Wasser",
-          "Korrekte Zuordnung der chemischen Gleichungen zu den Aussagen",
-          "Bei Natronlauge (NaOH) ist die Hydroxid-Gruppe für die basische Eigenschaft zuständig"
+          "A: Laugen nehmen Protonen auf (Brønsted-Base); bei NaOH übernimmt OH^- diese Rolle",
+          "B: Alkali-/Erdalkalimetalle reagieren mit Wasser unter Wasserstoffbildung (z.B. 2 Na + 2 H_2O -> 2 NaOH + H_2)",
+          "C: Metalloxide + Wasser -> Laugen (z.B. MgO + H_2O -> Mg(OH)_2)",
+          "D: Ammoniak ist ebenfalls eine Lauge: NH_3 + H_2O -> NH_4OH"
         ],
-        "final_result": "A-D, B-A, C-D, D-A",
+        "final_result": "A-1, B-2, C-3, D-4",
         "source_page": 39
       }
     },
