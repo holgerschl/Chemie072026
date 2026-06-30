@@ -220,6 +220,7 @@ button.ghost { background: transparent; }
 
 .solution { background: var(--warn-bg); border-color: rgba(138,107,0,0.4); }
 .solution h3 { margin: 0 0 8px; font-size: 15px; }
+.solution > div { white-space: pre-wrap; }
 .solution .final { margin-top: 8px; font-weight: 700; }
 
 .muted { color: var(--muted); }

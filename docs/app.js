@@ -1224,6 +1224,39 @@ function hasSolution(t) {
   return !!(s && !s.missing && (s.answer || (s.key_points && s.key_points.length)));
 }
 
+function mergeRawSolutions(tasks, rawSols) {
+  if (!Array.isArray(rawSols) || !rawSols.length) return;
+  const rawById = new Map();
+  rawSols.forEach((rs) => {
+    if (!rs || !rs.id) return;
+    rawById.set(rs.id, rs);
+    if (/^A/.test(rs.id)) rawById.set(rs.id.slice(1), rs);
+  });
+  tasks.forEach((t) => {
+    if (!t || !t.solution || !t.solution.missing) return;
+    if (!Array.isArray(t.subtasks) || !t.subtasks.length) return;
+    const parts = [];
+    const keyPts = [];
+    let finalRes = "";
+    t.subtasks.forEach((st) => {
+      const sol = rawById.get(st.id);
+      if (!sol) return;
+      if (sol.answer) parts.push(`${st.id}) ${sol.answer}`);
+      if (Array.isArray(sol.key_points)) {
+        sol.key_points.forEach((p) => keyPts.push(`${st.id}: ${p}`));
+      }
+      if (sol.final_result && !finalRes) finalRes = sol.final_result;
+    });
+    if (parts.length || keyPts.length) {
+      t.solution = {
+        answer: parts.join("\n\n"),
+        key_points: keyPts,
+        final_result: finalRes || ""
+      };
+    }
+  });
+}
+
 ui.answer.addEventListener("input", () => {
   if (state.currentId) localStorage.setItem(LS.ANSWER_PREFIX + state.currentId, ui.answer.value);
 });
@@ -1644,6 +1677,8 @@ async function init() {
     if (!r.ok) throw new Error("exercises.json nicht gefunden (Status " + r.status + ")");
     const data = await r.json();
     state.tasks = (data.tasks || []).filter((t) => t && t.id);
+    // Wenn Parent-Aufgaben "missing" sind, aus raw_solutions zusammenbauen
+    mergeRawSolutions(state.tasks, data.raw_solutions || []);
     state.filtered = state.tasks.slice();
     const topics = [...new Set(state.tasks.map((t) => t.topic).filter(Boolean))].sort();
     topics.forEach((t) => {
