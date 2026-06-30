@@ -123,6 +123,18 @@
       "question": "In unserem Körper gibt es Flüssigkeiten und Bereiche mit unterschiedlichen pH-Werten. Ordne die richtigen pH-Werte zu: 1; 4–6; 5–8; 5,5; 7; 7,4; 8,5",
       "given": "Körperflüssigkeiten: Speichel, Magensaft, Dünndarm-sekret, Blut, Urin, Haut, Schweiß; pH-Werte: 1; 4–6; 5–8; 5,5; 7; 7,4; 8,5",
       "expected_answer_kind": "tabelle",
+      "interactive": {
+        "type": "matching",
+        "items": [
+          { "label": "Speichel", "answer": "7" },
+          { "label": "Magensaft", "answer": "1" },
+          { "label": "Dünndarmsekret", "answer": "8,5" },
+          { "label": "Blut", "answer": "7,4" },
+          { "label": "Urin", "answer": "5–8" },
+          { "label": "Haut", "answer": "5,5" },
+          { "label": "Schweiß", "answer": "4–6" }
+        ]
+      },
       "source_page": 35,
       "solution": {
         "id": "1f",

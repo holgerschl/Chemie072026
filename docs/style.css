@@ -232,8 +232,88 @@ button.ghost { background: transparent; }
 .feedback sub, .feedback sup,
 .hint sub, .hint sup,
 .solution sub, .solution sup,
-.task-given sub, .task-given sup {
+.task-given sub, .task-given sup,
+.interactive sub, .interactive sup {
   font-size: 0.78em; line-height: 0;
+}
+
+/* ---- Interaktive Karten-Aufgaben (drag/tap) ---- */
+.interactive {
+  margin: 14px 0 8px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+.interactive-intro { margin: 0 0 10px; line-height: 1.4; }
+
+.match-slots {
+  list-style: none; padding: 0; margin: 0 0 12px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.match-row {
+  display: grid;
+  grid-template-columns: minmax(110px, max-content) 1fr;
+  gap: 12px; align-items: center;
+}
+.match-label { font-weight: 600; }
+.slot {
+  min-height: 44px;
+  padding: 4px 6px;
+  border: 2px dashed var(--border);
+  border-radius: 10px;
+  background: rgba(127,127,127,0.06);
+  display: flex; align-items: center;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+.slot:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.slot.ok  { border-style: solid; border-color: var(--good); background: var(--good-bg); }
+.slot.bad { border-style: solid; border-color: var(--bad);  background: var(--bad-bg); }
+
+.card-pool {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(127,127,127,0.04);
+  min-height: 48px;
+}
+
+.card {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: var(--tap-min); min-width: 44px;
+  padding: 6px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent); color: var(--accent-fg);
+  font: inherit; font-weight: 600; font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.18);
+  transition: transform 0.08s, box-shadow 0.15s, outline-color 0.15s;
+  white-space: nowrap;
+}
+.card:hover { transform: translateY(-1px); }
+.card:active { transform: translateY(0); }
+.card.selected {
+  outline: 3px solid var(--warn);
+  outline-offset: 2px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.22);
+}
+.slot .card { margin: 0; }
+
+.interactive-actions {
+  display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap;
+}
+.interactive-result {
+  margin-top: 10px; padding: 8px 12px;
+  border-radius: 8px; font-weight: 600;
+}
+.interactive-result.ok      { background: var(--good-bg); color: var(--good); }
+.interactive-result.partial { background: var(--warn-bg); color: var(--warn); }
+
+@media (max-width: 520px) {
+  .match-row { grid-template-columns: 1fr; gap: 4px; }
+  .match-label { font-size: 14px; }
 }
 .spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(127,127,127,0.35); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: middle; margin-right: 8px; }
 @keyframes spin { to { transform: rotate(360deg); } }

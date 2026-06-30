@@ -38,6 +38,7 @@ const ui = {
   type: el("task-type"),
   question: el("task-question"),
   given: el("task-given"),
+  interactive: el("interactive-area"),
   answer: el("answer"),
   feedback: el("feedback"),
   hint: el("hint-box"),
@@ -167,6 +168,210 @@ function setBusy(button, on) {
   }
 }
 
+/* ------------------- Interaktive Aufgaben (Karten verschieben) ------------------- */
+// Vergleicht zwei Antworten "weich": trimmt, kleinschreibt, En-/Em-Dashes
+// werden zu Bindestrich, Whitespace egal.
+function normalizeAnswer(s) {
+  return String(s == null ? "" : s)
+    .trim()
+    .toLowerCase()
+    .replace(/[\u2013\u2014]/g, "-")
+    .replace(/\s+/g, "");
+}
+
+function shuffleInPlace(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function renderInteractive(task) {
+  const host = ui.interactive;
+  host.innerHTML = "";
+  const cfg = task && task.interactive;
+  if (!cfg) { host.hidden = true; return; }
+  host.hidden = false;
+
+  if (cfg.type === "matching") {
+    host.appendChild(buildMatchingWidget(task, cfg));
+  } else {
+    host.hidden = true;
+  }
+}
+
+function buildMatchingWidget(task, cfg) {
+  const wrap = document.createElement("div");
+  wrap.className = "interactive matching";
+
+  const intro = document.createElement("div");
+  intro.className = "interactive-intro muted small";
+  intro.innerHTML =
+    'Tippe zuerst eine <strong>Karte</strong> an und dann den passenden ' +
+    '<strong>Platz</strong>. Eine Karte im Platz tippst Du an, um sie ' +
+    'zur\u00fcck in den Vorrat zu legen.';
+  wrap.appendChild(intro);
+
+  // Pool of cards = unique answers, shuffled
+  const uniqueAnswers = [];
+  const seen = new Set();
+  cfg.items.forEach((it) => {
+    if (!seen.has(it.answer)) { seen.add(it.answer); uniqueAnswers.push(it.answer); }
+  });
+  const cards = shuffleInPlace(uniqueAnswers.slice());
+
+  // Slots
+  const slotsList = document.createElement("ul");
+  slotsList.className = "match-slots";
+  cfg.items.forEach((item, idx) => {
+    const li = document.createElement("li");
+    li.className = "match-row";
+    const lbl = document.createElement("span");
+    lbl.className = "match-label";
+    lbl.innerHTML = renderChem(item.label);
+    const slot = document.createElement("div");
+    slot.className = "slot";
+    slot.dataset.idx = String(idx);
+    slot.dataset.expected = item.answer;
+    slot.setAttribute("tabindex", "0");
+    slot.setAttribute("role", "button");
+    slot.setAttribute("aria-label", "Platz f\u00fcr " + item.label);
+    li.appendChild(lbl);
+    li.appendChild(slot);
+    slotsList.appendChild(li);
+  });
+  wrap.appendChild(slotsList);
+
+  // Pool
+  const pool = document.createElement("div");
+  pool.className = "card-pool";
+  pool.setAttribute("aria-label", "Kartenvorrat");
+  cards.forEach((value) => {
+    pool.appendChild(makeCard(value));
+  });
+  wrap.appendChild(pool);
+
+  // Actions
+  const actions = document.createElement("div");
+  actions.className = "interactive-actions";
+  const btnCheck = document.createElement("button");
+  btnCheck.type = "button";
+  btnCheck.className = "primary";
+  btnCheck.textContent = "Pr\u00fcfen";
+  const btnReset = document.createElement("button");
+  btnReset.type = "button";
+  btnReset.textContent = "Zur\u00fccksetzen";
+  actions.appendChild(btnCheck);
+  actions.appendChild(btnReset);
+  wrap.appendChild(actions);
+
+  const result = document.createElement("div");
+  result.className = "interactive-result";
+  result.hidden = true;
+  wrap.appendChild(result);
+
+  // State
+  let selected = null;
+  function selectCard(card) {
+    if (selected === card) { selected.classList.remove("selected"); selected = null; return; }
+    if (selected) selected.classList.remove("selected");
+    selected = card;
+    if (card) card.classList.add("selected");
+  }
+  function returnToPool(card) {
+    pool.appendChild(card);
+    card.classList.remove("selected");
+  }
+  function placeIntoSlot(slot, card) {
+    const existing = slot.querySelector(".card");
+    if (existing) returnToPool(existing);
+    slot.appendChild(card);
+    card.classList.remove("selected");
+    selected = null;
+    // Beim Bewegen Pr\u00fcf-Markierung wegnehmen
+    slot.classList.remove("ok", "bad");
+    result.hidden = true;
+  }
+
+  function makeCard(value) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "card";
+    b.dataset.value = value;
+    b.innerHTML = renderChem(value);
+    return b;
+  }
+
+  wrap.addEventListener("click", (e) => {
+    const card = e.target.closest(".card");
+    const slot = e.target.closest(".slot");
+    if (card) {
+      if (card.parentElement && card.parentElement.classList.contains("slot")) {
+        // Karte aus Slot zur\u00fcck in den Pool
+        const s = card.parentElement;
+        returnToPool(card);
+        s.classList.remove("ok", "bad");
+        result.hidden = true;
+      } else {
+        selectCard(card);
+      }
+      e.stopPropagation();
+      return;
+    }
+    if (slot && selected) {
+      placeIntoSlot(slot, selected);
+    }
+  });
+
+  // Tastatur: Enter/Space auf Slot mit ausgew\u00e4hlter Karte
+  slotsList.addEventListener("keydown", (e) => {
+    if ((e.key === "Enter" || e.key === " ") && selected) {
+      const slot = e.target.closest(".slot");
+      if (slot) { e.preventDefault(); placeIntoSlot(slot, selected); }
+    }
+  });
+
+  btnCheck.addEventListener("click", () => {
+    let correct = 0;
+    const total = cfg.items.length;
+    let allPlaced = true;
+    slotsList.querySelectorAll(".slot").forEach((slot) => {
+      const c = slot.querySelector(".card");
+      slot.classList.remove("ok", "bad");
+      if (!c) { allPlaced = false; return; }
+      const ok = normalizeAnswer(c.dataset.value) === normalizeAnswer(slot.dataset.expected);
+      slot.classList.add(ok ? "ok" : "bad");
+      if (ok) correct++;
+    });
+    result.hidden = false;
+    result.className = "interactive-result";
+    if (!allPlaced && correct < total) {
+      result.classList.add("partial");
+      result.textContent = `${correct} von ${total} richtig \u2013 noch nicht alle Pl\u00e4tze belegt.`;
+    } else if (correct === total) {
+      result.classList.add("ok");
+      result.textContent = `Super! Alle ${total} richtig.`;
+      state.done.add(state.currentId);
+      saveDone();
+      updateProgress();
+      renderList();
+    } else {
+      result.classList.add("partial");
+      result.textContent = `${correct} von ${total} richtig.`;
+    }
+  });
+
+  btnReset.addEventListener("click", () => {
+    slotsList.querySelectorAll(".slot .card").forEach((c) => returnToPool(c));
+    slotsList.querySelectorAll(".slot").forEach((s) => s.classList.remove("ok", "bad"));
+    result.hidden = true;
+    selected = null;
+  });
+
+  return wrap;
+}
+
 /* ------------------- Sidebar (Drawer) ------------------- */
 function openSidebar() {
   document.body.classList.add("sidebar-open");
@@ -251,6 +456,7 @@ function selectTask(id) {
     });
     ui.question.appendChild(ol);
   }
+  renderInteractive(t);
   if (location.hash !== `#${id}`) history.replaceState(null, "", `#${id}`);
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
