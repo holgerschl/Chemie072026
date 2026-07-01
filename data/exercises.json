@@ -669,57 +669,105 @@
       }
     },
     {
-      "id": "A12",
-      "number": "12",
+      "id": "12a",
+      "number": "12a",
       "topic": "Basen im Alltag",
-      "type": "multi_part",
-      "question": "Basen im Alltag",
+      "type": "text",
+      "question": "Seife hat einen basischen pH-Wert. Heute verwendet man aber häufig Shampoos oder Duschbäder mit dem pH-Wert 5,5. Warum?",
       "given": "",
       "expected_answer_kind": "freitext",
-      "subtasks": [
-        {
-          "id": "A12a",
-          "question": "Seife hat einen basischen pH-Wert. Heute verwendet man aber häufig Shampoos oder Duschbäder mit dem pH-Wert 5,5. Warum?",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "A12b",
-          "question": "Wie funktioniert eine basische und wie eine saure Dauerwelle? Welche Vorzüge haben die verschiedenen Methoden?",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "A12c",
-          "question": "Welche Aufgabe hat der Ammoniak beim Färben der Haare?",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "A12d",
-          "question": "Erkundige dich, wie Kalkmörtel hergestellt und verwendet wird.",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "A12e",
-          "question": "Wie viel Gramm Natriumhydroxid muss man in einem Liter Wasser lösen, um eine Natronlauge mit der Konzentration $0,2~\\text{mol} \\cdot \\text{L}^{-1}$ zu erhalten?",
-          "expected_answer_kind": "zahl"
-        },
-        {
-          "id": "A12f",
-          "question": "Wie viel Gramm Calciumhydroxid befinden sich in 800 mL Kalkwasser mit der Konzentration $1,5~\\text{mol} \\cdot \\text{L}^{-1}$?",
-          "expected_answer_kind": "zahl"
-        }
-      ],
+      "subtasks": [],
       "source_page": 41,
       "solution": {
-        "id": "12",
-        "number": "12",
-        "answer": "Laugen fühlen sich glitschig und seifig an, weil sie die oberste Hautschicht angreifen und die darin enthaltenen Eiweiße zerstören.",
-        "key_points": [
-          "Glitschiges und seifiges Gefühl",
-          "Angriff auf oberste Hautschicht",
-          "Zerstörung von Eiweißen"
-        ],
+        "answer": "",
+        "key_points": [],
         "final_result": "",
-        "source_page": 40
+        "missing": true
+      }
+    },
+    {
+      "id": "12b",
+      "number": "12b",
+      "topic": "Basen im Alltag",
+      "type": "text",
+      "question": "Wie funktioniert eine basische und wie eine saure Dauerwelle? Welche Vorzüge haben die verschiedenen Methoden?",
+      "given": "",
+      "expected_answer_kind": "freitext",
+      "subtasks": [],
+      "source_page": 41,
+      "solution": {
+        "answer": "",
+        "key_points": [],
+        "final_result": "",
+        "missing": true
+      }
+    },
+    {
+      "id": "12c",
+      "number": "12c",
+      "topic": "Basen im Alltag",
+      "type": "text",
+      "question": "Welche Aufgabe hat der Ammoniak beim Färben der Haare?",
+      "given": "",
+      "expected_answer_kind": "freitext",
+      "subtasks": [],
+      "source_page": 41,
+      "solution": {
+        "answer": "",
+        "key_points": [],
+        "final_result": "",
+        "missing": true
+      }
+    },
+    {
+      "id": "12d",
+      "number": "12d",
+      "topic": "Basen im Alltag",
+      "type": "text",
+      "question": "Erkundige dich, wie Kalkmörtel hergestellt und verwendet wird.",
+      "given": "",
+      "expected_answer_kind": "freitext",
+      "subtasks": [],
+      "source_page": 41,
+      "solution": {
+        "answer": "",
+        "key_points": [],
+        "final_result": "",
+        "missing": true
+      }
+    },
+    {
+      "id": "12e",
+      "number": "12e",
+      "topic": "Basen im Alltag",
+      "type": "text",
+      "question": "Wie viel Gramm Natriumhydroxid muss man in einem Liter Wasser lösen, um eine Natronlauge mit der Konzentration $0,2~\\text{mol} \\cdot \\text{L}^{-1}$ zu erhalten?",
+      "given": "c(NaOH) = 0,2 mol/L; V = 1 L; M(NaOH) = 40 g/mol",
+      "expected_answer_kind": "zahl",
+      "subtasks": [],
+      "source_page": 41,
+      "solution": {
+        "answer": "",
+        "key_points": [],
+        "final_result": "",
+        "missing": true
+      }
+    },
+    {
+      "id": "12f",
+      "number": "12f",
+      "topic": "Basen im Alltag",
+      "type": "text",
+      "question": "Wie viel Gramm Calciumhydroxid befinden sich in 800 mL Kalkwasser mit der Konzentration $1,5~\\text{mol} \\cdot \\text{L}^{-1}$?",
+      "given": "V = 800 mL = 0,8 L; c(Ca(OH)_2) = 1,5 mol/L; M(Ca(OH)_2) = 74 g/mol",
+      "expected_answer_kind": "zahl",
+      "subtasks": [],
+      "source_page": 41,
+      "solution": {
+        "answer": "",
+        "key_points": [],
+        "final_result": "",
+        "missing": true
       }
     },
     {
@@ -1432,8 +1480,8 @@
       "source_page": 40
     },
     {
-      "id": "c",
-      "number": "c)",
+      "id": "12c",
+      "number": "12 c)",
       "answer": "Der Ammoniak führt zu einem Aufquellen der Haare, sodass die Farbstoffe beim Färben in das Innere der Haare gelangen, dadurch wird die Färbung dauerhafter.",
       "key_points": [
         "Ammoniak führt zum Aufquellen der Haare",
@@ -1444,8 +1492,8 @@
       "source_page": 41
     },
     {
-      "id": "d",
-      "number": "d)",
+      "id": "12d",
+      "number": "12 d)",
       "answer": "Mörtel wird verwendet, um Steine dauerhaft miteinander zu verbinden oder um Gebäude zu verputzen. Gewonnen wird Mörtel aus Kalkstein, der gebrannt wird.\n\n$\\text{CaCO}_3 \\longrightarrow \\text{CaO} + \\text{CO}_2$\n\nDieser Branntkalk (CaO) wird auf der Baustelle mit Wasser (Kalk löschen) und Sand zum eigentlichen Mörtel verrührt, der zum Mauern oder Verputzen verwendet wird.\n\n$\\text{CaO} + \\text{H}_2\\text{O} \\longrightarrow \\text{Ca(OH)}_2$ (Löschkalk, eine Base)\n\nIn den nachfolgenden Wochen härtet der Mörtel durch einen chemischen Prozess aus. Durch Aufnahme von Kohlenstoffdioxid aus der Luft bildet sich stabiles Calciumcarbonat.\n\n$\\text{Ca(OH)}_2 + \\text{CO}_2 \\longrightarrow \\text{CaCO}_3 + \\text{H}_2\\text{O}$",
       "key_points": [
         "Mörtel verbindet Steine oder wird zum Verputzen verwendet",
@@ -1457,8 +1505,8 @@
       "source_page": 41
     },
     {
-      "id": "e",
-      "number": "e)",
+      "id": "12e",
+      "number": "12 e)",
       "answer": "Ein Mol Natriumhydroxid wiegt 40 g. Um eine Lösung der Konzentration $0{,}2 \\, \\text{mol} \\cdot \\text{L}^{-1}$ zu erhalten, muss man also 8 g Natriumhydroxid in einem Liter Wasser lösen.",
       "key_points": [
         "Molare Masse von NaOH: 40 g/mol",
@@ -1469,8 +1517,8 @@
       "source_page": 41
     },
     {
-      "id": "f",
-      "number": "f)",
+      "id": "12f",
+      "number": "12 f)",
       "answer": "1 Mol Calciumhydroxid ($\\text{Ca(OH)}_2$) wiegt 74 g. In einem Liter mit der Konzentration $1{,}5 \\, \\text{mol} \\cdot \\text{L}^{-1}$ sind also 111 g Calciumhydroxid gelöst. In 800 mL (0,8 L) sind es dann 88,8 g.",
       "key_points": [
         "Molare Masse von $\\text{Ca(OH)}_2$: 74 g/mol",
