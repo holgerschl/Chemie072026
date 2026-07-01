@@ -1628,6 +1628,48 @@
       ],
       "final_result": "",
       "source_page": 43
+    },
+    {
+      "id": "18b",
+      "number": "18 b)",
+      "answer": "Konzentrierte Schwefelsäure reagiert mit Wasser (und damit auch mit wässrigen Laugen) unter sehr starker Wärmeentwicklung. Zusätzlich zu dieser Verdünnungswärme entsteht bei der Neutralisation Neutralisationswärme. Dadurch kann die Flüssigkeit schlagartig sieden und Spritzer der stark ätzenden Säure herausschleudern (Merksatz: \"Erst das Wasser, dann die Säure, sonst geschieht das Ungeheure\"). Man muss die konzentrierte Säure daher zuerst langsam und unter Rühren in viel Wasser geben, gut kühlen und dann erst vorsichtig mit der Lauge neutralisieren. Schutzbrille und Handschuhe sind Pflicht.",
+      "key_points": [
+        "Starke Wärmeentwicklung beim Mischen mit Wasser/Lauge",
+        "Zusätzliche Neutralisationswärme",
+        "Gefahr des Siedens und Spritzens der ätzenden Säure",
+        "Regel: Säure immer in Wasser, nie umgekehrt",
+        "Langsam zugeben, kühlen, Schutzausrüstung tragen"
+      ],
+      "final_result": "",
+      "source_page": 44
+    },
+    {
+      "id": "18c",
+      "number": "18 c)",
+      "answer": "Der saure Regen senkt den pH-Wert von Boden und Gewässern in den sauren Bereich ab. Kalk (Calciumcarbonat $CaCO_3$ bzw. gelöschter Kalk $Ca(OH)_2$) wirkt basisch und neutralisiert die überschüssigen Säuren im Boden ($CaCO_3 + 2\\,H^+ \\rightarrow Ca^{2+} + H_2O + CO_2$). Dadurch steigt der pH-Wert wieder in einen für Pflanzen, Bodenlebewesen und Baumwurzeln verträglichen Bereich. Gleichzeitig werden die im sauren Milieu freigesetzten, pflanzenschädlichen Aluminium-Ionen gebunden und wichtige Nährstoffe wie $Ca^{2+}$ und $Mg^{2+}$ nachgeliefert.",
+      "key_points": [
+        "Kalk wirkt basisch und neutralisiert die Säuren im Boden",
+        "pH-Wert des Bodens steigt wieder in den verträglichen Bereich",
+        "Schutz der Wurzeln, Pflanzen und Bodenlebewesen",
+        "Bindung der schädlichen Aluminium-Ionen",
+        "Zufuhr wichtiger Nährstoffe (Calcium, Magnesium)"
+      ],
+      "final_result": "",
+      "source_page": 44
+    },
+    {
+      "id": "18d",
+      "number": "18 d)",
+      "answer": "Aluminiumhydroxid $Al(OH)_3$ ist eine schwache Base. Es neutralisiert im Magen bzw. in der Speiseröhre die überschüssige Magensäure (Salzsäure) gemäß der Reaktion $Al(OH)_3 + 3\\,HCl \\rightarrow AlCl_3 + 3\\,H_2O$. Dadurch steigt der pH-Wert wieder an, die Säure kann die empfindliche Schleimhaut der Speiseröhre nicht mehr angreifen und das brennende Gefühl (Sodbrennen) verschwindet.",
+      "key_points": [
+        "$Al(OH)_3$ ist eine schwache Base",
+        "Neutralisiert die überschüssige Magensäure (HCl)",
+        "Reaktion: $Al(OH)_3 + 3\\,HCl \\rightarrow AlCl_3 + 3\\,H_2O$",
+        "pH-Wert steigt an, Reizung der Speiseröhre lässt nach",
+        "Sodbrennen verschwindet"
+      ],
+      "final_result": "",
+      "source_page": 44
     }
   ]
 }
