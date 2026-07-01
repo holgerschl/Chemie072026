@@ -973,25 +973,14 @@
       }
     },
     {
-      "id": "17",
-      "number": "17",
+      "id": "17a",
+      "number": "17a",
       "topic": "Neutralisation",
-      "type": "multi_part",
-      "question": "In einem Labor sind 2 Liter 0,5 molare Salzsäure angefallen.",
-      "given": "V = 2 L, c(Säure) = 0,5 mol/L, c(NaOH) = 1 mol/L, c(Kalkwasser) = 1 mol/L",
+      "type": "text",
+      "question": "In einem Labor sind 2 Liter 0,5 molare Salzsäure angefallen. Wie viel Natronlauge (Konzentration: 1 mol·L$^{-1}$) braucht man, um die Säure zu neutralisieren?",
+      "given": "V(HCl) = 2 L, c(HCl) = 0,5 mol/L, c(NaOH) = 1 mol/L",
       "expected_answer_kind": "zahl",
-      "subtasks": [
-        {
-          "id": "17a",
-          "question": "Wie viel Natronlauge (Konzentration: 1 mol·L$^{-1}$) braucht man, um die Säure zu neutralisieren?",
-          "expected_answer_kind": "zahl"
-        },
-        {
-          "id": "17b",
-          "question": "Wie viel Kalkwasser (Konzentration: 1 mol·L$^{-1}$) benötigt man für die Neutralisation?",
-          "expected_answer_kind": "zahl"
-        }
-      ],
+      "subtasks": [],
       "source_page": 44,
       "solution": {
         "answer": "",
@@ -1001,35 +990,82 @@
       }
     },
     {
-      "id": "18",
-      "number": "18",
+      "id": "17b",
+      "number": "17b",
+      "topic": "Neutralisation",
+      "type": "text",
+      "question": "In einem Labor sind 2 Liter 0,5 molare Salzsäure angefallen. Wie viel Kalkwasser (Konzentration: 1 mol·L$^{-1}$) benötigt man für die Neutralisation?",
+      "given": "V(HCl) = 2 L, c(HCl) = 0,5 mol/L, c(Kalkwasser) = 1 mol/L",
+      "expected_answer_kind": "zahl",
+      "subtasks": [],
+      "source_page": 44,
+      "solution": {
+        "answer": "",
+        "key_points": [],
+        "final_result": "",
+        "missing": true
+      }
+    },
+    {
+      "id": "18a",
+      "number": "18a",
       "topic": "Neutralisation - Umwelt",
-      "type": "multi_part",
-      "question": "Die Bedeutung der Neutralisation für Mensch und Umwelt",
+      "type": "text",
+      "question": "Warum sollen Abwässer aus Laboratorien oder Fabriken neutralisiert werden, bevor sie ins Kanalnetz gelangen? Nenne zwei Gründe.",
       "given": "",
       "expected_answer_kind": "freitext",
-      "subtasks": [
-        {
-          "id": "18a",
-          "question": "Warum sollen Abwässer aus Laboratorien oder Fabriken neutralisiert werden, bevor sie ins Kanalnetz gelangen? Nenne zwei Gründe.",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "18b",
-          "question": "Warum muss man bei der Neutralisation von konzentrierter Schwefelsäure sehr vorsichtig sein?",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "18c",
-          "question": "Als Gegenmaßnahme gegen die Auswirkungen des sauren Regens werden Wälder gekalkt. Was wird dadurch erreicht?",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "18d",
-          "question": "Zur Behandlung von Sodbrennen (Magensäure gelangt in die Speiseröhre) kann man als Medikament Aluminiumhydroxid ($Al(OH)_3$) einnehmen. Wie wirkt dieses Medikament?",
-          "expected_answer_kind": "freitext"
-        }
-      ],
+      "subtasks": [],
+      "source_page": 44,
+      "solution": {
+        "answer": "",
+        "key_points": [],
+        "final_result": "",
+        "missing": true
+      }
+    },
+    {
+      "id": "18b",
+      "number": "18b",
+      "topic": "Neutralisation - Umwelt",
+      "type": "text",
+      "question": "Warum muss man bei der Neutralisation von konzentrierter Schwefelsäure sehr vorsichtig sein?",
+      "given": "",
+      "expected_answer_kind": "freitext",
+      "subtasks": [],
+      "source_page": 44,
+      "solution": {
+        "answer": "",
+        "key_points": [],
+        "final_result": "",
+        "missing": true
+      }
+    },
+    {
+      "id": "18c",
+      "number": "18c",
+      "topic": "Neutralisation - Umwelt",
+      "type": "text",
+      "question": "Als Gegenmaßnahme gegen die Auswirkungen des sauren Regens werden Wälder gekalkt. Was wird dadurch erreicht?",
+      "given": "",
+      "expected_answer_kind": "freitext",
+      "subtasks": [],
+      "source_page": 44,
+      "solution": {
+        "answer": "",
+        "key_points": [],
+        "final_result": "",
+        "missing": true
+      }
+    },
+    {
+      "id": "18d",
+      "number": "18d",
+      "topic": "Neutralisation - Umwelt",
+      "type": "text",
+      "question": "Zur Behandlung von Sodbrennen (Magensäure gelangt in die Speiseröhre) kann man als Medikament Aluminiumhydroxid ($Al(OH)_3$) einnehmen. Wie wirkt dieses Medikament?",
+      "given": "",
+      "expected_answer_kind": "freitext",
+      "subtasks": [],
       "source_page": 44,
       "solution": {
         "answer": "",
