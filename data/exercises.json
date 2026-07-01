@@ -1288,6 +1288,47 @@
       "source_page": 38
     },
     {
+      "id": "A9c",
+      "number": "9c)",
+      "answer": "Das Nursing-bottle-Syndrom (auch Nuckelflaschen-Karies oder Frühkindliche Karies) tritt bei Kleinkindern auf, denen über längere Zeit gesüßte oder saure Getränke (z. B. Fruchtsäfte, gesüßter Tee, Milch mit Zucker) aus der Nuckelflasche zum Dauernuckeln gegeben werden. Die Zähne werden dabei ständig von Zucker und Säure umspült. Bakterien im Mund wandeln den Zucker zusätzlich zu Säuren um. Diese Säuren demineralisieren den Zahnschmelz und führen zu ausgeprägter Karies, vor allem an den oberen Milchschneidezähnen.",
+      "key_points": [
+        "Frühkindliche Karies bei Kleinkindern durch Nuckelflasche",
+        "Ursache: dauerhaftes Nuckeln an gesüßten oder sauren Getränken",
+        "Zähne stehen ständig in Kontakt mit Zucker und Säure",
+        "Bakterien bilden aus Zucker zusätzliche Säure",
+        "Zahnschmelz wird demineralisiert, vor allem an den oberen Milchschneidezähnen"
+      ],
+      "final_result": "",
+      "source_page": 38
+    },
+    {
+      "id": "A9d",
+      "number": "9d)",
+      "answer": "Im Magen wird die aufgenommene Nahrung durch die stark saure Magensäure (Salzsäure, pH ca. 1-2) und die Verdauungsenzyme Schritt für Schritt zersetzt. Der Zerkleinerungs- und Verdauungsgrad des Mageninhalts hängt also von der Verweildauer im Magen ab: Feste, kaum angedaute Nahrung deutet auf eine kurze Zeit nach der letzten Mahlzeit hin, ein vollständig verflüssigter Speisebrei auf eine längere Zeit. Nach dem Tod stoppt die Verdauung schlagartig. Wenn der Pathologe weiß, wann und was das Opfer zuletzt gegessen hat, kann er anhand des Verdauungszustands im Magen abschätzen, wie viel Zeit zwischen der letzten Mahlzeit und dem Tod vergangen ist, und so den Todeszeitpunkt eingrenzen.",
+      "key_points": [
+        "Magensäure (HCl, pH 1-2) und Enzyme verdauen die Nahrung zeitabhängig",
+        "Verdauungszustand des Speisebreis zeigt die Verweildauer im Magen",
+        "Nach dem Tod stoppt die Verdauung",
+        "Kenntnis der letzten Mahlzeit + Verdauungszustand -> Zeit seit letzter Mahlzeit",
+        "Daraus lässt sich der Todeszeitpunkt eingrenzen"
+      ],
+      "final_result": "",
+      "source_page": 38
+    },
+    {
+      "id": "A9e",
+      "number": "9e)",
+      "answer": "Beim Einlegen in Essig sinkt der pH-Wert des Lebensmittels stark ab (Essig enthält ca. 5 % Essigsäure). In einer solchen sauren Umgebung können sich die meisten Mikroorganismen (Bakterien, Hefen, Schimmelpilze), die für den Verderb verantwortlich sind, nicht mehr vermehren. Dadurch werden Gurken oder Zwiebeln haltbar gemacht. Zusätzlich erhalten sie durch den Essig ihren typischen sauren Geschmack.",
+      "key_points": [
+        "Essigsäure senkt den pH-Wert stark ab",
+        "Im sauren Milieu können Verderbniserreger (Bakterien, Hefen, Schimmelpilze) nicht wachsen",
+        "Dadurch werden die Lebensmittel haltbar gemacht (Konservierung)",
+        "Zusätzlich prägt der Essig den Geschmack"
+      ],
+      "final_result": "Konservierung durch niedrigen pH-Wert",
+      "source_page": 38
+    },
+    {
       "id": "10",
       "number": "10",
       "answer": "Die Zuordnung lautet:\nA - D: Laugen sind in der Lage, Protonen aufzunehmen.\nB - A: Laugen entstehen bei der Reaktion von Alkali-, Erdalkalimetallen mit Wasser unter Bildung von Wasserstoff.\nC - D: Aber auch Metalloxide reagieren mit Wasser zu Laugen.\nD - A: Laugen sind in der Lage, Protonen aufzunehmen.\n\nDie chemischen Gleichungen:\nA: $\\text{NaOH} \\longrightarrow \\text{Na}^+ + \\text{OH}^-$ und $\\text{OH}^- + \\text{H}^+ \\longrightarrow \\text{H}_2\\text{O}$ (D)\nB: $2\\text{Na} + 2\\text{H}_2\\text{O} \\longrightarrow 2\\text{NaOH} + \\text{H}_2$ (B)\nC: $\\text{MgO} + \\text{H}_2\\text{O} \\longrightarrow \\text{Mg(OH)}_2$ (C)\nD: $\\text{NH}_3 + \\text{H}_2\\text{O} \\longrightarrow \\text{NH}_4\\text{OH}$ (A)",
