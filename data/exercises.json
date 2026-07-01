@@ -428,7 +428,7 @@
         "type": "table",
         "columns": ["Name", "Formel"],
         "rows": [
-          { "answers": [ "Chlorid-Ion",                            "Cl^-" ] },
+          { "answers": [ { "given": "Chlorid-Ion" },              "Cl^-" ] },
           { "answers": [ { "given": "Hydrogencarbonat-Ion" },     "HCO_3^-" ] },
           { "answers": [ { "given": "Carbonat-Ion" },             "CO_3^{2-}" ] },
           { "answers": [ { "given": "Hydrogensulfat-Ion" },       "HSO_4^-" ] },
