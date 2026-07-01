@@ -1290,13 +1290,13 @@
     {
       "id": "A9c",
       "number": "9c)",
-      "answer": "Das Nursing-bottle-Syndrom (auch Nuckelflaschen-Karies oder Frühkindliche Karies) tritt bei Kleinkindern auf, denen über längere Zeit gesüßte oder saure Getränke (z. B. Fruchtsäfte, gesüßter Tee, Milch mit Zucker) aus der Nuckelflasche zum Dauernuckeln gegeben werden. Die Zähne werden dabei ständig von Zucker und Säure umspült. Bakterien im Mund wandeln den Zucker zusätzlich zu Säuren um. Diese Säuren demineralisieren den Zahnschmelz und führen zu ausgeprägter Karies, vor allem an den oberen Milchschneidezähnen.",
+      "answer": "Nursing bottle ist der englische Ausdruck für Babyfläschchen. Wenn Kleinkinder diese Fläschchen z. B. mit Säften oder sauren Früchtetees zum ständigen Nuckeln überlassen bekommen, dann führt der dauerhafte Kontakt der Zähne mit den sauren und zuckerhaltigen Flüssigkeiten aus dem Fläschchen zu einer Kariesentwicklung an den Milchzähnen. Besonders betroffen sind die oberen Schneide- und Backenzähne.",
       "key_points": [
-        "Frühkindliche Karies bei Kleinkindern durch Nuckelflasche",
-        "Ursache: dauerhaftes Nuckeln an gesüßten oder sauren Getränken",
-        "Zähne stehen ständig in Kontakt mit Zucker und Säure",
-        "Bakterien bilden aus Zucker zusätzliche Säure",
-        "Zahnschmelz wird demineralisiert, vor allem an den oberen Milchschneidezähnen"
+        "Nursing bottle = englischer Ausdruck für Babyfläschchen",
+        "Kleinkinder nuckeln ständig an Säften oder sauren Früchtetees aus der Flasche",
+        "Dauerhafter Kontakt der Zähne mit sauren und zuckerhaltigen Flüssigkeiten",
+        "Folge: Karies an den Milchzähnen",
+        "Besonders betroffen sind die oberen Schneide- und Backenzähne"
       ],
       "final_result": "",
       "source_page": 38
@@ -1304,13 +1304,13 @@
     {
       "id": "A9d",
       "number": "9d)",
-      "answer": "Im Magen wird die aufgenommene Nahrung durch die stark saure Magensäure (Salzsäure, pH ca. 1-2) und die Verdauungsenzyme Schritt für Schritt zersetzt. Der Zerkleinerungs- und Verdauungsgrad des Mageninhalts hängt also von der Verweildauer im Magen ab: Feste, kaum angedaute Nahrung deutet auf eine kurze Zeit nach der letzten Mahlzeit hin, ein vollständig verflüssigter Speisebrei auf eine längere Zeit. Nach dem Tod stoppt die Verdauung schlagartig. Wenn der Pathologe weiß, wann und was das Opfer zuletzt gegessen hat, kann er anhand des Verdauungszustands im Magen abschätzen, wie viel Zeit zwischen der letzten Mahlzeit und dem Tod vergangen ist, und so den Todeszeitpunkt eingrenzen.",
+      "answer": "Der Magen bildet ständig eine Schleimschicht, die ihn vor dem schädigenden Einfluss der Magensäure und der Verdauungsenzyme schützt. Nach dem Tod hört die Produktion dieses Schutzfilms auf, sodass im Laufe der Zeit der Magen selbst angegriffen wird. Der Umfang dieser Autolyse (Selbstverdauung) hängt davon ab, wie lange ein Mensch schon tot ist.",
       "key_points": [
-        "Magensäure (HCl, pH 1-2) und Enzyme verdauen die Nahrung zeitabhängig",
-        "Verdauungszustand des Speisebreis zeigt die Verweildauer im Magen",
-        "Nach dem Tod stoppt die Verdauung",
-        "Kenntnis der letzten Mahlzeit + Verdauungszustand -> Zeit seit letzter Mahlzeit",
-        "Daraus lässt sich der Todeszeitpunkt eingrenzen"
+        "Der Magen bildet ständig eine schützende Schleimschicht",
+        "Schleim schützt vor Magensäure und Verdauungsenzymen",
+        "Nach dem Tod hört die Produktion des Schutzfilms auf",
+        "Der Magen wird dann selbst von seiner Säure/den Enzymen angegriffen (Autolyse / Selbstverdauung)",
+        "Umfang der Autolyse zeigt, wie lange der Tod schon zurückliegt"
       ],
       "final_result": "",
       "source_page": 38
@@ -1318,14 +1318,12 @@
     {
       "id": "A9e",
       "number": "9e)",
-      "answer": "Beim Einlegen in Essig sinkt der pH-Wert des Lebensmittels stark ab (Essig enthält ca. 5 % Essigsäure). In einer solchen sauren Umgebung können sich die meisten Mikroorganismen (Bakterien, Hefen, Schimmelpilze), die für den Verderb verantwortlich sind, nicht mehr vermehren. Dadurch werden Gurken oder Zwiebeln haltbar gemacht. Zusätzlich erhalten sie durch den Essig ihren typischen sauren Geschmack.",
+      "answer": "Die Essigsäure tötet Mikroorganismen wie z. B. Bakterien ab, sodass das sauer eingelegte Gemüse lange haltbar ist.",
       "key_points": [
-        "Essigsäure senkt den pH-Wert stark ab",
-        "Im sauren Milieu können Verderbniserreger (Bakterien, Hefen, Schimmelpilze) nicht wachsen",
-        "Dadurch werden die Lebensmittel haltbar gemacht (Konservierung)",
-        "Zusätzlich prägt der Essig den Geschmack"
+        "Essigsäure tötet Mikroorganismen (z. B. Bakterien) ab",
+        "Dadurch wird das eingelegte Gemüse lange haltbar"
       ],
-      "final_result": "Konservierung durch niedrigen pH-Wert",
+      "final_result": "",
       "source_page": 38
     },
     {
