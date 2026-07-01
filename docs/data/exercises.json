@@ -458,40 +458,82 @@
       }
     },
     {
-      "id": "9",
-      "number": "9",
+      "id": "9a",
+      "number": "9a",
       "topic": "Säuren im Alltag",
-      "type": "multi_part",
-      "question": "Im alltäglichen Leben begegnen uns eine ganze Reihe verschiedener Säuren.",
+      "type": "text",
+      "question": "Recherchiere über den sauren Regen. Was versteht man darunter, welche Ursachen und welche Auswirkungen hat er?",
       "given": "",
       "expected_answer_kind": "freitext",
-      "subtasks": [
-        {
-          "id": "9a",
-          "question": "Recherchiere über den sauren Regen. Was versteht man darunter, welche Ursachen und welche Auswirkungen hat er?",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "9b",
-          "question": "Informiere dich über das Krankheitsbild der Bulimie. Warum können durch diese Krankheit die Zähne der Betroffenen geschädigt werden?",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "9c",
-          "question": "Was versteht man unter dem Nursing-bottle-Syndrom?",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "9d",
-          "question": "Wie kann ein Pathologe durch Untersuchung des Magens den Todeszeitpunkt eines Mordopfers feststellen?",
-          "expected_answer_kind": "freitext"
-        },
-        {
-          "id": "9e",
-          "question": "Warum werden Gurken oder Zwiebeln in Essig eingelegt?",
-          "expected_answer_kind": "freitext"
-        }
-      ],
+      "subtasks": [],
+      "source_page": 5,
+      "solution": {
+        "answer": "",
+        "key_points": [],
+        "final_result": "",
+        "missing": true
+      }
+    },
+    {
+      "id": "9b",
+      "number": "9b",
+      "topic": "Säuren im Alltag",
+      "type": "text",
+      "question": "Informiere dich über das Krankheitsbild der Bulimie. Warum können durch diese Krankheit die Zähne der Betroffenen geschädigt werden?",
+      "given": "",
+      "expected_answer_kind": "freitext",
+      "subtasks": [],
+      "source_page": 5,
+      "solution": {
+        "answer": "",
+        "key_points": [],
+        "final_result": "",
+        "missing": true
+      }
+    },
+    {
+      "id": "9c",
+      "number": "9c",
+      "topic": "Säuren im Alltag",
+      "type": "text",
+      "question": "Was versteht man unter dem Nursing-bottle-Syndrom?",
+      "given": "",
+      "expected_answer_kind": "freitext",
+      "subtasks": [],
+      "source_page": 5,
+      "solution": {
+        "answer": "",
+        "key_points": [],
+        "final_result": "",
+        "missing": true
+      }
+    },
+    {
+      "id": "9d",
+      "number": "9d",
+      "topic": "Säuren im Alltag",
+      "type": "text",
+      "question": "Wie kann ein Pathologe durch Untersuchung des Magens den Todeszeitpunkt eines Mordopfers feststellen?",
+      "given": "",
+      "expected_answer_kind": "freitext",
+      "subtasks": [],
+      "source_page": 5,
+      "solution": {
+        "answer": "",
+        "key_points": [],
+        "final_result": "",
+        "missing": true
+      }
+    },
+    {
+      "id": "9e",
+      "number": "9e",
+      "topic": "Säuren im Alltag",
+      "type": "text",
+      "question": "Warum werden Gurken oder Zwiebeln in Essig eingelegt?",
+      "given": "",
+      "expected_answer_kind": "freitext",
+      "subtasks": [],
       "source_page": 5,
       "solution": {
         "answer": "",

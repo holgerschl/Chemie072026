@@ -1234,7 +1234,19 @@ function mergeRawSolutions(tasks, rawSols) {
   });
   tasks.forEach((t) => {
     if (!t || !t.solution || !t.solution.missing) return;
-    if (!Array.isArray(t.subtasks) || !t.subtasks.length) return;
+    // 1) Standalone-Aufgabe: direkte ID-Uebereinstimmung im raw_solutions
+    if (!Array.isArray(t.subtasks) || !t.subtasks.length) {
+      const sol = rawById.get(t.id);
+      if (sol && (sol.answer || (sol.key_points && sol.key_points.length))) {
+        t.solution = {
+          answer: sol.answer || "",
+          key_points: Array.isArray(sol.key_points) ? sol.key_points.slice() : [],
+          final_result: sol.final_result || ""
+        };
+      }
+      return;
+    }
+    // 2) Parent mit Subtasks: aus den Teil-Loesungen zusammenbauen
     const parts = [];
     const keyPts = [];
     let finalRes = "";
