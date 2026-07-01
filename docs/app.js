@@ -1357,7 +1357,7 @@ ENDERGEBNIS (falls vorhanden): ${sol.final_result || ""}
 ANTWORT DER SCHUELERIN:
 """${answer}"""
 
-Bewerte fachlich. Sei wohlwollend bei Formulierungs- und Notationsunterschieden (z.B. H^+ vs. H_3O^+, Komma vs. Punkt als Dezimaltrenner, gerundete Zwischenergebnisse). Sei aber streng bei sachlich falschen Aussagen.
+Bewerte fachlich. Sei wohlwollend bei Formulierungs- und Notationsunterschieden (z.B. H^+ vs. H_3O^+, Komma vs. Punkt als Dezimaltrenner, gerundete Zwischenergebnisse). Rechtschreib-, Grammatik- und Zeichensetzungsfehler (Kommafehler) sind fuer die Bewertung IRRELEVANT und duerfen KEINEN Punktabzug bewirken - solange der fachliche Inhalt erkennbar ist. Sei aber streng bei sachlich falschen Aussagen.
 
 Verwende in Deinem Feedback EINFACHE Formelnotation (KEIN LaTeX, KEINE Dollarzeichen):
   - Subscript mit _ (z.B. H_3O^+, K_a, H_2SO_4)
